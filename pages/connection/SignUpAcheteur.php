@@ -5,8 +5,11 @@
     $email = isset($_POST["email"])? $_POST["email"] : "";
     $password = isset($_POST["pwd"])? $_POST["pwd"] : "";
     $passwordVerif = isset($_POST["pwdVerif"])? $_POST["pwdVerif"] : "";
-    $checkAvatar = false;
-    $checkFond = false;
+    $adresse = isset($_POST["adresse"])? $_POST["adresse"] : "";
+    $codePostal = isset($_POST["codePostal"])? $_POST["codePostal"] : "";
+    $ville = isset($_POST["ville"])? $_POST["ville"] : "";
+    $pays = isset($_POST["pays"])? $_POST["pays"] : "";
+    $numTelephone = isset($_POST["numTelephone"])? $_POST["numTelephone"] : "";
 
     $finalString = "";
     $goodOrNot = true;
@@ -17,8 +20,6 @@
     $db_found = mysqli_select_db($db_handle, $database);
 
     if (isset($_POST["btnInscription"])) {
-        $checkAvatar = is_uploaded_file($_FILES['avatar']['tmp_name']);
-        $checkFond = is_uploaded_file($_FILES['fond']['tmp_name']);
         if ($db_found) {
 
             if($pseudo != ""){
@@ -71,25 +72,9 @@
                     $id = $data["ID"];
                 }
 
-                if($checkAvatar && $checkFond){
-                    $imgBlob1 = addslashes(file_get_contents($_FILES['avatar']['tmp_name']));
-                    $imgBlob2 = addslashes(file_get_contents($_FILES['fond']['tmp_name']));
-                    $sql = "INSERT INTO vendeur(ID, img_profil, img_fond) VALUES('$id', '$imgBlob1', '$imgBlob2')";
-                    mysqli_query($db_handle, $sql);
-                }elseif($checkAvatar && !$checkFond){
-                    $imgBlob1 = addslashes(file_get_contents($_FILES['avatar']['tmp_name']));
-                    $sql = "INSERT INTO vendeur(ID, img_profil) VALUES('$id', '$imgBlob1')";
-                    mysqli_query($db_handle, $sql);
-                }elseif(!$checkAvatar && $checkFond){
-                    $imgBlob2 = addslashes(file_get_contents($_FILES['fond']['tmp_name']));
-                    $sql = "INSERT INTO vendeur(ID, img_fond) VALUES('$id', '$imgBlob2')";
-                    mysqli_query($db_handle, $sql);
-                }else{
-                    $sql = "INSERT INTO vendeur(ID) VALUES('$id')";
-                    mysqli_query($db_handle, $sql);
-                }
+                $sql = "INSERT INTO acheteur(ID, adresse_1, ville, code_postal, pays, numero_tel) VALUES('$id', '$adresse', '$ville', '$codePostal', '$pays', '$numTelephone')";
+                mysqli_query($db_handle, $sql);
             }
-            
         }
     }
     mysqli_close($db_handle);
@@ -101,14 +86,14 @@
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <title>Sign Up</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='SignUpVendeur.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='SignUpAcheteur.css'>
         <!-- <script src='main.js'></script> -->
     </head>
 
     <body>
         <div class="container">
             <div class="card">
-                <form action="" method="POST" enctype="multipart/form-data" class="loginForm">
+                <form action="" method="POST"  class="loginForm">
                     <h2>Bienvenue sur ECE-Bay</h2>
                     <input type="text" name="prenom" placeholder="Prénom" class="txtInpt">
                     <input type="text" name="nom" placeholder="Nom" class="txtInpt">
@@ -116,16 +101,11 @@
                     <input type="email" name="email" placeholder="Email" class="txtInpt">
                     <input type="password" name="pwd" placeholder="Mot de passe" class="txtInpt">
                     <input type="password" name="pwdVerif" placeholder="Vérification" class="txtInpt">
-                    <div class="choseFiles">
-                        <div class="avatar">
-                            <label>Photo</label>
-                            <input type="file" name="avatar" accept="image/png, image/jpeg" class="inptFile">
-                        </div>
-                        <div class="fond">
-                            <label>Fond</label>
-                            <input type="file" name="fond" accept="image/png, image/jpeg" class="inptFile">
-                        </div>
-                    </div>
+                    <input type="text" name="adresse" placeholder="Adresse" class="txtInpt">
+                    <input type="number" name="codePostal" placeholder="Code Postal" class="txtInpt">
+                    <input type="text" name="ville" placeholder="Ville" class="txtInpt">
+                    <input type="text" name="pays" placeholder="Pays" class="txtInpt">
+                    <input type="number" name="numTelephone" placeholder="Numéro de téléphone" class="txtInpt">
                     <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt">
                 </form>
             </div>
