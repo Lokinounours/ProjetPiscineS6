@@ -126,7 +126,7 @@
                             <input type="file" name="fond" accept="image/png, image/jpeg" class="inptFile">
                         </div>
                     </div>
-                    <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt">
+                    <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt txtInptBtn">
                 </form>
             </div>
             <?php 

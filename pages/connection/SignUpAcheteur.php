@@ -106,7 +106,7 @@
                     <input type="text" name="ville" placeholder="Ville" class="txtInpt">
                     <input type="text" name="pays" placeholder="Pays" class="txtInpt">
                     <input type="number" name="numTelephone" placeholder="Numéro de téléphone" class="txtInpt">
-                    <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt">
+                    <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt txtInptBtn">
                 </form>
             </div>
             <?php 
