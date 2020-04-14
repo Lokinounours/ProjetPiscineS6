@@ -19,7 +19,7 @@
             <a href="./connection/Login.php">
                 <li>Se Connecter</li>
             </a>
-            <a href="./connection/SignUpAcheteur.php">
+            <a href="./connection/SignUpChoix.php">
                 <li>S'inscrire</li>
             </a>
             <a href="">

@@ -29,8 +29,8 @@
 
 .card {
     background-color: var(--blanc);
-    height: 500px;
-    max-height:80%; 
+    height: 700px;
+    max-height:100%; 
     width: 60%;
     max-width: 400px;
     border-radius: 1em;
@@ -47,6 +47,7 @@ form {
     border-radius: 1em;
     display: flex;
     flex-direction: column;
+    padding: 20px;
 }
 
 form input, h2, label {
@@ -101,4 +102,30 @@ form .choseFiles .inptFile{
 
 .txtInptBtn{
     cursor: pointer;
+}
+
+input {
+    padding: 5px;
+    color: var(--bleu) !important;
+    border: 1px solid var(--bleu);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#btn  {
+    padding: 5px;
+    color: var(--bleu);
+    border: 2px solid var(--bleu);
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+#btn:hover {
+    transition: 0.3s all ease-in-out;
+    background-color: var(--bleu);
+    color: var(--blanc) !important;
+    transform: scale(1.4);
+    border-radius: 3em;
 }

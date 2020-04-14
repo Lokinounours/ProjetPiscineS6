@@ -86,7 +86,7 @@
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <title>Sign Up</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='SignUpAcheteur.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='SignUpNext.css'>
         <!-- <script src='main.js'></script> -->
     </head>
 
@@ -94,7 +94,7 @@
         <div class="container">
             <div class="card">
                 <form action="" method="POST"  class="loginForm">
-                    <h2>Bienvenue sur ECE-Bay</h2>
+                    <h2>Bienvenue sur ECE-Bay<br>Acheteur</h2>
                     <input type="text" name="prenom" placeholder="Prénom" class="txtInpt">
                     <input type="text" name="nom" placeholder="Nom" class="txtInpt">
                     <input type="text" name="pseudo" placeholder="Pseudo" class="txtInpt">
@@ -106,7 +106,7 @@
                     <input type="text" name="ville" placeholder="Ville" class="txtInpt">
                     <input type="text" name="pays" placeholder="Pays" class="txtInpt">
                     <input type="number" name="numTelephone" placeholder="Numéro de téléphone" class="txtInpt">
-                    <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt txtInptBtn">
+                    <input type="submit" id="btn" name="btnInscription" value="S'inscrire" class="txtInpt btn txtInptBtn">
                 </form>
             </div>
             <?php 

@@ -100,7 +100,7 @@
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
         <title>Sign Up</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='SignUpVendeur.css'>
+        <link rel='stylesheet' type='text/css' media='screen' href='SignUpNext.css'>
         <!-- <script src='main.js'></script> -->
     </head>
 
@@ -108,7 +108,7 @@
         <div class="container">
             <div class="card">
                 <form action="" method="POST" enctype="multipart/form-data" class="loginForm">
-                    <h2>Bienvenue sur ECE-Bay</h2>
+                    <h2>Bienvenue sur ECE-Bay<br>Vendeur</h2>
                     <input type="text" name="prenom" placeholder="Prénom" class="txtInpt">
                     <input type="text" name="nom" placeholder="Nom" class="txtInpt">
                     <input type="text" name="pseudo" placeholder="Pseudo" class="txtInpt">
@@ -125,7 +125,7 @@
                             <input type="file" name="fond" accept="image/png, image/jpeg" class="inptFile">
                         </div>
                     </div>
-                    <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt txtInptBtn">
+                    <input type="submit" id="btn" name="btnInscription" value="S'inscrire" class="txtInpt txtInptBtn">
                 </form>
             </div>
             <?php 

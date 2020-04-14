@@ -27,37 +27,30 @@
     justify-content: center;
 }
 
-.card {
+.card{
     background-color: var(--blanc);
     height: 500px;
     max-height: 80%;
     width: 60%;
     max-width: 400px;
     border-radius: 1em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-form {
-    height: 100%;
-    width: 100%;
+.card h1 {
+    margin: 20px;
+}
+
+.card h1,a,.btn {
     background-color: var(--blanc);
-    border: 4px solid white;
-    text-align: center;
     border-radius: 1em;
 }
 
-form input,
-h2 {
-    background-color: var(--blanc);
-}
-
-form h2 {
-    color: var(--primary);
-    font-size: 1.8em;
-    margin-top: 25%;
-    margin-bottom: 15%;
-}
-
-form input {
+.btn  {
     padding: 5px;
     color: var(--bleu);
     border: 2px solid var(--bleu);

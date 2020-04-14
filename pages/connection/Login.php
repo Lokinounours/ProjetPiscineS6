@@ -37,29 +37,29 @@
     mysqli_close($db_handle);
 
 ?>
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Login</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='Login.css'>
-        <!-- <script src='main.js'></script> -->
-    </head>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='Login.css'>
+    <!-- <script src='main.js'></script> -->
+</head>
 
-    <body>
-        <div class="container">
-            <div class="card">
-                <form action="" method="POST" class="loginForm">
-                    <h2>Bienvenue sur ECE-Bay</h2>
-                    <input type="text" name="lgn" placeholder="Login">
-                    <input type="password" name="pwd" placeholder="Password">
-                    <input class="btn" type="submit" name="btnLogin" value="Connection">
-                </form>
-            </div>
+<body>
+    <div class="container">
+        <div class="card">
+            <form action="" method="POST" class="loginForm">
+                <h2>Bienvenue sur ECE-Bay</h2>
+                <input type="text" name="lgn" placeholder="Login">
+                <input type="password" name="pwd" placeholder="Password">
+                <input class="btn" type="submit" name="btnLogin" value="Connection">
+            </form>
         </div>
-    </body>
+    </div>
+</body>
 
-    </html>
+</html>
