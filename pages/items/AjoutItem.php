@@ -35,6 +35,7 @@
 
 <body>
     <div class="container">
+        <h3>Selectionner la catégorie de votre item</h3>
         <form action="" method="POST">
             <ul class="categorie">
                 <li id="tresor" class="catBtn"><img id="tresor" src="../../images/trésor.png" alt="Tresor"></li>

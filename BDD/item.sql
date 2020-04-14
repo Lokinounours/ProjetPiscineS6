@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 13, 2020 at 12:24 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  mar. 14 avr. 2020 à 19:16
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,24 +19,27 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `piscine`
+-- Base de données :  `piscine`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `item`
+-- Structure de la table `item`
 --
 
 DROP TABLE IF EXISTS `item`;
 CREATE TABLE IF NOT EXISTS `item` (
-  `ID` int(11) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `video` varchar(255) NOT NULL,
-  `prix` int(11) NOT NULL,
-  `categorie` varchar(30) NOT NULL
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(30) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `prix` int(11) DEFAULT NULL,
+  `categorie` varchar(30) DEFAULT NULL,
+  `IDprop` int(11) DEFAULT NULL,
+  `etat` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
