@@ -19,8 +19,8 @@
     if (isset($_POST["btnInscription"])) {
         $checkAvatar = is_uploaded_file($_FILES['avatar']['tmp_name']);
         $checkFond = is_uploaded_file($_FILES['fond']['tmp_name']);
+        
         if ($db_found) {
-
             if($pseudo != ""){
                 $sql = "SELECT * FROM identification WHERE pseudo LIKE '%$pseudo%'";
                 $result = mysqli_query($db_handle, $sql);
@@ -56,6 +56,7 @@
             }
 
             if($goodOrNot){
+                
                 $sql = "INSERT INTO identification(email, pseudo, password, nom, prenom) VALUES('$email', '$pseudo', '$password', '$nom', '$prenom')";
                 mysqli_query($db_handle, $sql);
 
@@ -70,26 +71,24 @@
                 while ($data = mysqli_fetch_assoc($result)){
                     $id = $data["ID"];
                 }
-
+                
                 if($checkAvatar && $checkFond){
-                    $imgBlob1 = addslashes(file_get_contents($_FILES['avatar']['tmp_name']));
-                    $imgBlob2 = addslashes(file_get_contents($_FILES['fond']['tmp_name']));
-                    $sql = "INSERT INTO vendeur(ID, img_profil, img_fond) VALUES('$id', '$imgBlob1', '$imgBlob2')";
-                    mysqli_query($db_handle, $sql);
+                    $imgNom1 = $_FILES['avatar']['name'];
+                    $imgNom2 = $_FILES['fond']['name'];
                 }elseif($checkAvatar && !$checkFond){
-                    $imgBlob1 = addslashes(file_get_contents($_FILES['avatar']['tmp_name']));
-                    $sql = "INSERT INTO vendeur(ID, img_profil) VALUES('$id', '$imgBlob1')";
-                    mysqli_query($db_handle, $sql);
+                    $imgNom1 = $_FILES['avatar']['name'];
+                    $imgNom2 = "fondDefault.jpg";
                 }elseif(!$checkAvatar && $checkFond){
-                    $imgBlob2 = addslashes(file_get_contents($_FILES['fond']['tmp_name']));
-                    $sql = "INSERT INTO vendeur(ID, img_fond) VALUES('$id', '$imgBlob2')";
-                    mysqli_query($db_handle, $sql);
+                    $imgNom1 = "avatarDefault.jpg";
+                    $imgNom2 = $_FILES['fond']['name'];
                 }else{
-                    $sql = "INSERT INTO vendeur(ID) VALUES('$id')";
-                    mysqli_query($db_handle, $sql);
+                    $imgNom1 = "avatarDefault.jpg";
+                    $imgNom2 = "fondDefault.jpg";
                 }
-            }
-            
+
+                $sql = "INSERT INTO vendeur(ID, img_profil, img_fond) VALUES('$id', '$imgNom1', '$imgNom2')";
+                mysqli_query($db_handle, $sql);
+            }   
         }
     }
     mysqli_close($db_handle);
@@ -126,7 +125,7 @@
                             <input type="file" name="fond" accept="image/png, image/jpeg" class="inptFile">
                         </div>
                     </div>
-                    <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt">
+                    <input type="submit" name="btnInscription" value="S'inscrire" class="txtInpt txtInptBtn">
                 </form>
             </div>
             <?php 

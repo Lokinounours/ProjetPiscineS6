@@ -98,3 +98,7 @@ form .choseFiles .inptFile{
 .finalString p{
     text-align: center;
 }
+
+.txtInptBtn{
+    cursor: pointer;
+}
