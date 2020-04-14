@@ -54,7 +54,7 @@
     float: left;
     position: relative;
     left: 50px;
-    top: 30%;
+    top: 40%;
     list-style: none;
     font-size: 2em;    
     background-color: transparent;
@@ -68,15 +68,16 @@
     letter-spacing: 15px;
 }
 
-.container li:nth-child(1) {
-    color: var(--vert);
-    position: relative;
-    /* left: -300px; */
+.container a:nth-child(1){
+    color: var(--bleu);
 }
-.container li:nth-child(2) {
+.container a:nth-child(2){
+    color: var(--vert);
+}
+.container a:nth-child(3){
     color: var(--jaune);
 }
-.container li:nth-child(3) {
+.container a:nth-child(4){
     color: var(--rose);
 }
 
@@ -143,7 +144,7 @@
     height: 80%;
     width: 80%;
     background-color: transparent;
-    border: 3px solid var(--vert);
+    border: 3px solid var(--vert); /* Changer la couleurs en fonction d'un cycle ? Annimation */
     border-radius: 1em;
     display: flex;
     flex-direction: column;

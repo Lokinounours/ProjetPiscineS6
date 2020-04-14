@@ -16,18 +16,27 @@
         <img src="../images/boussole.gif" class="bousole"></img>
         <div class="pgDown animateInf"><a href="#categorie"><i class="fas fa-arrow-down"></i></a></div>
         <ul class="animate">
-            <li>Login</li>
-            <li>Buy</li>
-            <li>Sell</li>
+            <a href="./connection/Login.php">
+                <li>Se Connecter</li>
+            </a>
+            <a href="./connection/SignUpAcheteur.php">
+                <li>S'inscrire</li>
+            </a>
+            <a href="">
+                <li>Acheter</li>
+            </a>
+            <a href="">
+                <li>Vendre</li>
+            </a>
         </ul>
     </div>
     <div class="categorie" id="categorie">
         <div class="content-categorie">
             <div class="content-top">
                 <ul>
-                    <li>categorie</li>
-                    <li>categorie</li>
-                    <li>categorie</li>
+                    <li>CATEGORIE</li>
+                    <li>CATEGORIE</li>
+                    <li>CATEGORIE</li>
                 </ul>
                 <img src="../images/fusée.gif" alt="Une fusée">
             </div>
@@ -58,8 +67,9 @@
                     <p>Nos livraisons sont assurées en 48h ouvrées. Nos partenaires vous permettent de profiter de
                         l'ensemble des systèmes de livraisons : à votre domicile, ou dans vos commerces de proximité.
 
-                        * En raison de la pandémie du covid-19 : certaines livraisons non prioritaires peuvent être
-                        retardées.</p>
+                        <br>* En raison de la pandémie du covid-19 : certaines livraisons non prioritaires peuvent être
+                        retardées.
+                    </p>
                 </div>
             </li>
             <li>
