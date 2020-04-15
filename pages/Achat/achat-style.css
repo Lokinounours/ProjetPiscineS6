@@ -1,0 +1,97 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+:root {
+    --primary: #212121;
+    --secondary: #757575;
+    --vert: #36F4B9;
+    --bleu: #77B5FE;
+    --bleuFonce: #2E006C;
+    --rose: #FF6F7D;
+    --jaune: #FFFF6B;
+    --blanc: #FFFFFF;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline:none;
+    text-decoration: none;
+    font-family:'Poppins', sans-serif;
+    background-color: var(--primary);
+    
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titre {
+    display: flex;
+    justify-content: center;
+    height: 400px; /* minu the size of the header */
+    width : 95vw;
+    border-radius: 30px;
+    background-image: url("../../images/Fond/fond-choix2.jpg");
+    background-size: cover;
+}
+
+.titre h1{
+    align-items: top;
+    background : transparent;
+    font-size: 500%;
+    color: var(--jaune);
+}
+
+
+
+.Achat-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.Achat-bottom li {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 20px;
+}
+
+.Achat-bottom h3 {
+    background: transparent;
+}
+
+
+.Achat-bottom li img {
+    background: transparent;
+    height: 100px;
+    width: 100px;
+}
+
+.Achat-bottom li:nth-child(1) { 
+    color: var(--bleuFonce);
+}
+
+.Achat-bottom li:nth-child(2) { 
+    color: var(--blanc);
+}
+
+.Achat-bottom li:nth-child(3) { 
+    color: var(--rose);
+}
+
+.Achat-bottom li:hover {
+    border: 3px solid currentColor;
+    margin: 10px;
+    /*padding: 7px;*/
+    border-radius: 20px;
+    transform: translateY(-30px) scale(1.1);
+    transition: 0.3s transform ease-in-out;
+}
