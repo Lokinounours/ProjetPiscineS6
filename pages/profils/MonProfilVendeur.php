@@ -25,8 +25,8 @@
         $result = mysqli_query($db_handle, $sql);
 
         while ($data = mysqli_fetch_assoc($result)){
-            $nomAvatar = "../../images/" . $data['img_profil'];
-            $nomFond = "../../images/" . $data['img_fond'];
+            $nomAvatar = "../../images/Avatar/" . $data['img_profil'];
+            $nomFond = "../../images/Fond/" . $data['img_fond'];
         }
     }
     mysqli_close($db_handle);
