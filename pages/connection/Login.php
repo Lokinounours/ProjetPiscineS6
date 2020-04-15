@@ -13,72 +13,79 @@
     if (isset($_POST["btnLogin"])) {
 
         if ($db_found) {
-            $sql = "SELECT * FROM identification WHERE email LIKE '%$login%'";
-            $result = mysqli_query($db_handle, $sql);
 
-            if (mysqli_num_rows($result) != 0) {
-                while ($data = mysqli_fetch_assoc($result)) {
-                    $verifPwd = $data['password'];
-                    $ID = $data["ID"];
-                    $pseudo = $data['pseudo'];
-                }
-                if($password!=$verifPwd){
-                    $finalString .= "Mot de passe incorrect. <br>";
+            if($login!="" && $password!=""){
+
+                $sql = "SELECT * FROM identification WHERE email LIKE '%$login%'";
+                $result = mysqli_query($db_handle, $sql);
+
+                if (mysqli_num_rows($result) != 0) {
+                    while ($data = mysqli_fetch_assoc($result)) {
+                        $verifPwd = $data['password'];
+                        $ID = $data["ID"];
+                        $pseudo = $data['pseudo'];
+                    }
+                    if($password!=$verifPwd){
+                        $finalString .= "Mot de passe incorrect. <br>";
+                        $goodOrNot = false;
+                    }
+                }else{
+                    $finalString .= "Email non reconnu. <br>";
                     $goodOrNot = false;
                 }
-            }else{
-                $finalString .= "Email non reconnu. <br>";
-                $goodOrNot = false;
-            }
 
-            if($goodOrNot){
-                $sql = "SELECT * FROM admin WHERE ID LIKE '%$ID%'";
-                $result = mysqli_query($db_handle, $sql);
-                if (mysqli_num_rows($result) == 0) {
-                    $admin = false;
-                }else{
-                    $admin = true;
-                }
-
-                $sql = "SELECT * FROM vendeur WHERE ID LIKE '%$ID%'";
-                $result = mysqli_query($db_handle, $sql);
-                if (mysqli_num_rows($result) == 0) {
-                    $vendeur = false;
-                }else{
-                    $vendeur = true;
-                }
-
-                $sql = "SELECT * FROM acheteur WHERE ID LIKE '%$ID%'";
-                $result = mysqli_query($db_handle, $sql);
-                if (mysqli_num_rows($result) == 0) {
-                    $acheteur = false;
-                }else{
-                    $acheteur = true;
-                }
-
-                session_start();
-
-                $_SESSION['pseudo'] = $pseudo;
-                $_SESSION['id'] = $ID;
-                $_SESSION['admin'] = $admin;
-                $_SESSION['vendeur'] = $vendeur;
-                $_SESSION['acheteur'] = $acheteur;
-
-                mysqli_close($db_handle);
-
-                if($admin){
-                    // header('Location: ../profils/MonProfilVendeur.php'); Vers Profil Admin
-                }else{
-                    if($vendeur){
-                        header('Location: ../profils/MonProfilVendeur.php');
+                if($goodOrNot){
+                    $sql = "SELECT * FROM admin WHERE ID LIKE '%$ID%'";
+                    $result = mysqli_query($db_handle, $sql);
+                    if (mysqli_num_rows($result) == 0) {
+                        $admin = false;
                     }else{
-                        if($acheteur){
-                            // header('Location: ../profils/MonProfilVendeur.php'); Vers Profil acheteur
+                        $admin = true;
+                    }
+
+                    $sql = "SELECT * FROM vendeur WHERE ID LIKE '%$ID%'";
+                    $result = mysqli_query($db_handle, $sql);
+                    if (mysqli_num_rows($result) == 0) {
+                        $vendeur = false;
+                    }else{
+                        $vendeur = true;
+                    }
+
+                    $sql = "SELECT * FROM acheteur WHERE ID LIKE '%$ID%'";
+                    $result = mysqli_query($db_handle, $sql);
+                    if (mysqli_num_rows($result) == 0) {
+                        $acheteur = false;
+                    }else{
+                        $acheteur = true;
+                    }
+
+                    session_start();
+
+                    $_SESSION['pseudo'] = $pseudo;
+                    $_SESSION['id'] = $ID;
+                    $_SESSION['admin'] = $admin;
+                    $_SESSION['vendeur'] = $vendeur;
+                    $_SESSION['acheteur'] = $acheteur;
+
+                    mysqli_close($db_handle);
+
+                    if($admin){
+                        // header('Location: ../profils/MonProfilVendeur.php'); Vers Profil Admin
+                    }else{
+                        if($vendeur){
+                            header('Location: ../profils/MonProfilVendeur.php');
+                        }else{
+                            if($acheteur){
+                                // header('Location: ../profils/MonProfilVendeur.php'); Vers Profil acheteur
+                            }
                         }
                     }
-                }
 
+                }else{
+                    mysqli_close($db_handle);
+                }
             }else{
+                $finalString .= "Tous les champs doivent être remplis. <br>";
                 mysqli_close($db_handle);
             }
         }
@@ -107,6 +114,11 @@
                 <input class="btn" type="submit" name="btnLogin" value="Connection">
             </form>
         </div>
+        <?php 
+            if($finalString != ""){
+                echo '<div class="finalString"><p>'. $finalString .'</p></div>';
+            }
+        ?>
     </div>
 </body>
 
