@@ -24,9 +24,20 @@
     margin: 50px 0;
 }
 
-h3 {
+.section {
+    margin: auto;
+    width: 50%;
     text-align: center;
-    color: red;
+    margin-bottom: 40px;
+    background-color: var(--jaune);
+    padding: 10px;
+    border-radius: 50px;
+    transition: 0.5s all ease-in-out;
+}
+
+.section h1{
+    color: var(--primary);
+    background-color: transparent;
 }
 
 .categorie {
@@ -56,17 +67,136 @@ h3 {
 .categorie li:nth-child(3) { 
     color: var(--bleu);
 }
-/* 
-.categorie li:hover {
-    border: 3px solid currentColor;
-    border-radius: 20px;
-    padding: 7px 17px;
-    transition: 0.3s border ease-in-out;
-}  */
 
 .categorie-active{
     border: 3px solid currentColor;
     border-radius: 20px;
     padding: 7px 17px;
-    /* transition: 0.3s border ease-in-out; */
-} 
+    transition: 0.3s border ease-in-out;
+}
+
+.listForm {
+    display: flex;
+    justify-content: space-around;
+}
+
+table {
+    margin-top: 50px;
+}
+
+table h1 {
+    margin-right: 150px;
+    color: var(--secondary);
+}
+
+table td {
+    border-bottom: 45px solid transparent;
+}
+
+.titre {
+    margin: 40px;
+    display: flex;
+    justify-content: center;
+    color: var(--blanc);
+}
+
+.btn  {
+    padding: 5px 20px;
+    color: var(--blanc);
+    border: 2px solid var(--jaune);
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    transition: 0.3s all ease-in-out;
+    background-color: var(--jaune);
+    color: var(--blanc);
+    transform: scale(1.4);
+    border-radius: 3em;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    padding: 20px 50px;
+    border-radius: 20px;
+    font-size: 1.25em;
+    color: var(--secondary);
+    background-color: var(--primary);
+    border: 2px solid var(--jaune);
+    display: inline-block;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.enchereTitre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 100px;
+}
+
+.enchereTitre h3 {
+    color: var(--secondary);
+    font-size: 2em;
+}
+
+.enchere {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.enchere li {
+    height: 100px;
+    width: 100px;
+}
+
+.enchere li img{
+    /* max-height: 105px; */
+    width: 100%;
+    height: 100%;
+}
+
+ .enchere img {
+    border-radius: 25px;
+}
+
+.listEnchere {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+.listEnchere h3 {
+    color: var(--secondary);
+}
+
+.listEnchere li:nth-child(1) {
+    transform: translateX(25px);
+}
+
+.listEnchere li:nth-child(2) {
+    transform: translateX(40px);
+}
+
+.btnFinal {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.btnFinal input {
+    font-size: 2em;
+}
