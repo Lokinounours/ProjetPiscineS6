@@ -47,7 +47,7 @@
             <input type="hidden" id="hiddenEnchere" name="hiddenEnchere" />
 
             <ul class="categorie">
-                <li id="tresor" class="catBtn"><img id="tresor" src="../../images/Menu/categories//trésor.png" alt="Tresor"></li>
+                <li id="tresor" class="catBtn"><img id="tresor" src="../../images/Menu/categories/trésor.png" alt="Tresor"></li>
                 <li id="musee" class="catBtn"><img id="musee" src="../../images/Menu/categories/musée.png" alt="Musee"></li>
                 <li id="accessoire-vip" class="catBtn"><img id="accessoire-vip" src="../../images/Menu/categories/accessoire-vip.png"
                         alt="Accessoire VIP"></li>
