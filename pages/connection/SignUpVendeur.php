@@ -78,6 +78,28 @@
                 }
 
                 $_SESSION['id'] = $id;
+
+                $_SESSION['vendeur'] = true;
+
+                $sql = "SELECT * FROM admin WHERE ID LIKE '%$id%'";
+                $result = mysqli_query($db_handle, $sql);
+                if (mysqli_num_rows($result) == 0) {
+                    $admin = false;
+                }else{
+                    $admin = true;
+                }
+
+                $_SESSION['admin'] = $admin;
+
+                $sql = "SELECT * FROM acheteur WHERE ID LIKE '%$ID%'";
+                $result = mysqli_query($db_handle, $sql);
+                if (mysqli_num_rows($result) == 0) {
+                    $acheteur = false;
+                }else{
+                    $acheteur = true;
+                }
+
+                $_SESSION['acheteur'] = $acheteur;
                 
                 if($checkAvatar && $checkFond){
                     $imgNom1 = $_FILES['avatar']['name'];

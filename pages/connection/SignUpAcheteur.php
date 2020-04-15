@@ -73,11 +73,44 @@
                 }
 
                 $sql = "INSERT INTO acheteur(ID, adresse_1, ville, code_postal, pays, numero_tel) VALUES('$id', '$adresse', '$ville', '$codePostal', '$pays', '$numTelephone')";
+
                 mysqli_query($db_handle, $sql);
+
+                session_start();
+
+                $_SESSION['pseudo'] = $pseudo;
+                $_SESSION['id'] = $id;
+                $_SESSION['acheteur'] = true;
+
+                $sql = "SELECT * FROM admin WHERE ID LIKE '%$id%'";
+                $result = mysqli_query($db_handle, $sql);
+                if (mysqli_num_rows($result) == 0) {
+                    $admin = false;
+                }else{
+                    $admin = true;
+                }
+
+                $_SESSION['admin'] = $admin;
+
+                $sql = "SELECT * FROM vendeur WHERE ID LIKE '%$ID%'";
+                $result = mysqli_query($db_handle, $sql);
+                if (mysqli_num_rows($result) == 0) {
+                    $vendeur = false;
+                }else{
+                    $vendeur = true;
+                }
+
+                $_SESSION['vendeur'] = $vendeur;
+
+                mysqli_close($db_handle);
+
+                // header('Location: ../profils/MonProfilVendeur.php'); Vers profil acheteur
+
+            }else{
+                mysqli_close($db_handle);
             }
         }
     }
-    mysqli_close($db_handle);
 ?>
 
 <html>
