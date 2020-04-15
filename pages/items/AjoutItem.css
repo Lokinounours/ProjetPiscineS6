@@ -200,3 +200,12 @@ table td {
 .btnFinal input {
     font-size: 2em;
 }
+
+.finalString{
+    color: var(--rose);
+    margin-bottom:10px;
+}
+
+.finalString p{
+    text-align: center;
+}

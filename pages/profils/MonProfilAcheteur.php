@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
     session_start();
 
     $database = "piscine";
@@ -21,16 +21,19 @@
             $prenom = $data["prenom"];
         }
 
-        $sql = "SELECT * FROM vendeur WHERE ID = $id";
+        $sql = "SELECT * FROM acheteur WHERE ID = $id";
         $result = mysqli_query($db_handle, $sql);
 
         while ($data = mysqli_fetch_assoc($result)){
-            $nomAvatar = "../../images/Avatar/" . $data['img_profil'];
-            $nomFond = "../../images/Fond/" . $data['img_fond'];
+            $adresse = $data['adresse_1'];
+            $ville = $data['ville'];
+            $codePostal = $data['code_postal'];
+            $pays = $data['pays'];
+            $numTelephone = $data['numero_tel'];
         }
     }
     mysqli_close($db_handle);
-?> -->
+?>
 
 <html>
 
@@ -48,14 +51,14 @@
             <h1>Mon compte</h1>
             <div class="profil">
                 <img src="../../images/Avatar/avatar-Compte.png" alt="Avatar compte">
-                <h3>Mon Pseudo</h3>
+                <h3><?php echo $pseudo; ?></h3>
             </div>
         </div>
     </div>
     <div class="info">
         <div class="nomPrenom">
-            <h2>Nom: Wojciechowski</h2>
-            <h2>Prenom: Pierre</h2>
+            <h2>Nom: <?php echo $nom; ?></h2>
+            <h2>Prenom: <?php echo $prenom ?></h2>
         </div>
     </div>
 </body>

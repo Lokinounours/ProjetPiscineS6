@@ -76,7 +76,7 @@
                             header('Location: ../profils/MonProfilVendeur.php');
                         }else{
                             if($acheteur){
-                                // header('Location: ../profils/MonProfilVendeur.php'); Vers Profil acheteur
+                                header('Location: ../profils/MonProfilAcheteur.php');
                             }
                         }
                     }
