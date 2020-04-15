@@ -23,7 +23,7 @@
 
 .container {
     height: 100vh; /* minu the size of the header */
-    background-image: url(../images/Image-menu.jpg);
+    background-image: url(../images/Menu/Image-menu.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }

@@ -12,7 +12,7 @@
 
 <body>
     <div class="container">
-        <img src="../images/boussole.gif" class="bousole"></img>
+        <img src="../images/Menu/boussole.gif" class="bousole"></img>
         <div class="pgDown animateInf"><a href="#categorie"><i class="fas fa-arrow-down"></i></a></div>
         <ul class="animate">
             <a href="./connection/Login.php">
@@ -37,30 +37,29 @@
                     <li>CATEGORIE</li>
                     <li>CATEGORIE</li>
                 </ul>
-                <img src="../images/fusée.gif" alt="Une fusée">
+                <img src="../images/Menu/fusée.gif" alt="Une fusée">
             </div>
             <div class="content-bottom">
                 <li>
-                    <img src="../images/trésor.png" alt="trésor">
+                    <img src="../images/Menu/categories/trésor.png" alt="trésor">
                     <h3>Trésor</h3>
                 </li>
                 <li>
-                    <img src="../images/musée.png" alt="statue de la liberté">
+                    <img src="../images/Menu/categories/musée.png" alt="statue de la liberté">
                     <h3>Musée</h3>
                 </li>
                 <li>
-                    <img src="../images/accessoire-vip.png" alt="montre de luxe">
+                    <img src="../images/Menu/categories/accessoire-vip.png" alt="montre de luxe">
                     <h3>Accésoire VIP</h3>
                 </li>
             </div>
-
         </div>
     </div>
     <div class="presentation">
         <h1>Commander Simplement</h1>
         <ul>
             <li>
-                <img src="../images/quickly.gif" alt="Rapidité">
+                <img src="../images/Menu/CommandeSimplement/quickly.gif" alt="Rapidité">
                 <div>
                     <h3>Rapidité</h3>
                     <p>Nos livraisons sont assurées en 48h ouvrées. Nos partenaires vous permettent de profiter de
@@ -78,10 +77,10 @@
                         peut vous aider dans la réalisation de votre commande ou pour répondre à vos questions dans le
                         formulaire de contact en bas de page.</p>
                 </div>
-                <img src="../images/efficiently.gif" alt="Efficacité">
+                <img src="../images/Menu/CommandeSimplement/efficiently.gif" alt="Efficacité">
             </li>
             <li>
-                <img src="../images/safely.gif" alt="Sécurité">
+                <img src="../images/Menu/CommandeSimplement/safely.gif" alt="Sécurité">
                 <div>
                     <h3>Sécurité</h3>
                     <p>Notre processus de paiement est sécurisé. A chaque commande que vous effectuez vous êtes protégé.

@@ -47,9 +47,9 @@
             <input type="hidden" id="hiddenEnchere" name="hiddenEnchere" />
 
             <ul class="categorie">
-                <li id="tresor" class="catBtn"><img id="tresor" src="../../images/trésor.png" alt="Tresor"></li>
-                <li id="musee" class="catBtn"><img id="musee" src="../../images/musée.png" alt="Musee"></li>
-                <li id="accessoire-vip" class="catBtn"><img id="accessoire-vip" src="../../images/accessoire-vip.png"
+                <li id="tresor" class="catBtn"><img id="tresor" src="../../images/Menu/categories//trésor.png" alt="Tresor"></li>
+                <li id="musee" class="catBtn"><img id="musee" src="../../images/Menu/categories/musée.png" alt="Musee"></li>
+                <li id="accessoire-vip" class="catBtn"><img id="accessoire-vip" src="../../images/Menu/categories/accessoire-vip.png"
                         alt="Accessoire VIP"></li>
             </ul>
 
@@ -91,9 +91,9 @@
 
             <div class="enchereTitre"><h3>Selectionner un type de vente</h3></div>
             <ul class="enchere">
-                <li id="ench1" class="enchBtn"><img class="colorSync" id="Enchere" src="../../images/logo-enchere.png" alt="Enchere"></li>
-                <li id="ench2" class="enchBtn"><img class="colorSync" id="VenteInsta" src="../../images/logo-achat-imédiat.png" alt="Vente Insta"></li>
-                <li id="ench3" class="enchBtn"><img class="colorSync" id="MeilleurProposition" src="../../images/logo-meilleure-offre.png"
+                <li id="ench1" class="enchBtn"><img class="colorSync" id="Enchere" src="../../images/Logo/logo-enchere.png" alt="Enchere"></li>
+                <li id="ench2" class="enchBtn"><img class="colorSync" id="VenteInsta" src="../../images/Logo/logo-achat-imédiat.png" alt="Vente Insta"></li>
+                <li id="ench3" class="enchBtn"><img class="colorSync" id="MeilleurProposition" src="../../images/Logo/logo-meilleure-offre.png"
                         alt="Meilleur Proposition"></li>
             </ul>
             <ul class="listEnchere">

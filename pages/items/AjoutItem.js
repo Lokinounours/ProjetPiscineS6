@@ -46,7 +46,6 @@ $(document).ready(function () {
         });
 
         let final = test.substring(0, test.length -1);
-        final += "&"
 
         let myhidden = document.getElementById("hiddenEnchere");
         myhidden.value = final;
