@@ -13,13 +13,14 @@
 
     $database = "piscine";
 
-    $db_handle = mysqli_connect('localhost', 'root', '');
-    $db_found = mysqli_select_db($db_handle, $database);
-
     if (isset($_POST["btnInscription"])) {
+
+        $db_handle = mysqli_connect('localhost', 'root', '');
+        $db_found = mysqli_select_db($db_handle, $database);
+
         $checkAvatar = is_uploaded_file($_FILES['avatar']['tmp_name']);
         $checkFond = is_uploaded_file($_FILES['fond']['tmp_name']);
-        
+
         if ($db_found) {
             if($pseudo != ""){
                 $sql = "SELECT * FROM identification WHERE pseudo LIKE '%$pseudo%'";
@@ -56,6 +57,10 @@
             }
 
             if($goodOrNot){
+
+                session_start();
+
+                $_SESSION['pseudo'] = $pseudo;
                 
                 $sql = "INSERT INTO identification(email, pseudo, password, nom, prenom) VALUES('$email', '$pseudo', '$password', '$nom', '$prenom')";
                 mysqli_query($db_handle, $sql);
@@ -71,6 +76,8 @@
                 while ($data = mysqli_fetch_assoc($result)){
                     $id = $data["ID"];
                 }
+
+                $_SESSION['id'] = $id;
                 
                 if($checkAvatar && $checkFond){
                     $imgNom1 = $_FILES['avatar']['name'];
@@ -88,10 +95,16 @@
 
                 $sql = "INSERT INTO vendeur(ID, img_profil, img_fond) VALUES('$id', '$imgNom1', '$imgNom2')";
                 mysqli_query($db_handle, $sql);
-            }   
+
+                mysqli_close($db_handle);
+
+                header('Location: ../profils/MonProfilVendeur.php');
+
+            }else{
+                mysqli_close($db_handle);
+            }
         }
     }
-    mysqli_close($db_handle);
 ?>
 
 <html>

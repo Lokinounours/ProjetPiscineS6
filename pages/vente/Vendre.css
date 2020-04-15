@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+:root {
+    --primary: #212121;
+    --secondary: #757575;
+    --vert: #36F4B9;
+    --bleu: #77B5FE;
+    --bleuFonce: #2E006C;
+    --rose: #FF6F7D;
+    --jaune: #FFFF6B;
+    --blanc: #FFFFFF;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline:none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--primary);
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fondVendre{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    width: 70vw;
+    height: 250px;
+    background-image: url("../../images/fondDefault.jpg");
+    border-radius:4px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.fondVendre .carteVendeur{
+    position: absolute;
+    top:4px;
+    right:4px;
+    width: 200px;
+    height: 242px;
+    border: solid 2px white;
+    border-radius: 4px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+}
+
+.bckgdCarteVendeur{
+    position:absolute;
+    top:0px;
+    left:1px;
+    width:195px;
+    height: 100px;
+}
+
+.fondVendre p{
+    color: var(--jaune);
+    text-transform: uppercase;
+    background: transparent;
+    font-size: 50px;
+}
+
+.imgVendeur{
+    position: absolute;
+    top:50px;
+    left:50px;
+}
+
+.imgVendeur img{
+    width:100px;
+    height: auto;
+}
+
+.psdVendeur{
+    margin-top:170px;
+    background: transparent;
+}
+
+.psdVendeur p{
+    color:var(--rose);
+    font-size: 20px;
+}
+
+.btnAjouter{
+    display: flex;
+    flex-direction: row;
+    color: var(--blanc);
+    align-items: center;
+    justify-content: center;
+    border: solid 2px white;
+    cursor:pointer;
+    padding:5px;
+    border-radius: 4px;
+    font-size: 20px;
+    transition: 0.6s ease;
+    margin-bottom: 2vh;
+}
+
+.btnAjouter:hover{
+    font-size: 22px;
+    padding: 8px;
+}
+
+.btnAjouter p{
+    margin-left:10px;
+}
+
+.listItems{
+    width:70vw;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, 200px);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+
+.item .prix{
+    color: var(--vert);
+    font-size: 20px;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgItem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info2 p{
+    text-align: center;
+    color: var(--blanc);
+}
+
+.item{
+    border: solid 2px white;
+    border-radius:4px;
+    padding: 5px;
+    height: 400px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.imgItem img{
+    width:15vh;
+    height: auto;
+}
+
+.item .rose{
+    font-size: 20px;
+    color: var(--rose);
+    margin-right: 30px;
+}
+
+.vert{
+    font-size: 20px;
+    color:var(--vert);
+    margin-bottom: 2vh;
+}
