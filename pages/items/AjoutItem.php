@@ -139,15 +139,13 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="file" name="filePhoto" class="inputfile"
-                                data-multiple-caption="{count} files selected" multiple />
-                            <label class="btn colorSync" for="filePhoto">Photo</label>
+                            <h1>Photo:</h1>
+                            <input type="file" name="filePhoto" class="custom-file-input colorSync">
                         </td>
 
                         <td>
-                            <input type="file" name="fileVideo" class="inputfile"
-                                data-multiple-caption="{count} files selected" multiple />
-                            <label class="btn colorSync" for="fileVideo">Video</label>
+                            <h1>Vidéo:</h1>
+                            <input type="file" name="fileVideo" class="custom-file-input colorSync">
                         </td>
                     </tr>
                 </table>
