@@ -92,7 +92,7 @@
 
                 $_SESSION['admin'] = $admin;
 
-                $sql = "SELECT * FROM vendeur WHERE ID LIKE '%$ID%'";
+                $sql = "SELECT * FROM vendeur WHERE ID LIKE '%$id%'";
                 $result = mysqli_query($db_handle, $sql);
                 if (mysqli_num_rows($result) == 0) {
                     $vendeur = false;
@@ -104,8 +104,7 @@
 
                 mysqli_close($db_handle);
 
-                // header('Location: ../profils/MonProfilVendeur.php'); Vers profil acheteur
-
+                header('Location: ../profils/MonProfilAcheteur.php');
             }else{
                 mysqli_close($db_handle);
             }
