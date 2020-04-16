@@ -16,10 +16,11 @@
 
     $database = "piscine";
 
-    $db_handle = mysqli_connect('localhost', 'root', '');
-    $db_found = mysqli_select_db($db_handle, $database);
-
     if (isset($_POST["btnInscription"])) {
+
+        $db_handle = mysqli_connect('localhost', 'root', '');
+        $db_found = mysqli_select_db($db_handle, $database);
+
         if ($db_found) {
 
             if($pseudo != ""){
@@ -104,7 +105,7 @@
 
                 mysqli_close($db_handle);
 
-                header('Location: ../profils/MonProfilAcheteur.php');
+                header('Location: ./SignUpPaiement.php');
             }else{
                 mysqli_close($db_handle);
             }
