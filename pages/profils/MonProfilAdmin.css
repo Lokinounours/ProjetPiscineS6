@@ -228,21 +228,27 @@
 
 .ajouterSupp h1{
     background-color: transparent;
-    margin-top: 15px;
 }
 
 .ajouterSupp li:nth-child(1) {
-    height: 75px;
-    width: 400px;
+    padding: 10px;
+    border: 3px solid var(--rose);
     border-radius: 20px;
-    background: var(--blanc);
+    color : var(--blanc);
 }
 
 .ajouterSupp li:nth-child(2) {
-    height: 75px;
-    width: 400px;
+    padding: 10px;
+    border: 3px solid var(--rose);
     border-radius: 20px;
-    background: var(--blanc);
+    color : var(--blanc);
+}
+
+.ajouterSupp li:nth-child(3) {
+    padding: 10px;
+    border: 3px solid var(--rose);
+    border-radius: 20px;
+    color : var(--blanc);
 }
 
 .ajouterSupp li:hover {

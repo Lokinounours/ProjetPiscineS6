@@ -20,12 +20,15 @@
             $nom = $data["nom"];
             $prenom = $data["prenom"];
         }
-
-        $sql = "SELECT * FROM vendeur";
+        
+        $sql = "SELECT * FROM identification INNER JOIN vendeur WHERE identification.ID = vendeur.ID ";
         $result2 = mysqli_query($db_handle, $sql);
 
         $sql = "SELECT * FROM item";
         $result3 = mysqli_query($db_handle, $sql);
+
+        $sql = "SELECT * FROM identification INNER JOIN acheteur WHERE identification.ID = acheteur.ID ";
+        $result4 = mysqli_query($db_handle, $sql);
 
     }
     mysqli_close($db_handle);
@@ -64,30 +67,9 @@
                 <div class="split"><h1>Email:</h1><h1><?php echo $email; ?></h1></div>
             </div>
         </div>
-        <div class="split special"><h1>Image de fond:</h1>
-    	</div>
-        <ul class="categorie">
-            <li id="fond-choix1.jpg" class="catBtn"><img id="fond-choix1" src="../../images/Fond/fond-choix1.jpg" alt="fond1"></li>
-            <li id="fond-choix2.jpg" class="catBtn"><img id="fond-choix2" src="../../images/Fond/fond-choix2.jpg" alt="fond2"></li>
-            <li id="fond-choix3.jpg" class="catBtn"><img id="fond-choix3" src="../../images/Fond/fond-choix3.jpg" alt="fond3"></li>
-        </ul>
     </div>
     <div class="Vendeurs-objets">
     	<ul>
-    		<li>
-    			<h1>Liste des Vendeurs:</h1>
-                <div class="listVendeurs">
-                    <?php
-                        while ($data = mysqli_fetch_assoc($result2)){
-                            echo '<div class="vendeur">';
-                            echo '<p> Nom : ' . $data['nom'] . '   ';
-                            echo 'Email : '. $data['email'] . '   ';
-                            echo 'Pseudo : '. $data['pseudo'] . '   </p>';
-                            echo '</div>';
-                         }
-                    ?>
-                </div>
-    		</li>
     		<li>
     			<h1>Liste des Marchandises:</h1>
                 <div class="listMarchandises">
@@ -102,6 +84,36 @@
                          }
                     ?>
     		</li>
+            <li>
+                <h1>Liste des Vendeurs:</h1>
+                <div class="listVendeurs">
+                    <?php
+                        while ($data = mysqli_fetch_assoc($result2)){
+                            echo '<div class="vendeur">';
+                            echo '<p> Nom : ' . $data['nom'] . '   ';
+                            echo '<p> Prenom : ' . $data['prenom'] . '   ';
+                            echo 'Email : '. $data['email'] . '   ';
+                            echo 'Pseudo : '. $data['pseudo'] . '   </p>';
+                            echo '</div>';
+                         }
+                    ?>
+                </div>
+            </li>
+            <li>
+                <h1>Liste des Acheteurs:</h1>
+                <div class="listAcheteurs">
+                    <?php
+                        while ($data = mysqli_fetch_assoc($result4)){
+                            echo '<div class="acheteur">';
+                            echo '<p> Nom : ' . $data['nom'] . '   ';
+                            echo '<p> Prenom : ' . $data['prenom'] . '   ';
+                            echo 'Email : '. $data['email'] . '   ';
+                            echo 'Pseudo : '. $data['pseudo'] . '   </p>';
+                            echo '</div>';
+                         }
+                    ?>
+                </div>
+            </li>
     	</ul>
     </div>
     <div class="ajouterSupp">
@@ -112,6 +124,9 @@
     		<li>
     			<h1>Supprimer Vendeur</h1>
     		</li>
+            <li>
+                <h1>Supprimer Acheteur</h1>
+            </li>
     	</ul>
     </div>
 </body>
