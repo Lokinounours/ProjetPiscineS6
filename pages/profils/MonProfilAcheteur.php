@@ -31,6 +31,40 @@
             $pays = $data['pays'];
             $numTelephone = $data['numero_tel'];
         }
+
+        $sql = "SELECT * FROM info_paiement WHERE ID = $id";
+        $result = mysqli_query($db_handle, $sql);
+
+        while ($data = mysqli_fetch_assoc($result)){
+            $typeCarte = $data['type_carte'];
+            $numCarte = $data['numero_carte'];
+            $nomCarte = $data['nom_carte'];
+            $dateExpiration = $data['date_expiration'];
+            $code = $data['code'];
+            $solde = $data['solde'];
+        }
+
+        for ($i = 0; $i < strlen($numCarte) - 4 ; $i++) {
+            $numCarte[$i] = '*';
+        }
+
+        for ($i = 0; $i < strlen($dateExpiration); $i++) {
+            if($dateExpiration[$i]=='-'){
+                $dateExpiration[$i] = '/';
+            }
+        }
+
+        $dateExpiration = strrev($dateExpiration);
+        $copy = $dateExpiration;
+        $dateExpiration[0]=$copy[1];
+        $dateExpiration[1]=$copy[0];
+        $dateExpiration[3]=$copy[4];
+        $dateExpiration[4]=$copy[3];
+        $dateExpiration[6]=$copy[9];
+        $dateExpiration[7]=$copy[8];
+        $dateExpiration[8]=$copy[7];
+        $dateExpiration[9]=$copy[6];
+
     }
     mysqli_close($db_handle);
 ?>
@@ -74,9 +108,9 @@
                 <div class="split"><h1>Prenom:</h1><h1><?php echo $prenom; ?></h1></div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Adresse:</h1></div>
+                <div class="split"><h1>Coordonnées</h1></div>
                 <div class="topAdresse">
-                    <div class="split"><h1>N° de rue:</h1><h1><?php echo $adresse; ?></h1></div>
+                    <div class="split"><h1>Adresse:</h1><h1><?php echo $adresse; ?></h1></div>
                     <div class="split"><h1>Ville:</h1><h1><?php echo $ville; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
@@ -93,16 +127,16 @@
             <div class="adresse">
                 <div class="split"><h1>Paiement:</h1></div>
                 <div class="topAdresse">
-                    <div class="split"><h1>N° de carte:</h1><h1>**** **** **** **54</h1></div>
-                    <div class="split"><h1>CVV:</h1><h1>***</h1></div>
+                    <div class="split"><h1>N° de carte:</h1><h1><?php echo $numCarte; ?></h1></div>
+                    <div class="split"><h1>CVV:</h1><h1><?php echo $code; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Nom sur la carte:</h1><h1>Pierre</h1></div>
-                    <div class="split"><h1>Date expiration:</h1><h1>14/04/2020</h1></div>
+                    <div class="split"><h1>Nom sur la carte:</h1><h1><?php echo $nomCarte; ?></h1></div>
+                    <div class="split"><h1>Date expiration:</h1><h1><?php echo $dateExpiration; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Code postal:</h1><h1>78700</h1></div>
-                    <div class="split"><h1>Pays:</h1><h1>France</h1></div>
+                    <div class="split"><h1>Code postal:</h1><h1><?php echo $codePostal; ?></h1></div>
+                    <div class="split"><h1>Pays:</h1><h1><?php echo $pays; ?></h1></div>
                 </div>
             </div>
         </div>
