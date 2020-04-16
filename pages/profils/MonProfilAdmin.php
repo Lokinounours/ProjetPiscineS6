@@ -21,7 +21,7 @@
             $prenom = $data["prenom"];
         }
 
-        $sql = "SELECT * FROM vendeurs";
+        $sql = "SELECT * FROM vendeur";
         $result2 = mysqli_query($db_handle, $sql);
 
         $sql = "SELECT * FROM item";
