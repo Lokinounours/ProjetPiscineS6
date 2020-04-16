@@ -20,6 +20,13 @@
             $nom = $data["nom"];
             $prenom = $data["prenom"];
         }
+
+        $sql = "SELECT * FROM vendeurs";
+        $result2 = mysqli_query($db_handle, $sql);
+
+        $sql = "SELECT * FROM item";
+        $result3 = mysqli_query($db_handle, $sql);
+
     }
     mysqli_close($db_handle);
 ?>
@@ -69,9 +76,31 @@
     	<ul>
     		<li>
     			<h1>Liste des Vendeurs:</h1>
+                <div class="listVendeurs">
+                    <?php
+                        while ($data = mysqli_fetch_assoc($result2)){
+                            echo '<div class="vendeur">';
+                            echo '<p> Nom : ' . $data['nom'] . '   ';
+                            echo 'Email : '. $data['email'] . '   ';
+                            echo 'Pseudo : '. $data['pseudo'] . '   </p>';
+                            echo '</div>';
+                         }
+                    ?>
+                </div>
     		</li>
     		<li>
     			<h1>Liste des Marchandises:</h1>
+                <div class="listMarchandises">
+                    <?php
+                        while ($data = mysqli_fetch_assoc($result3)){
+                            echo '<div class="marchandise">';
+                            echo '<p> Produit : ' . $data['nom'] . '   ';
+                            echo 'Prix : '. $data['prix'] . '   ';
+                            echo 'Etat : '. $data['etat'] . '   ';
+                            echo 'Categorie : '. $data['categorie'] . '   </p>';
+                            echo '</div>';
+                         }
+                    ?>
     		</li>
     	</ul>
     </div>
