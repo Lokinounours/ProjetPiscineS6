@@ -20,6 +20,35 @@
     background-color: var(--primary);
 }
 
+.nav-barre ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-barre li{
+    color: var(--bleu);
+    padding: 10px 30px;
+    margin: 20px;
+    display: flex;
+    border: 2px solid var(--bleu);
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-barre .actif{
+    color: var(--blanc);
+    background-color: var(--bleu);
+    transform: scale(1.1);
+}
+
+.nav-barre li:hover{
+    color: var(--blanc);
+    background-color: var(--bleu);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .container {
     margin: 50px 0;
 }

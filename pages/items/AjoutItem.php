@@ -85,6 +85,14 @@
 </head>
 
 <body>
+
+    <div class="nav-barre">
+		<ul>
+			<li>ACHAT</li>
+			<li>Compte</li>
+			<li>VENTE</li>
+		</ul>
+	</div>
     <div class="container">
         <?php 
             if($finalString != ""){

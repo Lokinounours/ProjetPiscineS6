@@ -21,6 +21,35 @@
     
 }
 
+.nav-barre ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-barre li{
+    color: var(--bleu);
+    padding: 10px 30px;
+    margin: 20px;
+    display: flex;
+    border: 2px solid var(--bleu);
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-barre .actif{
+    color: var(--blanc);
+    background-color: var(--bleu);
+    transform: scale(1.1);
+}
+
+.nav-barre li:hover{
+    color: var(--blanc);
+    background-color: var(--bleu);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -84,54 +113,6 @@
     padding: 12px;
     border-radius: 20px;
     transform: translateY(-30px) scale(1.1);
-    transition: 0.3s transform ease-in-out;
-}
-
-.nav-barre{
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-.nav-barre img {
-    height: 50px;
-    width: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background: transparent;
-}
-
-.nav-barre ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    list-style: none;
-}
-
-.nav-barre li {
-    margin: 0 50px;
-    padding: 15px;
-    color: var(--blanc);
-}
-
-.nav-barre li:hover {
-    color: var(--bleu);
-    border: 3px solid currentColor;
-    padding: 12px;
-    border-radius: 20px;
-    transform: translateY(-10px) scale(1.1);
-    transition: 0.3s transform ease-in-out;
-}
-
-.nav-barre img:hover {
-    color: var(--bleu);
-    border: 3px solid currentColor;
-    padding: 12px;
-    border-radius: 20px;
-    transform: translateY(-10px) scale(1.1);
     transition: 0.3s transform ease-in-out;
 }
 
@@ -222,27 +203,6 @@
     margin-top: 15px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .item{
     margin-top: 25px;
     display: flex;
@@ -295,46 +255,6 @@
     margin-top: 15px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* .titre {
-    display: flex;
-    justify-content: center;
-    height: 400px;
-    width : 95vw;
-    border-radius: 30px;
-    background-image: url("../../images/Fond/fond-choix2.jpg");
-    background-size: cover;
-}
-
-.titre h1{
-    align-items: top;
-    background : transparent;
-    font-size: 500%;
-    color: var(--jaune);
-}
-
-
-
 .Achat-bottom {
     display: flex;
     flex-direction: column;
@@ -382,4 +302,4 @@
     border-radius: 20px;
     transform: translateY(-30px) scale(1.1);
     transition: 0.3s transform ease-in-out;
-} */
+} 

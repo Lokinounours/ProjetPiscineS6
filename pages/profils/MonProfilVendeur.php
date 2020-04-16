@@ -42,6 +42,13 @@
         <!-- <script src='main.js'></script> -->
     </head>
     <body>
+    <div class="nav-barre">
+		<ul>
+			<li>ACHAT</li>
+			<li class="actif">Compte</li>
+			<li>VENTE</li>
+		</ul>
+	</div>
         <div class="imgFond">
             <img src="<?php echo $nomFond;?>">
         </div>

@@ -12,12 +12,11 @@
 <body>
 
 	<div class="nav-barre">
-		<img src="../../images/Logo/logo-menu.png">
-			<ul>
-				<li>CATEGORIES</li>
-				<li>ACHAT</li>
-				<li>VENTE</li>
-			</ul>
+		<ul>
+			<li class="actif">ACHAT</li>
+			<li>Compte</li>
+			<li>VENTE</li>
+		</ul>
 	</div>
 	<div class="container">
 		<div class="achat-bottom">
@@ -57,7 +56,7 @@
 			</li>
 		</ul>
 	</div>
-	 <div class="column">
+	<div class="column">
 		<ul>
 			<li>
 				<div class="line">

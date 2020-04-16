@@ -50,7 +50,13 @@
 <body>
 
     <input type="hidden" id="hiddenFond" name="hiddenFond" />
-
+    <div class="nav-barre">
+		<ul>
+			<li>ACHAT</li>
+			<li class="actif">Compte</li>
+			<li>VENTE</li>
+		</ul>
+	</div>
     <div class="container">
         <div class="achat-bottom" style="background-image: url(../../images/Fond/fond-choix2.jpg);">
             <h1>Mon compte</h1>

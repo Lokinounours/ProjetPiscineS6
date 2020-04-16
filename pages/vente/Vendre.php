@@ -44,6 +44,13 @@
     </head>
 
     <body>
+    <div class="nav-barre">
+		<ul>
+			<li>ACHAT</li>
+			<li>Compte</li>
+			<li class="actif">VENTE</li>
+		</ul>
+	</div>
         <div class="container">
             <div class="fondVendre">
                 <p>vendre</p>
