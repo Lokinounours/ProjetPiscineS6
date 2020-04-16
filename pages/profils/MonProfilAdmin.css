@@ -1,0 +1,180 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+:root {
+    --primary: #212121;
+    --secondary: #757575;
+    --vert: #36F4B9;
+    --bleu: #77B5FE;
+    --bleuFonce: #2E006C;
+    --rose: #FF6F7D;
+    --jaune: #FFFF6B;
+    --blanc: #FFFFFF;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline:none;
+    text-decoration: none;
+    font-family:'Poppins', sans-serif;
+    background-color: var(--primary);
+    
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-bottom {
+    /* position: relative; */
+    text-align: center;
+    height: 300px;
+    width : 95vw;
+    border-radius: 30px;
+    /* background-image: url("../../images/Fond/fond-choix2.jpg"); */
+    background-size: cover;
+}
+
+.admin-bottom h1 {
+    margin-top: 50px;
+    font-size: 4em;
+    letter-spacing: 10px;
+    color: var(--jaune);
+}
+
+.admin-bottom h1 {
+    background: transparent;
+}
+
+.admin-bottom .profil {
+    position: relative;
+    left: 100px;
+    top: -40px;
+    height: 283px;
+    width: 200px;
+    background-color: var(--secondary);
+    border-radius: 20px;
+}
+
+.admin-bottom img {
+    margin-top: 20px;
+    height: 243px;
+    width: 174px;
+    background-color: transparent;
+    background-color: var(--primary);
+    border-radius: 20px;
+}
+
+.profil h3 {
+    margin-top: 10px;
+    background-color: var(--secondary);
+}
+
+.info {
+    width: 80%;
+    margin: auto;
+    background: var(--secondary);
+    border-radius: 30px;
+    padding: 50px;
+    margin-top: 150px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; */
+    color: var(--primary);
+}
+
+.center {
+    background-color: var(--secondary);
+    margin: 0 80px;
+}
+
+.center h1 {
+    margin: 30px 0;
+}
+
+.center h1, h2, h3, p {
+    background-color: var(--secondary);
+}
+
+.nomPrenom {
+    display: flex;
+    background-color: var(--secondary);
+}
+
+.nomPrenom h1 {
+    margin-right: 80px;
+}
+
+.nomPrenom .split h1:nth-child(1) {
+    color: var(--rose)
+}
+
+.adresse {
+    margin-top: 30px;
+    color: var(--primary);
+    background-color: var(--secondary);
+}
+
+.adresse .split h1:nth-child(1) {
+    color: var(--jaune)
+}
+
+.split {
+    display: flex;
+    background-color: 
+    var(--secondary);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.split h1:nth-child(1) {
+    margin-right: 30px;
+    color: var(--bleu);
+    font-size: 1.8em;
+}
+
+.split h1:nth-child(2) {
+    font-size: 1.2em;
+}
+
+.categorie {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary);
+}
+
+.categorie li {
+    margin: 0 50px;
+    border-radius: 20px;
+    background-color: var(--secondary);
+}
+
+.categorie li img{
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+    border: 3px solid var(--bleu);
+}
+
+.catBtn {
+    opacity: 0.2;
+}
+
+.catBtn:hover {
+    opacity: 1;
+}
+
+.categorie-active {
+    opacity: 1;
+}
+
+.special h1{
+    background-color: var(--secondary);
+    margin-bottom: 40px;
+}
