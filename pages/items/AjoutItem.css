@@ -238,3 +238,9 @@ table td {
 .finalString p{
     text-align: center;
 }
+
+.custom-file-input {
+    color: transparent;
+}
+
+
