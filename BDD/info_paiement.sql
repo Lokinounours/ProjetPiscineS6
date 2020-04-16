@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 16 avr. 2020 à 09:18
+-- Généré le :  jeu. 16 avr. 2020 à 14:50
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -38,6 +38,14 @@ CREATE TABLE IF NOT EXISTS `info_paiement` (
   `code` int(3) NOT NULL,
   `solde` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `info_paiement`
+--
+
+INSERT INTO `info_paiement` (`ID`, `type_carte`, `numero_carte`, `nom_carte`, `date_expiration`, `code`, `solde`) VALUES
+(74, 'Visa', '1212121212121212', 'Paul', '2021-02-02', 121, 895),
+(78, 'MasterCard', '1212121212121212', 'turl opu', '2020-01-01', 121, 231);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

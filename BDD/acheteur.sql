@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 16 avr. 2020 à 09:19
+-- Généré le :  jeu. 16 avr. 2020 à 14:50
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -43,7 +43,13 @@ CREATE TABLE IF NOT EXISTS `acheteur` (
 --
 
 INSERT INTO `acheteur` (`ID`, `adresse_1`, `ville`, `code_postal`, `pays`, `numero_tel`) VALUES
-(59, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202);
+(59, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202),
+(73, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202),
+(74, '28 rue vermeil', 'SÃ¨vre', 92310, 'France', 909090909),
+(75, '28 rue vermeil', 'SÃ¨vre', 92310, 'France', 909090909),
+(76, '28 rue vermeil', 'SÃ¨vre', 92310, 'France', 909090909),
+(77, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202),
+(78, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
