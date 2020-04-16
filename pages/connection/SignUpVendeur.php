@@ -91,7 +91,7 @@
 
                 $_SESSION['admin'] = $admin;
 
-                $sql = "SELECT * FROM acheteur WHERE ID LIKE '%$ID%'";
+                $sql = "SELECT * FROM acheteur WHERE ID LIKE '%$id%'";
                 $result = mysqli_query($db_handle, $sql);
                 if (mysqli_num_rows($result) == 0) {
                     $acheteur = false;
