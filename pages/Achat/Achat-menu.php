@@ -57,7 +57,7 @@
 			</li>
 		</ul>
 	</div>
-	<div class="column">
+	 <div class="column">
 		<ul>
 			<li>
 				<div class="line">
