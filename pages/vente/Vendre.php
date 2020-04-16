@@ -1,5 +1,5 @@
 <?php
-    // session_start();
+    //session_start();
     // $idVendeur = $_SESSION['id'];
 
     $idVendeur = 60;
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="btnAjouter">
-                <i class="fas fa-plus"></i><p>Ajouter un nouvel item</p>
+                <a href="../items/AjoutItem.php"><i class="fas fa-plus"></i><p>Ajouter un nouvel item</p></a>
             </div>
             <p class="vert">Objets déjà en vente</p>
             <div class="listItems">
