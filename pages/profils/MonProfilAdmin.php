@@ -57,14 +57,33 @@
                 <div class="split"><h1>Email:</h1><h1><?php echo $email; ?></h1></div>
             </div>
         </div>
-        <div class="split special"><h1>Image de fond:</h1></div>
+        <div class="split special"><h1>Image de fond:</h1>
+    	</div>
         <ul class="categorie">
             <li id="fond-choix1.jpg" class="catBtn"><img id="fond-choix1" src="../../images/Fond/fond-choix1.jpg" alt="fond1"></li>
             <li id="fond-choix2.jpg" class="catBtn"><img id="fond-choix2" src="../../images/Fond/fond-choix2.jpg" alt="fond2"></li>
             <li id="fond-choix3.jpg" class="catBtn"><img id="fond-choix3" src="../../images/Fond/fond-choix3.jpg" alt="fond3"></li>
         </ul>
     </div>
-		
-	</div>
+    <div class="Vendeurs-objets">
+    	<ul>
+    		<li>
+    			<h1>Liste des Vendeurs:</h1>
+    		</li>
+    		<li>
+    			<h1>Liste des Marchandises:</h1>
+    		</li>
+    	</ul>
+    </div>
+    <div class="ajouterSupp">
+    	<ul>
+    		<li>
+    			<h1>Supprimer Article</h1>
+    		</li>
+    		<li>
+    			<h1>Supprimer Vendeur</h1>
+    		</li>
+    	</ul>
+    </div>
 </body>
 </html>

@@ -178,3 +178,78 @@
     background-color: var(--secondary);
     margin-bottom: 40px;
 }
+.vendeurs-objets{
+    margin: auto;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+    color : var(--blanc); 
+}
+.vendeurs-objets ul{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; 
+}
+.vendeurs-objets li{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    width: 80vw;
+    border: 3px solid var(--bleu);
+    border-radius: 20px; 
+    color : var(--blanc); 
+}
+.vendeurs-objets h1{
+    background-color: transparent;:
+}
+.ajouterSupp{
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.ajouterSupp ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+.ajouterSupp li{
+    margin: 0 50px;
+}
+
+.ajouterSupp h1{
+    background-color: transparent;
+    margin-top: 15px;
+}
+
+.ajouterSupp li:nth-child(1) {
+    height: 75px;
+    width: 400px;
+    border-radius: 20px;
+    background: var(--blanc);
+}
+
+.ajouterSupp li:nth-child(2) {
+    height: 75px;
+    width: 400px;
+    border-radius: 20px;
+    background: var(--blanc);
+}
+
+.ajouterSupp li:hover {
+    color: var(--rose);
+    border: 3px solid currentColor;
+    padding: 12px;
+    border-radius: 20px;
+    transform: translateY(-10px) scale(1.1);
+    transition: 0.3s transform ease-in-out;
+}
