@@ -57,6 +57,26 @@
                 $goodOrNot = false;
             }
 
+            if($adresse == ""){
+                $finalString .= "Le champ Adresse doit être rempli."  . "<br>";
+                $goodOrNot = false;
+            }
+
+            if($codePostal == ""){
+                $finalString .= "Le champ Code Postal doit être rempli."  . "<br>";
+                $goodOrNot = false;
+            }
+
+            if($ville == ""){
+                $finalString .= "Le champ Ville doit être rempli."  . "<br>";
+                $goodOrNot = false;
+            }
+
+            if($pays == ""){
+                $finalString .= "Le champ Pays doit être rempli."  . "<br>";
+                $goodOrNot = false;
+            }
+
             if($goodOrNot){
                 $sql = "INSERT INTO identification(email, pseudo, password, nom, prenom) VALUES('$email', '$pseudo', '$password', '$nom', '$prenom')";
                 mysqli_query($db_handle, $sql);

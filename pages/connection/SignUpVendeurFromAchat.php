@@ -1,3 +1,48 @@
+<?php
+    $checkAvatar = false;
+    $checkFond = false;
+
+    $database = "piscine";
+
+    if (isset($_POST["btnInscription"])) {
+
+        $db_handle = mysqli_connect('localhost', 'root', '');
+        $db_found = mysqli_select_db($db_handle, $database);
+
+        $checkAvatar = is_uploaded_file($_FILES['avatar']['tmp_name']);
+        $checkFond = is_uploaded_file($_FILES['fond']['tmp_name']);
+
+        if ($db_found) {
+
+            session_start();
+
+            $id = $_SESSION['id'];
+            $_SESSION['vendeur'] = true;
+
+            if($checkAvatar && $checkFond){
+                $imgNom1 = $_FILES['avatar']['name'];
+                $imgNom2 = $_FILES['fond']['name'];
+            }elseif($checkAvatar && !$checkFond){
+                $imgNom1 = $_FILES['avatar']['name'];
+                $imgNom2 = "fondDefault.jpg";
+            }elseif(!$checkAvatar && $checkFond){
+                $imgNom1 = "avatarDefault.jpg";
+                $imgNom2 = $_FILES['fond']['name'];
+            }else{
+                $imgNom1 = "avatarDefault.jpg";
+                $imgNom2 = "fondDefault.jpg";
+            }
+
+            $sql = "INSERT INTO vendeur(ID, img_profil, img_fond) VALUES('$id', '$imgNom1', '$imgNom2')";
+            mysqli_query($db_handle, $sql);
+
+            mysqli_close($db_handle);
+
+            header('Location: ../profils/MonProfilVendeur.php');
+        }
+    }
+?>
+
 <html>
     <head>
         <meta charset='utf-8'>
