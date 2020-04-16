@@ -20,10 +20,6 @@
             $nom = $data["nom"];
             $prenom = $data["prenom"];
         }
-
-        $sql = "SELECT * FROM admin WHERE ID = $id";
-        $result = mysqli_query($db_handle, $sql);
-
     }
     mysqli_close($db_handle);
 ?>
@@ -59,9 +55,6 @@
             </div>
             <div class="adresse">
                 <div class="split"><h1>Email:</h1><h1><?php echo $email; ?></h1></div>
-            </div>
-            <div class="adresse">
-                <div class="split"><h1>Téléphone:</h1><h1><?php echo $numTelephone; ?></h1></div>
             </div>
         </div>
         <div class="split special"><h1>Image de fond:</h1></div>

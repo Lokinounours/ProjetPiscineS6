@@ -70,7 +70,7 @@
                     mysqli_close($db_handle);
 
                     if($admin){
-                        // header('Location: ../profils/MonProfilVendeur.php'); Vers Profil Admin
+                        header('Location: ../profils/MonProfilAdmin.php');
                     }else{
                         if($vendeur){
                             header('Location: ../profils/MonProfilVendeur.php');
