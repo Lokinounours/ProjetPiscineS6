@@ -6,10 +6,15 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link rel='stylesheet' type='text/css' media='screen' href='achat-style.css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="achat-menu.js"></script>
 	<title>Achat Menu</title>
 </head>
 
 <body>
+
+	<input type="hidden" id="hiddenAchat" name="hiddenAchat" />
+	<input type="hidden" id="hiddenRecherche" name="hiddenRecherche" />
 
 	<div class="nav-barre">
 		<ul>
@@ -19,9 +24,9 @@
 		</ul>
 	</div>
 	<div class="container">
-		<div class="achat-bottom">
+		<div class="achat" style="background-image: url(../../images/Fond/fond-choix2.jpg);">
 			<h1>ACHAT</h1>
-			<ul>
+			<ul class="categorie">
 				<li>
 					<img src="../../images/Logo/logo-enchere.png">
 					<h3>ENCHERES</h3>
@@ -38,21 +43,21 @@
 		</div>
 	</div>
 	<div class="categories-barre">
-		<ul>
-			<li>
+		<ul class="recherche">
+			<li id="tresor">
 				<h3>TRÉSOR</h3>
 			</li>
-			<li>
+			<li id="musee">
 				<h3>MUSÉE</h3>
 			</li>
-			<li>
+			<li id="accessoires">
 				<h3>ACCESSOIRES VIP</h3>
 			</li>
-			<li>
-				<h3>Afficher les filtres</h3>
+			<li id="tous">
+				<h3>Tous</h3>
 			</li>
-			<li>
-				<h3>Trier par</h3>
+			<li id="prix">
+				<h3>Trier par Prix</h3>
 			</li>
 		</ul>
 	</div>

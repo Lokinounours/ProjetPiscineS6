@@ -22,10 +22,7 @@
                 <li>S'inscrire</li>
             </a>
             <a href="">
-                <li>Acheter</li>
-            </a>
-            <a href="">
-                <li>Vendre</li>
+                <li>Nos produits</li>
             </a>
         </ul>
     </div>
