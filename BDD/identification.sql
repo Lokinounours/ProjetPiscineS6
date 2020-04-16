@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 13, 2020 at 12:24 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 16 avr. 2020 à 09:19
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `piscine`
+-- Base de données :  `piscine`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `identification`
+-- Structure de la table `identification`
 --
 
 DROP TABLE IF EXISTS `identification`;
@@ -37,16 +37,29 @@ CREATE TABLE IF NOT EXISTS `identification` (
   `nom` varchar(30) DEFAULT NULL,
   `prenom` varchar(30) DEFAULT NULL,
   UNIQUE KEY `ID` (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `identification`
+-- Déchargement des données de la table `identification`
 --
 
 INSERT INTO `identification` (`ID`, `email`, `pseudo`, `password`, `nom`, `prenom`) VALUES
 (1, 'pierre.admin@edu.ece.fr', 'pierreW', 'pierreW01', 'wojciechowski', 'pierre'),
 (2, 'jules.admin@edu.ece.fr', 'julesL', 'julesL02', 'lestrade', 'jules'),
-(3, 'paul.admin@edu.ece.fr', 'paulC', 'paulC03', 'coutiere', 'paul');
+(3, 'paul.admin@edu.ece.fr', 'paulC', 'paulC03', 'coutiere', 'paul'),
+(63, 'jfonti@gmail.com', 'jfonti', 'lol', 'fontaine', 'jean'),
+(62, 'jfont@gmail.com', 'jfont', 'lol', 'fontaine', 'jean'),
+(61, 'labaj@gmail.com', 'labaj', 'lol', 'Laba', 'Jacques'),
+(60, 'hjklm@ok.fr', 'hjklm', 'hjklm', 'hjklm', 'hjklm'),
+(59, 'popkj@ok.fr', 'sdffff', 'fr', 'mi', 'Jean'),
+(64, 'mimi@gmail.com', 'mimi', 'lol', 'mih', 'michel'),
+(65, 'molki@gmail.com', 'molkives', 'lol', 'molki', 'ives'),
+(66, 'popkidj@ok.fr', 'mikado', 'lol', 'mi', 'Jean'),
+(67, 'aaaaaa@ok.fr', 'mkkkkkkka', 'lol', 'mi', 'Jean'),
+(68, 'pommsdqsdpkj@ok.fr', 'mmmmmmm', 'lol', 'mi', 'Jean'),
+(70, 'popfffkj@ok.fr', 'qqsfsdf', 'lol', 'mi', 'Jean'),
+(71, 'poiuyt@ok.fr', 'poiuytr', 'lol', 'mi', 'Jean'),
+(72, 'pdddopkj@ok.fr', 'kooooli', 'lol', 'mi', 'Jean');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

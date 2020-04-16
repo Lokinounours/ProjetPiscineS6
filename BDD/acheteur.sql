@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 13, 2020 at 12:23 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.3.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 16 avr. 2020 à 09:19
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,25 +19,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `piscine`
+-- Base de données :  `piscine`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `acheteur`
+-- Structure de la table `acheteur`
 --
 
 DROP TABLE IF EXISTS `acheteur`;
 CREATE TABLE IF NOT EXISTS `acheteur` (
   `ID` int(11) NOT NULL,
   `adresse_1` varchar(60) NOT NULL,
-  `adresse_2` varchar(60) NOT NULL,
   `ville` varchar(30) NOT NULL,
-  `code_postal` int(5) NOT NULL,
+  `code_postal` int(10) NOT NULL,
   `pays` varchar(30) NOT NULL,
-  `numero_tel` int(10) NOT NULL
+  `numero_tel` int(16) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `acheteur`
+--
+
+INSERT INTO `acheteur` (`ID`, `adresse_1`, `ville`, `code_postal`, `pays`, `numero_tel`) VALUES
+(59, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
