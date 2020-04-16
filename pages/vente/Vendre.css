@@ -103,6 +103,14 @@
     margin-bottom: 2vh;
 }
 
+.btnAjouter a{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color:var(--blanc);
+}
+
 .btnAjouter:hover{
     font-size: 22px;
     padding: 8px;
