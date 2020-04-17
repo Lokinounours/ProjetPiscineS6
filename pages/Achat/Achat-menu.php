@@ -1,3 +1,26 @@
+<?php
+
+	$search = isset($_POST["research"])? $_POST["research"] : "";
+	
+	$database = "piscine";
+
+	$db_handle = mysqli_connect('localhost', 'root', '');
+	$db_found = mysqli_select_db($db_handle, $database);
+	
+	if ($db_found) {
+
+		if(isset($_POST["researchBtn"])){
+            $sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%')";
+            $result = mysqli_query($db_handle, $sql);
+        }else{
+            $sql = "SELECT * FROM item";
+            $result = mysqli_query($db_handle, $sql);
+		}
+		
+		mysqli_close($db_handle);
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -62,35 +85,29 @@
 		</ul>
 	</div>
 	<div class="column">
-		<ul>
-			<li>
-				<div class="line">
-					<ul>
-						<li><img src="../../images/Items/Sneakers/1.png"></li>
-						<li><img src="../../images/Items/Sneakers/2.png"></li>
-						<li><img src="../../images/Items/Sneakers/3.png"></li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div class="line">
-					<ul>
-						<li><img src="../../images/Items/Sneakers/4.png"></li>
-						<li><img src="../../images/Items/Sneakers/5.png"></li>
-						<li><img src="../../images/Items/Sneakers/6.png"></li>
-					</ul>
-				</div>
-			</li>
-			<li>
-				<div class="line">
-					<ul>
-						<li><img src="../../images/Items/Sneakers/7.png"></li>
-						<li><img src="../../images/Items/Sneakers/8.png"></li>
-						<li><img src="../../images/Items/Sneakers/9.png"></li>
-					</ul>
-				</div>
-			</li>
-		</ul>
+		<form action="" enctype="multipart/form-data" method="POST" id="formSearch">
+			<input type="text" name="research" class="inptTxt"/>
+			<input type="submit" name="researchBtn" class="inptBtn"/>
+		</form>
+		<div class="listItems">
+			<?php
+				while ($data = mysqli_fetch_assoc($result)){
+					echo '<div class="items">';
+					echo '<div class="info">';
+					echo '<p class="rose">' . $data["nom"] .'</p>';
+					echo '<p class="prix">' . $data["prix"] .'£</p>';
+					echo '</div>';
+					echo '<div class="imgItem">';
+					echo '<img src="../../images/' . $data['photo'] . '">';
+					echo '</div>';
+					echo '<div class="info2">';
+					echo '<p>' . $data["description"] .'</p>';
+					echo '<p>' . $data["categorie"] .'</p>';
+					echo '<p>' . $data["etat"] .'</p>';
+					echo '</div></div>';
+				}
+			?>
+		</div>
 	</div>
 </body>
 

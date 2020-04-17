@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+:root {
+    --primary: #212121;
+    --secondary: #757575;
+    --vert: #36F4B9;
+    --bleu: #77B5FE;
+    --bleuFonce: #2E006C;
+    --rose: #FF6F7D;
+    --jaune: #FFFF6B;
+    --blanc: #FFFFFF;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    outline:none;
+    text-decoration: none;
+    font-family:'Poppins', sans-serif;
+    background-color: var(--primary);
+    
+}
+
+.nav-barre ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-barre li{
+    color: var(--bleu);
+    padding: 10px 30px;
+    margin: 20px;
+    display: flex;
+    border: 2px solid var(--bleu);
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.nav-barre .actif{
+    color: var(--blanc);
+    background-color: var(--bleu);
+    transform: scale(1.1);
+}
+
+.nav-barre li:hover{
+    color: var(--blanc);
+    background-color: var(--bleu);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.achat-bottom {
+    /* position: relative; */
+    text-align: center;
+    height: 200px;
+    width : 95vw;
+    border-radius: 30px;
+    /* background-image: url("../../images/Fond/fond-choix2.jpg"); */
+    background-size: cover;
+}
+
+.achat-bottom h1 {
+    margin-top: 50px;
+    font-size: 3.5em;
+    letter-spacing: 20px;
+    color: var(--blanc);
+}
+
+.achat-bottom h1 {
+    background: transparent;
+}
+
+.achat-bottom .profil {
+    position: relative;
+    left: 100px;
+    top: -40px;
+    height: 200px;
+    width: 200px;
+    background-color: var(--secondary);
+    border-radius: 20px;
+}
+
+.achat-bottom img {
+    margin-top: 20px;
+    height: 120px;
+    width: 120px;
+    background-color: transparent;
+    background-color: var(--primary);
+    border-radius: 20px;
+}
+
+.profil h3 {
+    margin-top: 10px;
+    background-color: var(--secondary);
+}
