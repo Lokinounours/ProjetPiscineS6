@@ -33,7 +33,7 @@
             }
         return $total;
         }
-         $FER = nb_Articles();
+         $retour = nb_Articles();
 
         function prix_Tot(){
             $totalprix=0;
@@ -43,6 +43,7 @@
             }
         return $totalprix;
         }
+        $retour2 = prix_Tot();
 
     }
     mysqli_close($db_handle);
@@ -80,18 +81,21 @@
             <li>
                 <div class="AchatImmédiat">
             	   <h1>ACHAT IMMÉDIAT :</h1>
-                   <div class="Articles">
-                       <?php
-                            echo $FER;
-                        ?>
-                        <h4>Articles</h4>
-                   </div>
-                   <div class="prixSum">
-                       <?php
-                            //echo prix_Tot();
-                        ?>
-                        <h4>€</h4>
-                        <h4>MONTANT</h4>
+                   <div class="article">
+                        <ul>
+                            <li>
+                                <?php
+                                    echo $retour;
+                                ?>
+                                <h4>ARTICLES</h4>
+                            </li>
+                            <li>
+                                <?php
+                                    echo $retour2;
+                                ?>
+                                <h4>€ <br> MONTANT</h4>
+                            </li>
+                        </ul> 
                    </div>
                    <div class="listItems">
                         <?php  
