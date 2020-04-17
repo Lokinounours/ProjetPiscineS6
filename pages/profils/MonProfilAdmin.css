@@ -219,6 +219,11 @@
     color: var(--rose);
 }
 
+.fa-check{
+    margin-left:10px;
+    color: var(--vert);
+}
+
 .fa-times:hover{
     cursor:pointer;
 }
