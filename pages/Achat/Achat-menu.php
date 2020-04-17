@@ -6,13 +6,24 @@
 
 	$db_handle = mysqli_connect('localhost', 'root', '');
 	$db_found = mysqli_select_db($db_handle, $database);
+
+	if (!empty($_REQUEST["hiddenCategorie"]))$categorie = $_REQUEST["hiddenCategorie"];
+	else $categorie = "empty";
+		
+	if (!empty($_REQUEST["hiddenRecherche"]))$categorie = $_REQUEST["hiddenRecherche"];
+    else $rechercher = "empty";
 	
 	if ($db_found) {
 
+		// if(isset($_POST["researchBtn"])){
+        //     $sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%')";
+        //     $result = mysqli_query($db_handle, $sql);
+		// }
 		if(isset($_POST["researchBtn"])){
-            $sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%')";
-            $result = mysqli_query($db_handle, $sql);
-        }else{
+			$sql = "SELECT * FROM item WHERE categorie like '%$categorie%'";
+			$result = mysqli_query($db_handle, $sql);
+		}
+		else{
             $sql = "SELECT * FROM item";
             $result = mysqli_query($db_handle, $sql);
 		}
@@ -36,7 +47,7 @@
 
 <body>
 
-	<input type="hidden" id="hiddenAchat" name="hiddenAchat" />
+	<input type="hidden" id="hiddenCategorie" name="hiddenCategorie" />
 	<input type="hidden" id="hiddenRecherche" name="hiddenRecherche" />
 
 	<div class="nav-barre">
@@ -50,15 +61,15 @@
 		<div class="achat" style="background-image: url(../../images/Fond/fond-choix2.jpg);">
 			<h1>ACHAT</h1>
 			<ul class="categorie">
-				<li>
+				<li id="E">
 					<img src="../../images/Logo/logo-enchere.png">
 					<h3>ENCHERES</h3>
 				</li>
-				<li>
+				<li id="I">
 					<img src="../../images/Logo/logo-panier2.png">
 					<h3>ACHAT IMMÉDIAT</h3>
 				</li>
-				<li>
+				<li id="M">
 					<img src="../../images/Logo/logo-meilleure-offre.png">
 					<h3>MEILLEURES OFFRES</h3>
 				</li>

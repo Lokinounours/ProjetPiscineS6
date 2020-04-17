@@ -6,11 +6,16 @@ $(document).ready(function () {
         });
         this.className = "categorie-active";
 
+    
+        let test = "";
         let myhidden = document.getElementById("hiddenCategorie");
-        myhidden.value = event.target.id;
-    });
+        $(".categorie-active").each(function (index) {
+            test = this.id;
+        });
 
-    // let prix = false;
+        myhidden.value = test;
+        console.log(myhidden.value);
+    });
 
     $(".recherche li").click(function (event) {
 
@@ -35,6 +40,6 @@ $(document).ready(function () {
         });
         tmp = tmp.substr(0, tmp.length -1);
         myhidden.value = tmp;
-        console.log(tmp);
+        console.log(myhidden.value);
     });
 });
