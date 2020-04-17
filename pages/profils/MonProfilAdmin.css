@@ -180,37 +180,55 @@
 }
 .vendeurs-objets{
     margin: auto;
-    margin-top: 15px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center; 
     color : var(--blanc); 
 }
-.vendeurs-objets ul{
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    justify-content: center;
-    text-align: center; 
-}
-.vendeurs-objets li{
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: auto;
+.vendeurs-objets .marchandises, .vendeurs, .acheteurs{
     width: 80vw;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border: 3px solid var(--bleu);
-    border-radius: 20px; 
+    border-radius: 20px;
     color : var(--blanc); 
 }
+.vendeur p, .acheteur p, .marchandise p{
+    background: transparent;
+}
+
+.vendeur:hover p, .acheteur:hover p, .marchandise:hover p{
+    color: var(--bleu);
+}
+
+.vendeur, .acheteur, .marchandise{
+    margin-bottom: 4px;
+    background: transparent;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-times{
+    margin-left:10px;
+    color: var(--rose);
+}
+
+.fa-times:hover{
+    cursor:pointer;
+}
+
 .vendeurs-objets h1{
-    background-color: transparent;:
+    background: transparent;
 }
 .ajouterSupp{
-    margin-top: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
