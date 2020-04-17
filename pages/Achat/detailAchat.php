@@ -37,12 +37,12 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Vendre</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='detailVente.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='detailAchat.css'>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="detailVente.js"></script>
+    <title>Detail Achat</title>
     <!-- <script src='main.js'></script> -->
 </head>
 
@@ -54,14 +54,14 @@
 
     <div class="nav-barre">
         <ul>
-            <li>ACHAT</li>
+            <li class="actif">ACHAT</li>
             <li>Compte</li>
-            <li class="actif">VENTE</li>
+            <li >VENTE</li>
         </ul>
     </div>
     <div class="container">
         <div class="fondVendre" style="background-image: url(../../images/Fond/fond-choix3.jpg);">
-            <p>vendre</p>
+            <p>Achat</p>
             <div class="carteVendeur">
                 <div class="bckgdCarteVendeur" style="background-image: url('../../images/Fond/fond-choix1.jpg');">
                 </div>
