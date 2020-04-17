@@ -24,6 +24,7 @@
         $sql = "SELECT * FROM achat_immediat INNER JOIN acheteur WHERE achat_immediat.IDacheteur = acheteur.ID ";
         $result2 = mysqli_query($db_handle, $sql);
 
+        
         function nb_Articles(){
             $total=0;
             for($i = 0; $i < count(IDitem); $i++)
@@ -32,15 +33,17 @@
             }
         return $total;
         }
+         $FER = nb_Articles();
 
         function prix_Tot(){
             $totalprix=0;
             for($i = 0; $i < count(IDitem); $i++)
             {
-            $total += prix;
+            $totalprix += prix;
             }
-        return $total;
+        return $totalprix;
         }
+
     }
     mysqli_close($db_handle);
 ?>
@@ -77,6 +80,44 @@
             <li>
                 <div class="AchatImmédiat">
             	   <h1>ACHAT IMMÉDIAT :</h1>
+                   <div class="Articles">
+                       <?php
+                            echo $FER;
+                        ?>
+                        <h4>Articles</h4>
+                   </div>
+                   <div class="prixSum">
+                       <?php
+                            //echo prix_Tot();
+                        ?>
+                        <h4>€</h4>
+                        <h4>MONTANT</h4>
+                   </div>
+                   <div class="listItems">
+                        <?php  
+                            while($data = mysqli_fetch_assoc($result2)){
+                
+                                $iditem = $data['IDitem'];
+                                $sql = "SELECT * FROM item WHERE ID = $iditem";
+                                $result3 = mysqli_query($db_handle, $sql);
+
+                                while($data3 = mysqli_fetch_assoc($result3)){
+                                    echo '<div class="item">';
+                                    echo '<div class="info">';
+                                    echo '<p class="rose">' . $data["nom"] .'</p>';
+                                    echo '<p class="prix">' . $data["prix"] .'£</p>';
+                                    echo '</div>';
+                                    echo '<div class="imgItem">';
+                                    echo '<img src="../../images/Items/' . $data['photo'] . '">';
+                                    echo '</div>';
+                                    echo '<div class="info2">';
+                                    echo '<p style="text-align: justify; margin: 0 10px">' . $data["description"] .'</p>';
+                                    echo '<p>' . $data["categorie"] .'</p>';
+                                    echo '</div>';
+                                }
+                            }
+                       ?>
+                   </div>
                    <div class="checkbox">
                        <input type="checkbox" id="accepter"name="accepter">
                        <label for="accepter">J'ai lu et j'accepte les conditions générales de vente</label>
