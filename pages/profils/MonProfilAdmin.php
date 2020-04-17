@@ -8,6 +8,9 @@
 
     $pseudo = $_SESSION['pseudo'];
 
+    if (!empty($_REQUEST["hiddenID"]))$fullID = $_REQUEST["hiddenID"];
+    else $fullID = "empty";
+
     if ($db_found) {
 
         $sql = "SELECT * FROM identification WHERE pseudo LIKE '%$pseudo%'";
@@ -47,7 +50,9 @@
     <script src="MonProfilAdmin.js"></script>
 </head>
 <body>
-	<input type="hidden" id="hiddenFond" name="hiddenFond" />
+	<form action="">
+        <input type="hidden" id="hiddenID" name="hiddenID" />
+    </form>
 
     <div class="container">
         <div class="admin-bottom" style="background-image: url(../../images/Fond/fond-choix1.jpg);">
