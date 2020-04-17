@@ -125,7 +125,7 @@
                 <div class="split"><h1>Téléphone:</h1><h1><?php echo $numTelephone; ?></h1></div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Paiement:</h1></div>
+                <div class="split"><h1>Paiement</h1></div>
                 <div class="topAdresse">
                     <div class="split"><h1>N° de carte:</h1><h1><?php echo $numCarte; ?></h1></div>
                     <div class="split"><h1>CVV:</h1><h1><?php echo $code; ?></h1></div>

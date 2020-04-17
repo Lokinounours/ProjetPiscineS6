@@ -25,7 +25,7 @@ $(document).ready(function () {
         $(".enchere-active img").css("padding", "20px");
 
         let compatible = event.target.id;
-    
+
         if (compatible == "Enchere") {
             $("#ench3").removeClass("enchere-active");
             $("#MeilleurProposition").css("border", "none");
@@ -38,14 +38,17 @@ $(document).ready(function () {
         }
 
         let test = "";
+        $(".date").addClass("dNone");
         $(".enchere-active").each(function (index) {
-            if (this.id == "ench1")test += "Enchere";
-            if (this.id == "ench2")test += "VenteInsta";
-            if (this.id == "ench3")test += "MeilleurProposition";
+            if (this.id == "ench1") { test += "Enchere"; $(".date").toggleClass("dNone"); }
+            if (this.id == "ench2") test += "VenteInsta";
+            if (this.id == "ench3") test += "MeilleurProposition";
             test += "/";
         });
 
-        let final = test.substring(0, test.length -1);
+
+
+        let final = test.substring(0, test.length - 1);
 
         let myhidden = document.getElementById("hiddenEnchere");
         myhidden.value = final;

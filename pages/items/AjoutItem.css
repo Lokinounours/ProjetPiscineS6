@@ -135,10 +135,10 @@ table td {
     border: 2px solid var(--jaune);
     border-radius: 15px;
     margin-top: 10px;
+    transition: 0.3s all ease-in-out;
 }
 
 .btn:hover {
-    transition: 0.3s all ease-in-out;
     background-color: var(--jaune);
     color: var(--blanc);
     transform: scale(1.4);
@@ -166,6 +166,10 @@ table td {
 
 .inputfile + label {
 	cursor: pointer; /* "hand" cursor */
+}
+
+tr:last-child input {
+    background-color: transparent !important;
 }
 
 .enchereTitre {
@@ -244,3 +248,14 @@ table td {
 }
 
 
+.date {
+    margin: 100px 0;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 150px;
+    color: var(--secondary);
+}
+
+.dNone {
+    display: none;
+}

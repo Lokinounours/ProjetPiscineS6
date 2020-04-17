@@ -87,12 +87,12 @@
 <body>
 
     <div class="nav-barre">
-		<ul>
-			<li>ACHAT</li>
-			<li>Compte</li>
-			<li>VENTE</li>
-		</ul>
-	</div>
+        <ul>
+            <li>ACHAT</li>
+            <li>Compte</li>
+            <li>VENTE</li>
+        </ul>
+    </div>
     <div class="container">
         <?php 
             if($finalString != ""){
@@ -108,10 +108,12 @@
             <input type="hidden" id="hiddenEnchere" name="hiddenEnchere" />
 
             <ul class="categorie">
-                <li id="tresor" class="catBtn"><img id="tresor" src="../../images/Menu/categories/trésor.png" alt="Tresor"></li>
-                <li id="musee" class="catBtn"><img id="musee" src="../../images/Menu/categories/musée.png" alt="Musee"></li>
-                <li id="accessoire-vip" class="catBtn"><img id="accessoire-vip" src="../../images/Menu/categories/accessoire-vip.png"
-                        alt="Accessoire VIP"></li>
+                <li id="tresor" class="catBtn"><img id="tresor" src="../../images/Menu/categories/trésor.png"
+                        alt="Tresor"></li>
+                <li id="musee" class="catBtn"><img id="musee" src="../../images/Menu/categories/musée.png" alt="Musee">
+                </li>
+                <li id="accessoire-vip" class="catBtn"><img id="accessoire-vip"
+                        src="../../images/Menu/categories/accessoire-vip.png" alt="Accessoire VIP"></li>
             </ul>
 
             <div class="listForm">
@@ -126,8 +128,8 @@
                         <td>
                             <h1>Description</h1>
                         </td>
-                        <td><textarea maxlength="255" name="description" class="btn colorSync" type="text" placeholder="Description"
-                                rows="10" cols="30"></textarea></td>
+                        <td><textarea maxlength="100" name="description" class="btn colorSync" type="text"
+                                placeholder="Description" rows="4" cols="25"></textarea></td>
                     </tr>
                     <tr>
                         <td>
@@ -151,25 +153,41 @@
                 </table>
             </div>
 
-            <div class="enchereTitre"><h3>Selectionner un type de vente</h3></div>
+            <div class="enchereTitre">
+                <h3>Selectionner un type de vente</h3>
+            </div>
             <ul class="enchere">
-                <li id="ench1" class="enchBtn"><img class="colorSync" id="Enchere" src="../../images/Logo/logo-enchere.png" alt="Enchere"></li>
-                <li id="ench2" class="enchBtn"><img class="colorSync" id="VenteInsta" src="../../images/Logo/logo-achat-imédiat.png" alt="Vente Insta"></li>
-                <li id="ench3" class="enchBtn"><img class="colorSync" id="MeilleurProposition" src="../../images/Logo/logo-meilleure-offre.png"
-                        alt="Meilleur Proposition"></li>
+                <li id="ench1" class="enchBtn"><img class="colorSync" id="Enchere"
+                        src="../../images/Logo/logo-enchere.png" alt="Enchere"></li>
+                <li id="ench2" class="enchBtn"><img class="colorSync" id="VenteInsta"
+                        src="../../images/Logo/logo-achat-imédiat.png" alt="Vente Insta"></li>
+                <li id="ench3" class="enchBtn"><img class="colorSync" id="MeilleurProposition"
+                        src="../../images/Logo/logo-meilleure-offre.png" alt="Meilleur Proposition"></li>
             </ul>
             <ul class="listEnchere">
-                <li><h3>Enchère</h3></li>
-                <li><h3>Vente instantanée</h3></li>
-                <li><h3>Meilleur proposition</h3></li>
+                <li>
+                    <h3>Enchère</h3>
+                </li>
+                <li>
+                    <h3>Vente instantanée</h3>
+                </li>
+                <li>
+                    <h3>Meilleur proposition</h3>
+                </li>
             </ul>
 
 
-            <div class="btnFinal"><input type="submit" id="btn" name="btnInscription" value="Soumettre" class="btn colorSync"></div>
+            <div class="date dNone">
+                <h1>Date d'expiration de l'enchère </h1>
+                <input id="YESS" type="date" name="DateExpiration" placeholder="" class="txtInpt">
+            </div>
+
+            <div class="btnFinal"><input type="submit" id="btn" name="btnInscription" value="Soumettre"
+                    class="btn colorSync"></div>
         </form>
     </div>
 
     <div class="test"></div>
+    
+    </html>
 </body>
-
-</html>
