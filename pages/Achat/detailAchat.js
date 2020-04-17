@@ -12,9 +12,14 @@ $(document).ready(function () {
             }
         })
 
-        if (this.id == "E")prompt("Quel enchère voulez vous faire ?", prix)
-        if (this.id == "I")prompt("Voulez vous acheter ce produit pour " + prix + "£ ?", "oui")
-        if (this.id == "M")prompt("Quel est votre meilleur offre ?", prix)
+        let modif = 0;
 
+        if (this.id == "E")modif = prompt("Quel enchère voulez vous faire ?", prix)
+        if (this.id == "I")modif = prompt("Voulez vous acheter ce produit pour " + prix + "£ ?", "oui")
+        if (this.id == "M")modif = prompt("Quel est votre meilleur offre ?", prix)
+
+        let myhidden = document.getElementById("hiddenPrix");
+        myhidden.value = modif;
+        document.getElementById("formSearch").submit();
     });
 });

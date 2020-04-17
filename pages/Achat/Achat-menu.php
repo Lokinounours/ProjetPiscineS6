@@ -35,7 +35,7 @@
 		$tmpRequest = "";
 		switch (strlen($rechercher)) {
 			case 1:
-				$tmpRequest .= ") ORDER BY prix DESC"; // BUG PROBABLE Prix et etat prix: FIXED
+				$tmpRequest .= ") ORDER BY prix ASC"; // BUG PROBABLE Prix et etat prix: FIXED
 				break;
 			case 2:
 				$tmpRequest .= " AND categorie like '%";

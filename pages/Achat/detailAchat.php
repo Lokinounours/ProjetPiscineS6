@@ -30,6 +30,11 @@
     // }
 
     // mysqli_close($db_handle);
+
+    if (!empty($_REQUEST["hiddenPrix"]))$prix = $_REQUEST["hiddenPrix"];
+    else $prix = 0;
+    
+    echo $prix;
 ?>
 
 <html>
@@ -41,14 +46,13 @@
     <link rel='stylesheet' type='text/css' media='screen' href='detailAchat.css'>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="detailVente.js"></script>
+    <script src="detailAchat.js"></script>
     <title>Detail Achat</title>
-    <!-- <script src='main.js'></script> -->
 </head>
 
 <body>
 
-    <form action="">
+    <form action="" enctype="multipart/form-data" method="POST" id="formSearch">
         <input type="hidden" id="hiddenPrix" name="hiddenPrix" />
     </form>
 
@@ -109,7 +113,7 @@
                 <div class="left"><img src="../../images/Logo/logo-meilleure-offre.png" alt=""></div>
                 <div class="right">
                     <h1>Meilleure offre</h1>
-                    <!-- ID en fonction du type de vente -->
+                     <!-- ID en fonction du type de vente -->
                     <p id="M">21£</p>
                 </div>
             </div>
