@@ -54,12 +54,6 @@
     <script src="MonProfilAdmin.js"></script>
 </head>
 <body>
-	<form action="" enctype="multipart/form-data" method="POST">
-        <input type="hidden" id="hiddenID" name="hiddenID" />
-        <div class="btnFinal"><input type="submit" id="btn" name="btnInscription" value="Soumettre"
-                    class="btn colorSync"></div>
-    </form>
-
     <div class="container">
         <div class="admin-bottom" style="background-image: url(../../images/Fond/fond-choix1.jpg);">
             <h1>MON COMPTE</h1>
@@ -132,17 +126,11 @@
         </div>
     </div>
     <div class="ajouterSupp">
-    	<ul>
-    		<li>
-    			<h1>Supprimer Article</h1>
-    		</li>
-    		<li>
-    			<h1>Supprimer Vendeur</h1>
-    		</li>
-            <li>
-                <h1>Supprimer Acheteur</h1>
-            </li>
-    	</ul>
+        <form action="" enctype="multipart/form-data" method="POST">
+            <input type="hidden" id="hiddenID" name="hiddenID" />
+            <div class="btnFinal"><input type="submit" id="btn" name="btnInscription" value="Supprimer"
+                        class="btn colorSync"></div>
+        </form>
     </div>
 </body>
 </html>

@@ -226,47 +226,13 @@
 .vendeurs-objets h1{
     background: transparent;
 }
-.ajouterSupp{
+.ajouterSupp .btnFinal{
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-}
-.ajouterSupp ul{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-}
-.ajouterSupp li{
-    margin: 0 50px;
-}
-
-.ajouterSupp h1{
-    background-color: transparent;
-}
-
-.ajouterSupp li:nth-child(1) {
-    padding: 10px;
-    border: 3px solid var(--rose);
-    border-radius: 20px;
-    color : var(--blanc);
-}
-
-.ajouterSupp li:nth-child(2) {
-    padding: 10px;
-    border: 3px solid var(--rose);
-    border-radius: 20px;
-    color : var(--blanc);
-}
-
-.ajouterSupp li:nth-child(3) {
-    padding: 10px;
-    border: 3px solid var(--rose);
-    border-radius: 20px;
-    color : var(--blanc);
+    width:100%;
 }
 
 .ajouterSupp li:hover {
@@ -276,4 +242,13 @@
     border-radius: 20px;
     transform: translateY(-10px) scale(1.1);
     transition: 0.3s transform ease-in-out;
+}
+
+.ajouterSupp .colorSync{
+    padding: 5px;
+    background-color: transparent;
+    border: 3px solid var(--rose);
+    border-radius: 20px;
+    color : var(--blanc);
+    cursor: pointer;
 }
