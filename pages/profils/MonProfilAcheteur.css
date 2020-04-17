@@ -29,18 +29,28 @@
 
 .nav-barre li{
     color: var(--bleu);
-    padding: 10px 30px;
     margin: 20px;
     display: flex;
     border: 2px solid var(--bleu);
     border-radius: 20px;
     transition: 0.3s ease-in-out;
 }
+.nav-barre li a{
+    padding: 10px 30px;
+    background: transparent;
+    text-decoration: none;
+    color: var(--bleu);
+    transition: 0.3s ease-in-out;
+}
 
 .nav-barre .actif{
-    color: var(--blanc);
     background-color: var(--bleu);
     transform: scale(1.1);
+}
+
+.nav-barre .actif a{
+    color: var(--blanc);
+    cursor: default;
 }
 
 .nav-barre li:hover{
@@ -48,6 +58,10 @@
     background-color: var(--bleu);
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.nav-barre li:hover a{
+    color: var(--blanc);
 }
 
 .container {

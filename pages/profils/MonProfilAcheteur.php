@@ -86,9 +86,9 @@
     <input type="hidden" id="hiddenFond" name="hiddenFond" />
     <div class="nav-barre">
 		<ul>
-			<li>ACHAT</li>
-			<li class="actif">Compte</li>
-			<li>VENTE</li>
+			<li><a href="#">ACHAT</a></li>
+			<li class="actif"><a href="#">COMPTE</a></li>
+			<li><a href="../vente/Vendre.php">VENTE</a></li>
 		</ul>
 	</div>
     <div class="container">

@@ -133,6 +133,7 @@
 .typeAchat li:nth-child(1){
     margin-top: 6em;
 }
+
 .typeAchat h1{
     background-color: transparent;:
 }
@@ -233,4 +234,29 @@ p {
     font-size: 20px;
     color: var(--rose);
     margin-right: 30px;
+}
+
+.article{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.article ul{
+    flex-direction: row;
+}
+
+.article li{
+    padding: 10px;
+    height: auto;
+    width: auto;
+    border: 3px solid var(--rose);
+    border-radius: 20px;
+    color : var(--blanc);
+    background-color: transparent;
+}
+
+.article li:nth-child(2){
+    margin-top: 6em;
 }

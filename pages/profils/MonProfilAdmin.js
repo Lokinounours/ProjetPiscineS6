@@ -1,14 +1,4 @@
-$(document).ready(function () {
-    // $(".fa-times").click(function() {
-    //     fullId = this.id;
-    //     if ( confirm( "Etes-vous sûr ?" ) ) {
-    //         $.ajax({
-    //             type:"POST",
-    //             url:"deleteFromAdmin.php",
-    //             data:'fullId='+fullId
-    //         })
-    //     }
-    // });  
+$(document).ready(function () {  
     $("i").click(function (event) {
         $("i").each(function (index) {
             this.className = "fas fa-times"
@@ -25,6 +15,3 @@ $(document).ready(function () {
         myhidden.value = this.id;
     });
 });
-
-// 
-// fas fa-times
