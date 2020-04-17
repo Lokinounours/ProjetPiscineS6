@@ -35,7 +35,7 @@
                 }
 
                 if($goodOrNot){
-                    $sql = "SELECT * FROM admin WHERE ID LIKE '%$ID%'";
+                    $sql = "SELECT * FROM admin WHERE ID = $ID";
                     $result = mysqli_query($db_handle, $sql);
                     if (mysqli_num_rows($result) == 0) {
                         $admin = false;
@@ -43,7 +43,7 @@
                         $admin = true;
                     }
 
-                    $sql = "SELECT * FROM vendeur WHERE ID LIKE '%$ID%'";
+                    $sql = "SELECT * FROM vendeur WHERE ID = $ID";
                     $result = mysqli_query($db_handle, $sql);
                     if (mysqli_num_rows($result) == 0) {
                         $vendeur = false;
@@ -51,7 +51,7 @@
                         $vendeur = true;
                     }
 
-                    $sql = "SELECT * FROM acheteur WHERE ID LIKE '%$ID%'";
+                    $sql = "SELECT * FROM acheteur WHERE ID = $ID";
                     $result = mysqli_query($db_handle, $sql);
                     if (mysqli_num_rows($result) == 0) {
                         $acheteur = false;

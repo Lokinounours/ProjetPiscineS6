@@ -10,13 +10,64 @@
 
     if (!empty($_REQUEST["hiddenID"]))$fullID = $_REQUEST["hiddenID"];
     else $fullID = "empty";
-    if (isset($_POST["btnInscription"])) {
-        echo $fullID;
-        // echo "test";
-    }
-    // echo "test apres";
 
     if ($db_found) {
+
+        if (isset($_POST["btnInscription"])) {
+
+            if($fullID!="empty") {
+
+                $type = $fullID[0];
+                $id = intval(substr($fullID,1));
+
+                $doubleType = false;
+
+                $table = "";
+
+                if($type == 'V'){
+                    $table = "vendeur";
+
+                    $sql = "SELECT * FROM acheteur WHERE ID = $id";
+                    $result = mysqli_query($db_handle, $sql);
+                    if (mysqli_num_rows($result) != 0) {
+                        $doubleType = true;
+                    }
+                }
+                
+                if($type == 'A'){
+                    $table = "acheteur";
+
+                    $sql = "SELECT * FROM vendeur WHERE ID = $id";
+                    $result = mysqli_query($db_handle, $sql);
+                    if (mysqli_num_rows($result) != 0) {
+                        $doubleType = true;
+                    }
+                }
+
+                if($type == 'I') {
+                    $table = "item";
+                }
+
+                if($table == "vendeur"){
+                    $sql = "DELETE FROM vendeur WHERE ID = $id";
+                    mysqli_query($db_handle, $sql);
+                    if(!$doubleType){
+                        $sql = "DELETE FROM identification WHERE ID = $id";
+                        mysqli_query($db_handle, $sql);
+                    }
+                }elseif($table == "acheteur"){
+                    $sql = "DELETE FROM acheteur WHERE ID = $id";
+                    mysqli_query($db_handle, $sql);
+                    if(!$doubleType){
+                        $sql = "DELETE FROM identification WHERE ID = $id";
+                        mysqli_query($db_handle, $sql);
+                    }
+                }elseif($table == "item"){
+                    $sql = "DELETE FROM item WHERE ID = $id";
+                    mysqli_query($db_handle, $sql);
+                }
+            }
+        }
 
         $sql = "SELECT * FROM identification WHERE pseudo LIKE '%$pseudo%'";
         $result = mysqli_query($db_handle, $sql);
