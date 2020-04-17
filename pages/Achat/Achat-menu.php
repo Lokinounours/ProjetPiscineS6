@@ -28,9 +28,9 @@
 	<meta charset='utf-8'>
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
-	<link rel='stylesheet' type='text/css' media='screen' href='achat-style.css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="achat-menu.js"></script>
+	<link rel='stylesheet' type='text/css' media='screen' href='achat-style.css'>
 	<title>Achat Menu</title>
 </head>
 
@@ -92,19 +92,27 @@
 		<div class="listItems">
 			<?php
 				while ($data = mysqli_fetch_assoc($result)){
-					echo '<div class="items">';
-					echo '<div class="info">';
-					echo '<p class="rose">' . $data["nom"] .'</p>';
-					echo '<p class="prix">' . $data["prix"] .'£</p>';
-					echo '</div>';
-					echo '<div class="imgItem">';
-					echo '<img src="../../images/' . $data['photo'] . '">';
-					echo '</div>';
-					echo '<div class="info2">';
-					echo '<p>' . $data["description"] .'</p>';
-					echo '<p>' . $data["categorie"] .'</p>';
-					echo '<p>' . $data["etat"] .'</p>';
-					echo '</div></div>';
+					echo '<div class="item">';
+                    echo '<div class="info">';
+                    echo '<p class="rose">' . $data["nom"] .'</p>';
+                    echo '<p class="prix">' . $data["prix"] .'£</p>';
+                    echo '</div>';
+                    echo '<div class="imgItem">';
+                    echo '<img src="../../images/Items/' . $data['photo'] . '">';
+                    echo '</div>';
+                    echo '<div class="info2">';
+                    echo '<p style="text-align: justify; margin: 0 10px">' . $data["description"] .'</p>';
+                    echo '<p>' . $data["categorie"] .'</p>';
+                    // echo '<p>' . $data["etat"] .'</p>';
+                    echo '</div>';
+                    echo '<div class="item-bottom">';
+                    for ($i=0; $i<strlen($data["etat"]); $i++) {
+                        if ($data["etat"][$i] == "E") echo "<img src='../../images/Logo/logo-enchere.png' alt='Enchere'>";
+                        if ($data["etat"][$i] == "I") echo "<img src='../../images/Logo/logo-achat-imédiat.png' alt='achat-imédiat'>";
+                        if ($data["etat"][$i] == "M") echo "<img src='../../images/Logo/logo-meilleure-offre.png' alt='meilleure-offre'>";
+                    }
+                    echo '</div>';
+                    echo '</div>';
 				}
 			?>
 		</div>
