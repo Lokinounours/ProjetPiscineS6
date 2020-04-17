@@ -7,21 +7,74 @@
 	$db_handle = mysqli_connect('localhost', 'root', '');
 	$db_found = mysqli_select_db($db_handle, $database);
 
-	if (!empty($_REQUEST["hiddenCategorie"]))$categorie = $_REQUEST["hiddenCategorie"];
-	else $categorie = "empty";
-		
-	if (!empty($_REQUEST["hiddenRecherche"]))$categorie = $_REQUEST["hiddenRecherche"];
-    else $rechercher = "empty";
+	if (!empty($_REQUEST["hiddenEtat"]))$etat = $_REQUEST["hiddenEtat"];
+	else $etat = "";
+
+	if (!empty($_REQUEST["hiddenRecherche"]))$rechercher = $_REQUEST["hiddenRecherche"];
+	else $rechercher = "";
+	
+	function sortLettre($tmp) {
+		switch ($tmp) {
+			case "Tr":
+				return "tresor";
+				break;
+			case "Mu": 
+				return "musee";
+			break;
+			case "Ac":
+				return "accessoire-vip";
+			break;
+			case "To":
+				return "";
+			break;
+		}
+	}
 	
 	if ($db_found) {
-
-		// if(isset($_POST["researchBtn"])){
-        //     $sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%')";
-        //     $result = mysqli_query($db_handle, $sql);
-		// }
+		
+		$tmpRequest = "";
+		switch (strlen($rechercher)) {
+			case 1:
+				$tmpRequest .= ") ORDER BY prix DESC"; // BUG PROBABLE Prix et etat prix: FIXED
+				break;
+			case 2:
+				$tmpRequest .= " AND categorie like '%";
+				$tmpRequest .= sortLettre($rechercher);
+				$tmpRequest .= "%'";
+				$tmpRequest .= ")";
+				$tmpRequest .= " ORDER BY prix DESC";
+				break;
+			case 3:
+				// echo "Test";
+				// echo "<br>";
+				// echo $rechercher;
+				// echo "<br>";
+				// echo "Fin test";
+				// echo "<br>";
+				$tmpRequest .= " AND categorie like '%";
+				$tmpRequest .= sortLettre(substr(0, strlen($rechercher) -1)); // BUG PROPABLE cat et prix: FIXED
+				$tmpRequest .= "%'";
+				$tmpRequest .= ")";
+				$tmpRequest .= " ORDER BY prix ASC";
+				break;
+		}
 		if(isset($_POST["researchBtn"])){
-			$sql = "SELECT * FROM item WHERE categorie like '%$categorie%'";
-			$result = mysqli_query($db_handle, $sql);
+			
+            if(!empty($search)){
+				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%')";
+            	$result = mysqli_query($db_handle, $sql);
+			} else {
+				$sql = "SELECT * FROM item WHERE (etat like '%$etat%'";
+				if($tmpRequest != ""){
+					// $sql .= ")";
+					$sql .= $tmpRequest;
+				}
+				else $sql .= ")";
+				echo $tmpRequest;
+				echo "<br>";
+				echo $sql;
+				$result = mysqli_query($db_handle, $sql);
+			}
 		}
 		else{
             $sql = "SELECT * FROM item";
@@ -46,9 +99,6 @@
 </head>
 
 <body>
-
-	<input type="hidden" id="hiddenCategorie" name="hiddenCategorie" />
-	<input type="hidden" id="hiddenRecherche" name="hiddenRecherche" />
 
 	<div class="nav-barre">
 		<ul>
@@ -78,19 +128,19 @@
 	</div>
 	<div class="categories-barre">
 		<ul class="recherche">
-			<li id="tresor">
+			<li id="Tr">
 				<h3>TRÉSOR</h3>
 			</li>
-			<li id="musee">
+			<li id="Mu">
 				<h3>MUSÉE</h3>
 			</li>
-			<li id="accessoires">
+			<li id="Ac">
 				<h3>ACCESSOIRES VIP</h3>
 			</li>
-			<li id="tous">
+			<li id="To">
 				<h3>Tous</h3>
 			</li>
-			<li id="prix">
+			<li id="P">
 				<h3>Trier par Prix</h3>
 			</li>
 		</ul>
@@ -99,6 +149,8 @@
 		<form action="" enctype="multipart/form-data" method="POST" id="formSearch">
 			<input type="text" name="research" class="inptTxt"/>
 			<input type="submit" name="researchBtn" class="inptBtn"/>
+			<input type="hidden" id="hiddenEtat" name="hiddenEtat" />
+			<input type="hidden" id="hiddenRecherche" name="hiddenRecherche" />
 		</form>
 		<div class="listItems">
 			<?php
