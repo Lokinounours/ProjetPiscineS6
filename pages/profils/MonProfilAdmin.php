@@ -41,8 +41,10 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='MonProfilAdmin.css'>
-	<title>Mon Compte Admin</title>
+    <title>Mon Compte Admin</title>
+    <script src="MonProfilAdmin.js"></script>
 </head>
 <body>
 	<input type="hidden" id="hiddenFond" name="hiddenFond" />
@@ -69,52 +71,54 @@
         </div>
     </div>
     <div class="Vendeurs-objets">
-    	<ul>
-    		<li>
-    			<h1>Liste des Marchandises:</h1>
-                <div class="listMarchandises">
-                    <?php
-                        while ($data = mysqli_fetch_assoc($result3)){
-                            echo '<div class="marchandise">';
-                            echo '<p> Produit : ' . $data['nom'] . '   ';
-                            echo 'Prix : '. $data['prix'] . '   ';
-                            echo 'Etat : '. $data['etat'] . '   ';
-                            echo 'Categorie : '. $data['categorie'] . '   </p>';
-                            echo '</div>';
-                         }
-                    ?>
-    		</li>
-            <li>
-                <h1>Liste des Vendeurs:</h1>
-                <div class="listVendeurs">
-                    <?php
-                        while ($data = mysqli_fetch_assoc($result2)){
-                            echo '<div class="vendeur">';
-                            echo '<p> Nom : ' . $data['nom'] . '   ';
-                            echo '<p> Prenom : ' . $data['prenom'] . '   ';
-                            echo 'Email : '. $data['email'] . '   ';
-                            echo 'Pseudo : '. $data['pseudo'] . '   </p>';
-                            echo '</div>';
-                         }
-                    ?>
-                </div>
-            </li>
-            <li>
-                <h1>Liste des Acheteurs:</h1>
-                <div class="listAcheteurs">
-                    <?php
-                        while ($data = mysqli_fetch_assoc($result4)){
-                            echo '<div class="acheteur">';
-                            echo '<p> Nom : ' . $data['nom'] . '   ';
-                            echo '<p> Prenom : ' . $data['prenom'] . '   ';
-                            echo 'Email : '. $data['email'] . '   ';
-                            echo 'Pseudo : '. $data['pseudo'] . '   </p>';
-                            echo '</div>';
-                         }
-                    ?>
-                </div>
-            </li>
-    	</ul>
+    	<div class="marchandises">
+            <h1>Liste des Marchandises</h1>
+            <div class="listMarchandises">
+                <?php
+                    while ($data = mysqli_fetch_assoc($result3)){
+                        echo '<div class="marchandise">';
+                        echo '<p> Produit : ' . $data['nom'] . '   ';
+                        echo 'Prix : '. $data['prix'] . '   ';
+                        echo 'Etat : '. $data['etat'] . '   ';
+                        echo 'Categorie : '. $data['categorie'] . '   </p>';
+                        echo '<i id="I'. $data['ID'].'" class="fas fa-times"></i>';
+                        echo '</div>';
+                    }
+                ?>
+            </div>
+        </div>
+        <div class="vendeurs">
+            <h1>Liste des Vendeurs</h1>
+            <div class="listVendeurs">
+                <?php
+                    while ($data = mysqli_fetch_assoc($result2)){
+                        echo '<div class="vendeur">';
+                        echo '<p> Nom : ' . $data['nom'] . '   ';
+                        echo 'Prenom : ' . $data['prenom'] . '   ';
+                        echo 'Email : '. $data['email'] . '   ';
+                        echo 'Pseudo : '. $data['pseudo'] . '   </p>';
+                        echo '<i id="V'. $data['ID'].'" class="fas fa-times"></i>';
+                        echo '</div>';
+                    }
+                ?>
+            </div>
+        </div>
+        <div class="acheteurs">
+            <h1>Liste des Acheteurs</h1>
+            <div class="listAcheteurs">
+                <?php
+                    while ($data = mysqli_fetch_assoc($result4)){
+                        echo '<div class="acheteur">';
+                        echo '<p> Nom : ' . $data['nom'] . '   ';
+                        echo 'Prenom : ' . $data['prenom'] . '   ';
+                        echo 'Email : '. $data['email'] . '   ';
+                        echo 'Pseudo : '. $data['pseudo'] . '   </p>';
+                        echo '<i id="A'. $data['ID'].'" class="fas fa-times"></i>';
+                        echo '</div>';
+                    }
+                ?>
+            </div>
+        </div>
     </div>
     <div class="ajouterSupp">
     	<ul>
