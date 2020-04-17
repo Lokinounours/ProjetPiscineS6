@@ -23,6 +23,24 @@
 
         $sql = "SELECT * FROM achat_immediat INNER JOIN acheteur WHERE achat_immediat.IDacheteur = acheteur.ID ";
         $result2 = mysqli_query($db_handle, $sql);
+
+        function nb_Articles(){
+            $total=0;
+            for($i = 0; $i < count(IDitem); $i++)
+            {
+            $total += 1;
+            }
+        return $total;
+        }
+
+        function prix_Tot(){
+            $totalprix=0;
+            for($i = 0; $i < count(IDitem); $i++)
+            {
+            $total += prix;
+            }
+        return $total;
+        }
     }
     mysqli_close($db_handle);
 ?>
@@ -54,17 +72,33 @@
             </div>
         </div>
     </div>
-    <div class="AchatImmédiat">
-    	<h1>ACHAT IMMÉDIAT :</h1>
-    	
-    </div>
-    <div class="enchères">
-    	<h1>ENCHÈRES / MEILLEURES OFFRES</h1>
-    	<h1>GAGNÉES :</h1>
-    </div>
-    <div class="AchatImmédiat">
-    	<h1>ENCHÈRES / MEILLEURES OFFRES</h1>
-    	<h1>EN COURS :</h1>
+    <div class="typeAchat">
+        <ul>
+            <li>
+                <div class="AchatImmédiat">
+            	   <h1>ACHAT IMMÉDIAT :</h1>
+                   <div class="checkbox">
+                       <input type="checkbox" id="accepter"name="accepter">
+                       <label for="accepter">J'ai lu et j'accepte les conditions générales de vente</label>
+                   </div>
+            	   <div class="payer">
+                       <h1>PAYER</h1>
+                   </div>
+                </div>
+            </li>
+            <li>
+                <div class="enchères">
+                	<h1>ENCHÈRES / MEILLEURES OFFRES</h1>
+                	<h1>GAGNÉES :</h1>
+                </div>
+            </li>
+            <li>
+                <div class="AchatImmédiat">
+                	<h1>ENCHÈRES / MEILLEURES OFFRES</h1>
+                	<h1>EN COURS :</h1>
+                </div>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
