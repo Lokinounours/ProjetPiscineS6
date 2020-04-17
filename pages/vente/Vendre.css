@@ -148,6 +148,11 @@
 
 .btnAjouter p{
     margin-left:10px;
+    margin-right:10px;
+}
+
+.btnAjouter i{
+    margin-left:10px;
 }
 
 .listItems{

@@ -1,35 +1,38 @@
 <?php
-    //session_start();
-    // $idVendeur = $_SESSION['id'];
 
-    $idVendeur = 60;
+    session_start();
+    $idVendeur = $_SESSION['id'];
+    $vendeur = $_SESSION['vendeur'];
+    $acheteur = $_SESSION['acheteur'];
 
-    $database = "piscine";
-    $db_handle = mysqli_connect('localhost', 'root', '');
-    $db_found = mysqli_select_db($db_handle, $database);
+    if($vendeur){
+        $database = "piscine";
+        $db_handle = mysqli_connect('localhost', 'root', '');
+        $db_found = mysqli_select_db($db_handle, $database);
 
-    if ($db_found) {
-        $sql = "SELECT * FROM item WHERE IDprop = $idVendeur";
-        $result = mysqli_query($db_handle, $sql);
+        if ($db_found) {
+            $sql = "SELECT * FROM item WHERE IDprop = $idVendeur";
+            $result = mysqli_query($db_handle, $sql);
 
-        $sql = "SELECT * FROM vendeur WHERE ID = $idVendeur";
-        $result2 = mysqli_query($db_handle, $sql);
+            $sql = "SELECT * FROM vendeur WHERE ID = $idVendeur";
+            $result2 = mysqli_query($db_handle, $sql);
 
-        $imgProfil = "../../images/Avatar/";
-        $imgFond = "../../images/Fond/";
-        while ($data2 = mysqli_fetch_assoc($result2)){
-            $imgProfil .= $data2["img_profil"];
-            $imgFond .= $data2["img_fond"];
+            $imgProfil = "../../images/Avatar/";
+            $imgFond = "../../images/Fond/";
+            while ($data2 = mysqli_fetch_assoc($result2)){
+                $imgProfil .= $data2["img_profil"];
+                $imgFond .= $data2["img_fond"];
+            }
+
+            $sql = "SELECT * FROM identification WHERE ID = $idVendeur";
+            $result3 = mysqli_query($db_handle, $sql);
+            while ($data3 = mysqli_fetch_assoc($result3)){
+                $pseudo = $data3["pseudo"];
+            }
         }
 
-        $sql = "SELECT * FROM identification WHERE ID = $idVendeur";
-        $result3 = mysqli_query($db_handle, $sql);
-        while ($data3 = mysqli_fetch_assoc($result3)){
-            $pseudo = $data3["pseudo"];
-        }
+        mysqli_close($db_handle);
     }
-
-    mysqli_close($db_handle);
 ?>
 
 <html>
@@ -55,25 +58,32 @@
     <div class="container">
         <div class="fondVendre" style="background-image: url(../../images/Fond/fond-choix3.jpg);">
             <p>vendre</p>
-            <div class="carteVendeur">
-                <div class="bckgdCarteVendeur" style="background-image: url('<?php echo $imgFond; ?>');">
-                </div>
-                <div class="imgVendeur">
-                    <img src="<?php echo $imgProfil;?>">
-                </div>
-                <div class="psdVendeur">
-                    <p><?php echo $pseudo;?></p>
-                </div>
-            </div>
+            <?php
+                if($vendeur){
+                    echo '<div class="carteVendeur">';
+                    echo '<div class="bckgdCarteVendeur" style="background-image: url('.$imgFond.');"></div>';
+                    echo '<div class="imgVendeur"><img src="'.$imgProfil.'"></div>';
+                    echo '<div class="psdVendeur"><p>'.$pseudo.'</p></div>';
+                    echo '</div>';
+                }
+            ?>
         </div>
         <div class="btnAjouter">
-            <a href="../items/AjoutItem.php"><i class="fas fa-plus"></i>
-                <p>Ajouter un nouvel item</p>
-            </a>
-        </div>
-        <p class="vert">Objets déjà en vente</p>
-        <div class="listItems">
             <?php
+                if($vendeur){
+                    echo '<a href="../items/AjoutItem.php"><i class="fas fa-plus"></i>';
+                    echo '<p>Ajouter un nouvel item</p></a>';
+                }elseif($acheteur){
+                    echo '<a href="../connection/SignUpVendeurFromAchat.php"><p>Devenir vendeur</p></a>';
+                }else{
+                    echo '<a href="../connection/SignUpVendeur.php"><p>Devenir vendeur</p></a>';
+                }
+            ?>
+        </div>
+        <?php
+            if($vendeur) {
+                echo '<p class="vert">Objets déjà en vente</p>';
+                echo '<div class="listItems">';
                 while ($data = mysqli_fetch_assoc($result)) {
                     echo '<div class="item">';
                     echo '<div class="info">';
@@ -86,7 +96,6 @@
                     echo '<div class="info2">';
                     echo '<p style="text-align: justify; margin: 0 10px">' . $data["description"] .'</p>';
                     echo '<p>' . $data["categorie"] .'</p>';
-                    // echo '<p>' . $data["etat"] .'</p>';
                     echo '</div>';
                     echo '<div class="item-bottom">';
                     for ($i=0; $i<strlen($data["etat"]); $i++) {
@@ -97,8 +106,9 @@
                     echo '</div>';
                     echo '</div>';
                 }
-            ?>
-        </div>
+                echo '</div>';
+            }
+        ?>
     </div>
 </body>
 
