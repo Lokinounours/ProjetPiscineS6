@@ -166,6 +166,7 @@
 }
 
 .info{
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -178,10 +179,10 @@
     justify-content: center;
 }
 
-/* .info2 p{
+.info2 p{
     text-align: center;
     color: var(--blanc); 
-} */
+}
 
 p {
     text-align: center;
@@ -220,6 +221,14 @@ p {
     width: 100%;
     /* background-color: var(--secondary); */
     border-top: 2px solid var(--blanc);
+    display: flex;
+    justify-content: center;
+}
+
+.item-bottom img{
+    height: 30px;
+    width: 30px;
+    margin: 5px 20px;
 }
 
 .item .rose{

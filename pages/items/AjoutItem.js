@@ -40,15 +40,12 @@ $(document).ready(function () {
         let test = "";
         $(".date").addClass("dNone");
         $(".enchere-active").each(function (index) {
-            if (this.id == "ench1") { test += "Enchere"; $(".date").toggleClass("dNone"); }
-            if (this.id == "ench2") test += "VenteInsta";
-            if (this.id == "ench3") test += "MeilleurProposition";
-            test += "/";
+            if (this.id == "ench1") { test += "E"; $(".date").toggleClass("dNone"); }
+            if (this.id == "ench2") test += "I";
+            if (this.id == "ench3") test += "M";
         });
 
-
-
-        let final = test.substring(0, test.length - 1);
+        let final = test;
 
         let myhidden = document.getElementById("hiddenEnchere");
         myhidden.value = final;

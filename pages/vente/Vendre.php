@@ -15,8 +15,8 @@
         $sql = "SELECT * FROM vendeur WHERE ID = $idVendeur";
         $result2 = mysqli_query($db_handle, $sql);
 
-        $imgProfil = "../../images/";
-        $imgFond = "../../images/";
+        $imgProfil = "../../images/Avatar/";
+        $imgFond = "../../images/Fond/";
         while ($data2 = mysqli_fetch_assoc($result2)){
             $imgProfil .= $data2["img_profil"];
             $imgFond .= $data2["img_fond"];
@@ -53,7 +53,7 @@
         </ul>
     </div>
     <div class="container">
-        <div class="fondVendre">
+        <div class="fondVendre" style="background-image: url(../../images/Fond/fond-choix3.jpg);">
             <p>vendre</p>
             <div class="carteVendeur">
                 <div class="bckgdCarteVendeur" style="background-image: url('<?php echo $imgFond; ?>');">
@@ -86,12 +86,14 @@
                     echo '<div class="info2">';
                     echo '<p style="text-align: justify; margin: 0 10px">' . $data["description"] .'</p>';
                     echo '<p>' . $data["categorie"] .'</p>';
-                    echo '<p>' . $data["etat"] .'</p>';
+                    // echo '<p>' . $data["etat"] .'</p>';
                     echo '</div>';
                     echo '<div class="item-bottom">';
-                    if ($data["categorie"] == "VenteInsta") echo "Vente Immédiate";
-                    if ($data["categorie"] == "Enchere") echo "Enchere";
-                    if ($data["categorie"] == "Vente imm�diate") echo "Vente Im";
+                    for ($i=0; $i<strlen($data["etat"]); $i++) {
+                        if ($data["etat"][$i] == "E") echo "<img src='../../images/Logo/logo-enchere.png' alt='Enchere'>";
+                        if ($data["etat"][$i] == "I") echo "<img src='../../images/Logo/logo-achat-imédiat.png' alt='achat-imédiat'>";
+                        if ($data["etat"][$i] == "M") echo "<img src='../../images/Logo/logo-meilleure-offre.png' alt='meilleure-offre'>";
+                    }
                     echo '</div>';
                     echo '</div>';
                 }
