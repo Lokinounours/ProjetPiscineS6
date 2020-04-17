@@ -10,6 +10,11 @@
 
     if (!empty($_REQUEST["hiddenID"]))$fullID = $_REQUEST["hiddenID"];
     else $fullID = "empty";
+    if (isset($_POST["btnInscription"])) {
+        echo $fullID;
+        // echo "test";
+    }
+    // echo "test apres";
 
     if ($db_found) {
 
@@ -32,7 +37,6 @@
 
         $sql = "SELECT * FROM identification INNER JOIN acheteur WHERE identification.ID = acheteur.ID ";
         $result4 = mysqli_query($db_handle, $sql);
-
     }
     mysqli_close($db_handle);
 ?>
@@ -50,8 +54,10 @@
     <script src="MonProfilAdmin.js"></script>
 </head>
 <body>
-	<form action="">
+	<form action="" enctype="multipart/form-data" method="POST">
         <input type="hidden" id="hiddenID" name="hiddenID" />
+        <div class="btnFinal"><input type="submit" id="btn" name="btnInscription" value="Soumettre"
+                    class="btn colorSync"></div>
     </form>
 
     <div class="container">
