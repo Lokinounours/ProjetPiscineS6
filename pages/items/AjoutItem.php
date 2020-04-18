@@ -95,25 +95,36 @@
 
                 $idProp = $_SESSION['id'];
 
+                // COMME QUE E Ou M il fallait update le prix
+                if ($enchere == "E")$prix = $prixEnchere;
+                if ($enchere == "M")$prix = $prixOffre;
+
                 $sql = "INSERT INTO item(nom, description, photo, video, prix, categorie, IDprop, etat) 
                         VALUES('$nom', '$description', '$imgNom1', '$imgNom2', '$prix', '$categorie', '$idProp', '$enchere')";
                 mysqli_query($db_handle, $sql);
+                echo $sql;
 
                 $last_id = mysqli_insert_id($db_handle);
                 $idAcheteur = 0;
+
+
+                // Pour les transactions on a pas l'ID de l'item donc à ajouter DERNIER ITEM + 1
+                // Ou on attend la fin de la requette et on demande le last item
 
                 if(strstr($enchere, "E")) {
                     $sql = "INSERT INTO enchere(IDitem, IDvendeur, IDacheteur, prixHaut, dateFin, heureFin) 
                         VALUES('$last_id', '$idProp', '$idAcheteur', '$prixEnchere', '$dateExpiration', '$heureExpiration')";
                     mysqli_query($db_handle, $sql);
+                    echo $sql;
                 }
 
                 if(strstr($enchere, "M")) {
                     $nbrOffre = 1;
-                    $prixAcheteur = -1;
+                    $prixAcheteur = -1; 
                     $sql = "INSERT INTO meilleure_offre(IDitem, IDvendeur, IDacheteur, prixVendeur, prixAcheteur, nbreOffre) 
                         VALUES('$last_id', '$idProp', '$idAcheteur', '$prixOffre', '$prixAcheteur', '$nbrOffre')";
                     mysqli_query($db_handle, $sql);
+                    echo $sql;
                 }
 
             }
