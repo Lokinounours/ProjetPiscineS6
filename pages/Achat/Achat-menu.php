@@ -19,7 +19,15 @@
 	else $rechercher = "";
 
 	if (!empty($_REQUEST["hiddenID"]))$idProduit = $_REQUEST["hiddenID"];
-	else $idProduit = "";
+	else $idProduit = -1;
+	if($idProduit!=-1){
+		if($acheteur){
+			$_SESSION['idProduit'] = $idProduit;
+			header('Location: ./detailAchat.php');
+		}else{
+			header('Location: ../connection/Login.php');
+		}	
+	}
 	
 	function sortLettre($tmp) {
 		switch ($tmp) {
@@ -68,9 +76,9 @@
 		}
 		if(isset($_POST["researchBtn"])){
 			
-            if(!empty($search)){
+			if(!empty($search)){
 				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%')";
-            	$result = mysqli_query($db_handle, $sql);
+				$result = mysqli_query($db_handle, $sql);
 			} else {
 				$sql = "SELECT * FROM item WHERE (etat like '%$etat%'";
 				if($tmpRequest != ""){
