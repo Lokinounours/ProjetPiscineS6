@@ -4,6 +4,8 @@
     $prix = isset($_POST["prix"])? $_POST["prix"] : 0; // Le prix de base
     $etat = isset($_POST["etat"])? $_POST["etat"] : ""; // Le type de vente
     $dateExpiration = isset($_POST["DateExpiration"])? $_POST["DateExpiration"] : ""; // Date de l'enchère
+    $prixEnchere = isset($_POST["prixEnchere"])? $_POST["prixEnchere"] : "";
+    $prixOffre = isset($_POST["prixOffre"])? $_POST["prixOffre"] : "";
     $checkPhoto = false;
     $checkVideo = false;
     
@@ -194,6 +196,21 @@
             <div class="date dNone">
                 <h1>Date d'expiration de l'enchère </h1>
                 <input id="YESS" type="date" name="DateExpiration" placeholder="" class="txtInpt">
+
+                <h1>Prix de dépard de l'enchère</h1>
+                <input
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    maxlength="11" name="prixEnchere" class="btn colorSync" type="number" placeholder="Prix Enchère">
+
+            </div>
+
+            <div class="offre oNone">
+
+                <h1>Prix de départ de la Meilleur Offre</h1>
+                <input
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    maxlength="11" name="prixOffre" class="btn colorSync" type="number" placeholder="Prix Offre">
+
             </div>
 
             <div class="btnFinal"><input type="submit" id="btn" name="btnInscription" value="Soumettre"
@@ -201,7 +218,5 @@
         </form>
     </div>
 
-    <div class="test"></div>
-    
-    </html>
+</html>
 </body>

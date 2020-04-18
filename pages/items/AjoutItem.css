@@ -256,6 +256,22 @@ tr:last-child input {
     color: var(--secondary);
 }
 
+.date input {
+    color: var(--blanc);
+}
+
 .dNone {
+    display: none;
+}
+
+.offre {
+    margin: 100px 0;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 150px;
+    color: var(--secondary);
+}
+
+.oNone {
     display: none;
 }
