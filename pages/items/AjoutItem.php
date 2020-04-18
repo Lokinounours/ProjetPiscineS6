@@ -10,6 +10,12 @@
     $database = "piscine";
     $finalString = "";
     $goodOrNot = true;
+
+    session_start();
+
+    $admin = $_SESSION['admin'];
+    $vendeur = $_SESSION['vendeur'];
+    $acheteur = $_SESSION['acheteur'];
     
     if (!empty($_REQUEST["hiddenCategorie"]))$categorie = $_REQUEST["hiddenCategorie"];
     else $categorie = "empty";
@@ -59,10 +65,7 @@
 
             if($goodOrNot){
 
-                // session_start();
-                // $idProp = $_SESSION['id'];
-
-                $idProp = 60;
+                $idProp = $_SESSION['id'];
 
                 $sql = "INSERT INTO item(nom, description, photo, video, prix, categorie, IDprop, etat) 
                         VALUES('$nom', '$description', '$imgNom1', '$imgNom2', '$prix', '$categorie', '$idProp', '$enchere')";
@@ -89,9 +92,19 @@
 
     <div class="nav-barre">
         <ul>
-            <li>ACHAT</li>
-            <li>Compte</li>
-            <li>VENTE</li>
+            <a href="../Achat/Achat-menu.php"><li>ACHAT</li></a>
+            <?php
+				if($admin){
+					echo '<a href="../profils/MonProfilAdmin.php"><li>Compte</li></a>';
+				}elseif($vendeur){
+					echo '<a href="../profils/MonProfilVendeur.php"><li>Compte</li></a>';
+				}elseif($acheteur){
+					echo '<a href="../profils/MonProfilAcheteur.php"><li>Compte</li></a>';
+				}else{
+					echo '<a href="../connection/SignUpVendeur.php"><li>'."INSCRIPTION".'</li></a>';
+				}
+			?>
+            <a href="../vente/Vendre.php"><li>VENTE</li></a>
         </ul>
     </div>
     <div class="container">
