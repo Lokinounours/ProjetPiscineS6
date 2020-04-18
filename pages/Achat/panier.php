@@ -3,7 +3,7 @@
 
     $database = "piscine";
 
-    $db_handle = mysqli_connect('localhost', 'root', 'root');
+    $db_handle = mysqli_connect('localhost', 'root', '');
     $db_found = mysqli_select_db($db_handle, $database);
 
     $pseudo = $_SESSION['pseudo'];
@@ -23,27 +23,17 @@
 
         $sql = "SELECT * FROM achat_immediat INNER JOIN acheteur WHERE achat_immediat.IDacheteur = acheteur.ID ";
         $result2 = mysqli_query($db_handle, $sql);
-
+        if($result2 == false){
+            $nbrItems = 0;
+        }else{
+            $nbrItems = mysql_num_rows($result2);
+        }
         
-        function nb_Articles(){
-            $total=0;
-            for($i = 0; $i < count(IDitem); $i++)
-            {
-            $total += 1;
-            }
-        return $total;
-        }
-         $retour = nb_Articles();
 
-        function prix_Tot(){
-            $totalprix=0;
-            for($i = 0; $i < count(IDitem); $i++)
-            {
-            $totalprix += prix;
-            }
-        return $totalprix;
+        $prixTotal = 0;
+        while($data = mysqli_fetch_assoc($result2)){
+            $prixTotal += $data['prix'];
         }
-        $retour2 = prix_Tot();
 
     }
     mysqli_close($db_handle);
@@ -85,13 +75,13 @@
                         <ul>
                             <li>
                                 <?php
-                                    echo $retour;
+                                    echo $nbrItems;
                                 ?>
                                 <h4>ARTICLES</h4>
                             </li>
                             <li>
                                 <?php
-                                    echo $retour2;
+                                    echo $prixTotal;
                                 ?>
                                 <h4>€ <br> MONTANT</h4>
                             </li>

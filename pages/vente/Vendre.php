@@ -1,11 +1,15 @@
 <?php
 
     session_start();
-    $idVendeur = $_SESSION['id'];
+
+    $admin = $_SESSION['admin'];
     $vendeur = $_SESSION['vendeur'];
     $acheteur = $_SESSION['acheteur'];
 
     if($vendeur){
+
+        $idVendeur = $_SESSION['id'];
+
         $database = "piscine";
         $db_handle = mysqli_connect('localhost', 'root', '');
         $db_found = mysqli_select_db($db_handle, $database);
@@ -50,8 +54,18 @@
 <body>
     <div class="nav-barre">
         <ul>
-            <li>ACHAT</li>
-            <li>Compte</li>
+            <a href="../Achat/Achat-menu.php"><li>ACHAT</li></a>
+            <?php
+				if($admin){
+					echo '<a href="../profils/MonProfilAdmin.php"><li>Compte</li></a>';
+				}elseif($vendeur){
+					echo '<a href="../profils/MonProfilVendeur.php"><li>Compte</li></a>';
+				}elseif($acheteur){
+					echo '<a href="../profils/MonProfilAcheteur.php"><li>Compte</li></a>';
+				}else{
+					echo '<a href="../connection/SignUpVendeur.php"><li>'."INSCRIPTION".'</li></a>';
+				}
+			?>
             <li class="actif">VENTE</li>
         </ul>
     </div>

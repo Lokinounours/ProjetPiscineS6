@@ -1,3 +1,13 @@
+<?php
+
+    session_start();
+
+    $_SESSION['admin'] = false;
+    $_SESSION['vendeur'] = false;
+    $_SESSION['acheteur'] = false;
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -21,7 +31,7 @@
             <a href="./connection/SignUpChoix.php">
                 <li>S'inscrire</li>
             </a>
-            <a href="">
+            <a href="./Achat/Achat-menu.php">
                 <li>Nos produits</li>
             </a>
         </ul>

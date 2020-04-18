@@ -1,5 +1,11 @@
 <?php
 
+	session_start();
+
+    $admin = $_SESSION['admin'];
+    $vendeur = $_SESSION['vendeur'];
+    $acheteur = $_SESSION['acheteur'];
+
 	$search = isset($_POST["research"])? $_POST["research"] : "";
 	
 	$database = "piscine";
@@ -103,8 +109,18 @@
 	<div class="nav-barre">
 		<ul>
 			<li class="actif">ACHAT</li>
-			<li>Compte</li>
-			<li>VENTE</li>
+			<?php
+				if($admin){
+					echo '<a href="../profils/MonProfilAdmin.php"><li>Compte</li></a>';
+				}elseif($acheteur){
+					echo '<a href="../profils/MonProfilAcheteur.php"><li>Compte</li></a>';
+				}elseif($vendeur){
+					echo '<a href="../profils/MonProfilVendeur.php"><li>Compte</li></a>';
+				}else{
+					echo '<a href="../connection/SignUpAcheteur.php"><li>'."INSCRIPTION".'</li></a>';
+				}
+			?>
+			<a href="../vente/Vendre.php"><li>VENTE</li></a>
 		</ul>
 	</div>
 	<div class="container">
