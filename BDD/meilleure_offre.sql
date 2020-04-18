@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  sam. 18 avr. 2020 à 13:53
+-- Généré le :  sam. 18 avr. 2020 à 19:39
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -37,8 +37,16 @@ CREATE TABLE IF NOT EXISTS `meilleure_offre` (
   `prixVendeur` int(11) NOT NULL,
   `prixAcheteur` int(11) NOT NULL,
   `nbreOffre` int(11) NOT NULL,
+  `dernier` varchar(60) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `meilleure_offre`
+--
+
+INSERT INTO `meilleure_offre` (`ID`, `IDitem`, `IDvendeur`, `IDacheteur`, `prixVendeur`, `prixAcheteur`, `nbreOffre`, `dernier`) VALUES
+(1, 2, 60, 74, 24, 15, 1, 'acheteur');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

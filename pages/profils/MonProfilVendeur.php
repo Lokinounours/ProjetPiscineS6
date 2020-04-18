@@ -10,7 +10,7 @@
 
     if ($db_found) {
 
-        $sql = "SELECT * FROM identification WHERE pseudo LIKE '%$pseudo%'";
+        $sql = "SELECT * FROM identification WHERE pseudo = $pseudo";
         $result = mysqli_query($db_handle, $sql);
 
         while ($data = mysqli_fetch_assoc($result)){
