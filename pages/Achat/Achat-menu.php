@@ -1,5 +1,4 @@
 <?php
-
 	session_start();
 
     $admin = $_SESSION['admin'];
@@ -18,6 +17,9 @@
 
 	if (!empty($_REQUEST["hiddenRecherche"]))$rechercher = $_REQUEST["hiddenRecherche"];
 	else $rechercher = "";
+
+	if (!empty($_REQUEST["hiddenID"]))$idProduit = $_REQUEST["hiddenID"];
+	else $idProduit = "";
 	
 	function sortLettre($tmp) {
 		switch ($tmp) {
@@ -167,11 +169,12 @@
 			<input type="submit" name="researchBtn" class="inptBtn"/>
 			<input type="hidden" id="hiddenEtat" name="hiddenEtat" />
 			<input type="hidden" id="hiddenRecherche" name="hiddenRecherche" />
+			<input type="hidden" id="hiddenID" name="hiddenID" />
 		</form>
 		<div class="listItems">
 			<?php
 				while ($data = mysqli_fetch_assoc($result)){
-					echo '<div class="item">';
+					echo '<div class="item" id=' . $data["ID"] . '>';
                     echo '<div class="info">';
                     echo '<p class="rose">' . $data["nom"] .'</p>';
                     echo '<p class="prix">' . $data["prix"] .'£</p>';

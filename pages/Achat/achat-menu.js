@@ -40,4 +40,11 @@ $(document).ready(function () {
         myhidden.value = tmp;
         console.log(myhidden.value);
     });
+
+    $(".item").click(function (index) {
+        let myhidden = document.getElementById("hiddenID");
+        myhidden.value = this.id;
+        console.log(myhidden.value);
+        document.getElementById("formSearch").submit();
+    });
 });
