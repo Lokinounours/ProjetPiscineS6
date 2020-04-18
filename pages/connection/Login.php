@@ -119,6 +119,7 @@
                 echo '<div class="finalString"><p>'. $finalString .'</p></div>';
             }
         ?>
+        <a href="./SignUpChoix.php"><h3 style="color: var(--blanc)">Pas encore inscrit ?</h3></a>
     </div>
 </body>
 
