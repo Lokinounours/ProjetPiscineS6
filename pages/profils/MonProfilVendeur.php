@@ -29,7 +29,9 @@
             $nomFond = "../../images/Fond/" . $data['img_fond'];
         }
 
-        $sql = "SELECT * FROM meilleure_offre WHERE IDvendeur = $id";
+        $dernier = "acheteur";
+
+        $sql = "SELECT * FROM meilleure_offre WHERE IDvendeur = $id AND dernier = $dernier";
         $result2 = mysqli_query($db_handle, $sql);
 
     }
