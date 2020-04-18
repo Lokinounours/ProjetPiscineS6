@@ -123,7 +123,7 @@
     align-items: center;
     text-align: center;
     width : 75vw;
-    border: 3px solid currentColor;
+    border: 3px solid var(--blanc);
     padding: 20px;
     border-radius: 20px;
 }
