@@ -256,6 +256,10 @@ tr:last-child input {
     color: var(--secondary);
 }
 
+.date input {
+    color: var(--blanc);
+}
+
 .dNone {
     display: none;
 }
