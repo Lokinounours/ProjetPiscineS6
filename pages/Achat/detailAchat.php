@@ -62,7 +62,7 @@
         <ul>
             <li class="actif">ACHAT</li>
             <li>Compte</li>
-            <li >VENTE</li>
+            <li>VENTE</li>
         </ul>
     </div>
     <div class="container">
@@ -91,42 +91,38 @@
                 echo '<div class="left"><img src="../../images/Items/' . $photoItem . '" alt=""></div>';
                 echo '<div class="right">';
                 echo '<h1>' . $categorieItem . '</h1>';
-                echo '<p>' . $descriptionItem . '</p>'
+                echo '<p>' . $descriptionItem . '</p>';
                 echo '</div>';
             ?>
         </div>
-        <div class="bottom">
-            <!-- ID en fonction du type de vente -->
-            <!-- if etat == E -->
-                <div class="elem" id="E">
+        <?php
+            echo '<div class="bottom">';
+                for ($i=0; $i<strlen($etat); $i++) {
+
+                    if ($etat[$i] == "E") echo'<div class="elem" id="E">
                     <div class="left"><img src="../../images/Logo/logo-enchere.png" alt=""></div>
                     <div class="right">
                         <h1>Enchère</h1>
-                        <!-- ID en fonction du type de vente -->
-                        <p id="E">40£</p>
+                        <p id="E">'. $prixItem .'£</p>
                     </div>
-                </div>
-                <!-- ID en fonction du type de vente -->
-                <!-- if etat == I -->
-                <div class="elem" id="I"> 
+                </div>';
+                    if ($etat[$i] == "I") echo '<div class="elem" id="I"> 
                     <div class="left"><img src="../../images/Logo/logo-achat-imédiat.png" alt=""></div>
                     <div class="right">
                         <h1>Achat immédiat</h1>
-                        <!-- ID en fonction du type de vente -->
-                        <p id="I">85£</p>
+                        <p id="I">'. $prixItem .'£</p>
                     </div>
-                </div>
-                <!-- ID en fonction du type de vente -->
-                <!-- if etat == M -->
-                <div class="elem" id="M"> 
+                </div>';
+                    if ($etat[$i] == "M") echo '<div class="elem" id="M"> 
                     <div class="left"><img src="../../images/Logo/logo-meilleure-offre.png" alt=""></div>
                     <div class="right">
                         <h1>Meilleure offre</h1>
-                        <!-- ID en fonction du type de vente -->
-                        <p id="M">21£</p>
+                        <p id="M">'. $prixItem .'£</p>
                     </div>
-                </div>
-        </div>
+                </div>';
+                }
+            echo '</div>';
+            ?>
     </div>
 </body>
 
