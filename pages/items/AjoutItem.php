@@ -107,24 +107,22 @@
                 $last_id = mysqli_insert_id($db_handle);
                 $idAcheteur = 0;
 
-
                 // Pour les transactions on a pas l'ID de l'item donc à ajouter DERNIER ITEM + 1
-                // Ou on attend la fin de la requette et on demande le last item
+                // Ou on attend la fin de la requette et on demande le last item (c'est ce que je fais juste au dessus)
 
                 if(strstr($enchere, "E")) {
                     $sql = "INSERT INTO enchere(IDitem, IDvendeur, IDacheteur, prixHaut, dateFin, heureFin) 
                         VALUES('$last_id', '$idProp', '$idAcheteur', '$prixEnchere', '$dateExpiration', '$heureExpiration')";
                     mysqli_query($db_handle, $sql);
-                    echo $sql;
                 }
 
                 if(strstr($enchere, "M")) {
                     $nbrOffre = 1;
-                    $prixAcheteur = -1; 
-                    $sql = "INSERT INTO meilleure_offre(IDitem, IDvendeur, IDacheteur, prixVendeur, prixAcheteur, nbreOffre) 
-                        VALUES('$last_id', '$idProp', '$idAcheteur', '$prixOffre', '$prixAcheteur', '$nbrOffre')";
+                    $prixAcheteur = -1;
+                    $dernier = "vendeur";
+                    $sql = "INSERT INTO meilleure_offre(IDitem, IDvendeur, IDacheteur, prixVendeur, prixAcheteur, nbreOffre, dernier) 
+                        VALUES('$last_id', '$idProp', '$idAcheteur', '$prixOffre', '$prixAcheteur', '$nbrOffre', '$dernier')";
                     mysqli_query($db_handle, $sql);
-                    echo $sql;
                 }
 
             }

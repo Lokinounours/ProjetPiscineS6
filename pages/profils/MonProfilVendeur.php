@@ -28,6 +28,10 @@
             $nomAvatar = "../../images/Avatar/" . $data['img_profil'];
             $nomFond = "../../images/Fond/" . $data['img_fond'];
         }
+
+        $sql = "SELECT * FROM meilleure_offre WHERE IDvendeur = $id";
+        $result2 = mysqli_query($db_handle, $sql);
+
     }
     mysqli_close($db_handle);
 ?>
@@ -42,18 +46,19 @@
         <!-- <script src='main.js'></script> -->
     </head>
     <body>
-    <div class="nav-barre">
-		<ul>
-			<li><a href="../Achat/Achat-menu.php">ACHAT</a></li>
-			<li class="actif"><a href="#">COMPTE</a></li>
-			<li><a href="../vente/Vendre.php">VENTE</a></li>
-		</ul>
-	</div>
+    <div class="container">
+        <div class="nav-barre">
+            <ul>
+                <li><a href="../Achat/Achat-menu.php">ACHAT</a></li>
+                <li class="actif"><a href="#">COMPTE</a></li>
+                <li><a href="../vente/Vendre.php">VENTE</a></li>
+            </ul>
+        </div>
         <div class="imgFond">
             <img src="<?php echo $nomFond;?>">
-        </div>
-        <div class="imgProfil">
-            <img src="<?php echo $nomAvatar;?>">
+            <div class="imgProfil">
+                <img src="<?php echo $nomAvatar;?>">
+            </div>
         </div>
         <div class="pseudo">
             <p class="rose"><?php echo $pseudo;?></p>
@@ -62,9 +67,7 @@
             <p class="vert">Prénom :</p><p class="blanc"><?php echo $prenom;?></p>
             <p class="vert">Nom :</p><p class="blanc"><?php echo $nom;?></p>
             <p class="vert">Email :</p><p class="blanc"><?php echo $email;?></p>
-        </div>
-        <div class="container">
-            
-        </div>
+        </div>            
+    </div>
     </body>  
 </html>
