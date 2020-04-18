@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 16 avr. 2020 à 10:13
+-- Généré le :  sam. 18 avr. 2020 à 13:53
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `meilleure_offre` (
   `IDacheteur` int(11) NOT NULL,
   `prixVendeur` int(11) NOT NULL,
   `prixAcheteur` int(11) NOT NULL,
+  `nbreOffre` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
