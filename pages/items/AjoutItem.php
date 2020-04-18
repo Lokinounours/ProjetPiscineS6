@@ -1,9 +1,10 @@
 <?php
     $nom = isset($_POST["nom"])? $_POST["nom"] : "";
     $description = isset($_POST["description"])? $_POST["description"] : "";
-    $prix = isset($_POST["prix"])? $_POST["prix"] : 0; // Le prix de base
+    $prix = isset($_POST["prix"])? $_POST["prix"] : ""; // Le prix de base
     $etat = isset($_POST["etat"])? $_POST["etat"] : ""; // Le type de vente
     $dateExpiration = isset($_POST["DateExpiration"])? $_POST["DateExpiration"] : ""; // Date de l'enchère
+    $heureExpiration = isset($_POST["HeureExpiration"])? $_POST["HeureExpiration"] : "";
     $prixEnchere = isset($_POST["prixEnchere"])? $_POST["prixEnchere"] : "";
     $prixOffre = isset($_POST["prixOffre"])? $_POST["prixOffre"] : "";
     $checkPhoto = false;
@@ -20,10 +21,10 @@
     $acheteur = $_SESSION['acheteur'];
     
     if (!empty($_REQUEST["hiddenCategorie"]))$categorie = $_REQUEST["hiddenCategorie"];
-    else $categorie = "empty";
+    else $categorie = "";
 
     if (!empty($_REQUEST["hiddenEnchere"]))$enchere = $_REQUEST["hiddenEnchere"];
-    else $enchere = "empty";
+    else $enchere = "";
 
     if (isset($_POST["btnInscription"])) {
 
@@ -38,15 +39,11 @@
                 $finalString .= "Le champ Nom doit être rempli. <br>";
                 $goodOrNot = false;
             }
-            if($prix==0){
-                $finalString .= "Le champ Prix doit être rempli. <br>";
-                $goodOrNot = false;
-            }
-            if($categorie=="empty"){
+            if($categorie==""){
                 $finalString .= "L'objet doit avoir une catégorie. <br>";
                 $goodOrNot = false;
             }
-            if($enchere=="empty"){
+            if($enchere==""){
                 $finalString .= "L'objet doit avoir au moins un mode de vente. <br>";
                 $goodOrNot = false;
             }
@@ -65,6 +62,35 @@
                 $imgNom2 = "null.jpg";
             }
 
+            if(strstr($enchere, "E")) {
+                if($dateExpiration==""){
+                    $finalString .= "Le champ Date de fin d'enchère doit être rempli. <br>";
+                    $goodOrNot = false;
+                }
+                if($prixEnchere==""){
+                    $finalString .= "Le champ Prix de début d'enchère doit être rempli. <br>";
+                    $goodOrNot = false;
+                }
+                if($heureExpiration==""){
+                    $finalString .= "Le champ Heure de fin d'enchère doit être rempli. <br>";
+                    $goodOrNot = false;
+                }
+            }
+
+            if(strstr($enchere, "I")) {
+                if($prix==""){
+                    $finalString .= "Le champ Prix de vente immédiate doit être rempli. <br>";
+                    $goodOrNot = false;
+                }
+            }
+
+            if(strstr($enchere, "M")) {
+                if($prixOffre==""){
+                    $finalString .= "Le champ Prix de meilleure offre doit être rempli. <br>";
+                    $goodOrNot = false;
+                }
+            }
+
             if($goodOrNot){
 
                 $idProp = $_SESSION['id'];
@@ -72,6 +98,24 @@
                 $sql = "INSERT INTO item(nom, description, photo, video, prix, categorie, IDprop, etat) 
                         VALUES('$nom', '$description', '$imgNom1', '$imgNom2', '$prix', '$categorie', '$idProp', '$enchere')";
                 mysqli_query($db_handle, $sql);
+
+                $last_id = mysqli_insert_id($db_handle);
+                $idAcheteur = 0;
+
+                if(strstr($enchere, "E")) {
+                    $sql = "INSERT INTO enchere(IDitem, IDvendeur, IDacheteur, prixHaut, dateFin, heureFin) 
+                        VALUES('$last_id', '$idProp', '$idAcheteur', '$prixEnchere', '$dateExpiration', '$heureExpiration')";
+                    mysqli_query($db_handle, $sql);
+                }
+
+                if(strstr($enchere, "M")) {
+                    $nbrOffre = 1;
+                    $prixAcheteur = -1;
+                    $sql = "INSERT INTO meilleure_offre(IDitem, IDvendeur, IDacheteur, prixVendeur, prixAcheteur, nbreOffre) 
+                        VALUES('$last_id', '$idProp', '$idAcheteur', '$prixOffre', '$prixAcheteur', '$nbrOffre')";
+                    mysqli_query($db_handle, $sql);
+                }
+
             }
         }
         mysqli_close($db_handle);
@@ -192,6 +236,9 @@
             <div class="date dNone">
                 <h1>Date d'expiration de l'enchère </h1>
                 <input id="YESS" type="date" name="DateExpiration" placeholder="" class="txtInpt">
+
+                <h1>Heure d'expiration de l'enchère </h1>
+                <input id="NOO" type="time" name="HeureExpiration" placeholder="" class="txtInpt">
 
                 <h1>Prix de dépard de l'enchère</h1>
                 <input
