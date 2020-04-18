@@ -39,11 +39,13 @@ $(document).ready(function () {
 
         let test = "";
         $(".date").addClass("dNone");
+        $(".offre").addClass("oNone");
         $(".enchere-active").each(function (index) {
             if (this.id == "ench1") { test += "E"; $(".date").toggleClass("dNone"); }
             if (this.id == "ench2") test += "I";
-            if (this.id == "ench3") test += "M";
+            if (this.id == "ench3") { test += "M"; $(".offre").toggleClass("oNone"); }
         });
+
 
         let final = test;
 
