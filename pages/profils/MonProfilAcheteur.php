@@ -86,7 +86,7 @@
     <input type="hidden" id="hiddenFond" name="hiddenFond" />
     <div class="nav-barre">
 		<ul>
-			<li><a href="#">ACHAT</a></li>
+			<li><a href="../Achat/Achat-menu.php">ACHAT</a></li>
 			<li class="actif"><a href="#">COMPTE</a></li>
 			<li><a href="../vente/Vendre.php">VENTE</a></li>
 		</ul>
