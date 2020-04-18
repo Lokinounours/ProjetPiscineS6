@@ -3,6 +3,7 @@
     $description = isset($_POST["description"])? $_POST["description"] : "";
     $prix = isset($_POST["prix"])? $_POST["prix"] : 0; // Le prix de base
     $etat = isset($_POST["etat"])? $_POST["etat"] : ""; // Le type de vente
+    $dateExpiration = isset($_POST["DateExpiration"])? $_POST["DateExpiration"] : ""; // Date de l'enchère
     $checkPhoto = false;
     $checkVideo = false;
     
