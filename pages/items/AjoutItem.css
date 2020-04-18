@@ -275,3 +275,15 @@ tr:last-child input {
 .oNone {
     display: none;
 }
+
+.prixIm {
+    margin: 100px 0;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 150px;
+    color: var(--secondary);
+}
+
+.iNone {
+    display: none;
+}

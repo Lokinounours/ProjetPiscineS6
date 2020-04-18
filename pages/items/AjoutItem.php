@@ -94,7 +94,9 @@
 
     <div class="nav-barre">
         <ul>
-            <a href="../Achat/Achat-menu.php"><li>ACHAT</li></a>
+            <a href="../Achat/Achat-menu.php">
+                <li>ACHAT</li>
+            </a>
             <?php
 				if($admin){
 					echo '<a href="../profils/MonProfilAdmin.php"><li>Compte</li></a>';
@@ -106,7 +108,9 @@
 					echo '<a href="../connection/SignUpVendeur.php"><li>'."INSCRIPTION".'</li></a>';
 				}
 			?>
-            <a href="../vente/Vendre.php"><li>VENTE</li></a>
+            <a href="../vente/Vendre.php">
+                <li>VENTE</li>
+            </a>
         </ul>
     </div>
     <div class="container">
@@ -146,14 +150,6 @@
                         </td>
                         <td><textarea maxlength="100" name="description" class="btn colorSync" type="text"
                                 placeholder="Description" rows="4" cols="25"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h1>Prix</h1>
-                        </td>
-                        <td><input
-                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                maxlength="11" name="prix" class="btn colorSync" type="number" placeholder="Prix"></td>
                     </tr>
                     <tr>
                         <td>
@@ -203,6 +199,15 @@
                     maxlength="11" name="prixEnchere" class="btn colorSync" type="number" placeholder="Prix Enchère">
 
             </div>
+
+            <div class="prixIm iNone">
+
+                <h1>Prix de vente</h1>
+                <input
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    maxlength="11" name="prix" class="btn colorSync" type="number" placeholder="Prix">
+            </div>
+
 
             <div class="offre oNone">
 

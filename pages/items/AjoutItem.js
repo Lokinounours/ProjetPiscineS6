@@ -39,10 +39,11 @@ $(document).ready(function () {
 
         let test = "";
         $(".date").addClass("dNone");
+        $(".prixIm").addClass("iNone");
         $(".offre").addClass("oNone");
         $(".enchere-active").each(function (index) {
             if (this.id == "ench1") { test += "E"; $(".date").toggleClass("dNone"); }
-            if (this.id == "ench2") test += "I";
+            if (this.id == "ench2") { test += "I"; $(".prixIm").toggleClass("iNone"); }
             if (this.id == "ench3") { test += "M"; $(".offre").toggleClass("oNone"); }
         });
 
