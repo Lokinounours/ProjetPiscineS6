@@ -8,7 +8,37 @@
 
     $pseudo = $_SESSION['pseudo'];
 
+    $hiddenValue = isset($_POST["hiddenString"])? $_POST["hiddenString"] : "";
+
     if ($db_found) {
+
+        if($hiddenValue != ""){
+            if($hiddenValue[0]=='A'){
+                $idItemUpdate = intval(substr($hiddenValue,1));
+                $sql = "UPDATE `meilleure_offre` SET `dernier` = 'V' WHERE `meilleure_offre`.`IDitem` = $idItemUpdate";
+                mysqli_query($db_handle, $sql);
+            }elseif($hiddenValue[0]=='S'){
+                $idItemUpdateS = intval(substr($hiddenValue,1));
+                $sql = "UPDATE `meilleure_offre` SET `IDacheteur` = '0', `prixVendeur` = '-1', `nbreOffre` = '0', `dernier` = 'vendeur' WHERE `meilleure_offre`.`IDitem` = $idItemUpdateS";
+                mysqli_query($db_handle, $sql);
+            }else{
+                for($n=0; $n < strlen($hiddenValue); $n++){
+                    if($hiddenValue[$n]=='/'){
+                        $marque = $n;
+                    }
+                }
+                $idItemUpdateM = "";
+                for($o=0; $o < $marque; $o++){
+                    $idItemUpdateM .= $hiddenValue[$o];
+                }
+
+                $idItemUpdateM = intval($idItemUpdateM);
+                $nvPrixVendeur = intval(substr($hiddenValue,$marque+1));
+
+                $sql = "UPDATE `meilleure_offre` SET `prixVendeur` = '$nvPrixVendeur', `dernier` = 'vendeur' WHERE `meilleure_offre`.`IDitem` = $idItemUpdateM";
+                mysqli_query($db_handle, $sql);
+            }
+        }
 
         $sql = "SELECT * FROM identification WHERE pseudo LIKE '%$pseudo%'";
         $result = mysqli_query($db_handle, $sql);
@@ -45,7 +75,8 @@
         <title>Sign Up</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel='stylesheet' type='text/css' media='screen' href='MonProfilVendeur.css'>
-        <!-- <script src='main.js'></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="MonProfilVendeur.js"></script>
     </head>
     <body>
     <div class="container">
@@ -140,15 +171,22 @@
                 echo '<div class="offreP"><p>'. $pseudoAcheteur[$m] . ' offre £ </p><p class="udrlg">' . $prixAcheteur[$m] . '</p>.</div>';
                 echo '<p>Vous aviez proposé £'. $prixVendeur[$m] . '.</p>';
                 echo '<div class="propositions">';
-                echo '<div class="accepter">Accepter ' . "l'offre". '</div>';
-                echo '<div class="redo">Refaire une offre</div>';
+                echo '<div class="accepter"><span name="A'. $idItem[$m] .'" class="accept">Accepter ' . "l'offre". '</span></div>';
+                if($nbrOffre[$m]<5){
+                    echo '<div class="redo"><span name="'. $idItem[$m] .'" class="refaire">Refaire une offre</span></div>';
+                }else{
+                    echo '<div class="redo"><span name="'. $idItem[$m] .'" class="refaire">Annuler '. "l'offre" . '</span></div>';
+                }
                 echo '</div>';
                 echo '<p> Nombre '. "d'offres" . ' : ' . $nbrOffre[$m] ;
                 echo '</div>';
             }
 
             echo '</div>';
-        ?>         
+        ?>
+        <form action="" enctype="multipart/form-data" method="POST" id="hiddenForm">
+            <input type="hidden" id="hString" name="hiddenString" /> 
+        </form>
     </div>
     </body>  
 </html>

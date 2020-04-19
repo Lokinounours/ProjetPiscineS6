@@ -117,7 +117,7 @@
                 }
 
                 if(strstr($enchere, "M")) {
-                    $nbrOffre = 1;
+                    $nbrOffre = 0;
                     $prixAcheteur = -1;
                     $dernier = "vendeur";
                     $sql = "INSERT INTO meilleure_offre(IDitem, IDvendeur, IDacheteur, prixVendeur, prixAcheteur, nbreOffre, dernier) 
