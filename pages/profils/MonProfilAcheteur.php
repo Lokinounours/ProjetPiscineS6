@@ -78,7 +78,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="MonProfilAcheteur.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='MonProfilAcheteur.css'>
-    <title>Mon Compte Acheteur</title>
+    <title>Mon Profil Acheteur</title>
 </head>
 
 <body>

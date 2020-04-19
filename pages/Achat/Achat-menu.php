@@ -120,7 +120,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="achat-menu.js"></script>
 	<link rel='stylesheet' type='text/css' media='screen' href='achat-style.css'>
-	<title>Achat Menu</title>
+	<title>Achat</title>
 </head>
 
 <body>
