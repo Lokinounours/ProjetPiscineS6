@@ -71,7 +71,7 @@
     </div>
     <div class="container">
         <div class="fondVendre" style="background-image: url(../../images/Fond/fond-choix3.jpg);">
-            <p>vendre</p>
+            <p class="titrePage">VENTE</p>
             <?php
                 if($vendeur){
                     echo '<div class="carteVendeur">';

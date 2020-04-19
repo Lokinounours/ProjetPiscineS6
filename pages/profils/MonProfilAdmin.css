@@ -76,7 +76,6 @@
 .info {
     width: 80%;
     margin: auto;
-    background: var(--secondary);
     border-radius: 30px;
     padding: 50px;
     margin-top: 150px;
@@ -88,7 +87,6 @@
 }
 
 .center {
-    background-color: var(--secondary);
     margin: 0 80px;
 }
 
@@ -97,7 +95,6 @@
 }
 
 .center h1, h2, h3, p {
-    background-color: var(--secondary);
 }
 
 .nomPrenom {

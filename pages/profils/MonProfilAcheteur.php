@@ -102,51 +102,43 @@
     </div>
     <div class="info">
         <div class="center">
-            <div class="split"><h1>Type de compte:</h1><h1>Acheteur</h1></div>
+            <div class="split"><h1>Type de compte:</h1><h1 class="hBlanc">Acheteur</h1></div>
             <div class="nomPrenom">
-                <div class="split"><h1>Nom:</h1><h1><?php echo $nom; ?></h1></div>
-                <div class="split"><h1>Prenom:</h1><h1><?php echo $prenom; ?></h1></div>
+                <div class="split"><h1>Nom:</h1><h1><?php echo '<p class="hBlanc">' . $nom . '</p>';?></h1></div>
+                <div class="split"><h1>Prenom:</h1><h1 class="hBlanc"><?php echo $prenom; ?></h1></div>
             </div>
             <div class="adresse">
                 <div class="split"><h1>Coordonnées</h1></div>
                 <div class="topAdresse">
-                    <div class="split"><h1>Adresse:</h1><h1><?php echo $adresse; ?></h1></div>
-                    <div class="split"><h1>Ville:</h1><h1><?php echo $ville; ?></h1></div>
+                    <div class="split"><h1>Adresse:</h1><h1 class="hBlanc"><?php echo $adresse; ?></h1></div>
+                    <div class="split"><h1>Ville:</h1><h1 class="hBlanc"><?php echo $ville; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Code Postal:</h1><h1><?php echo $codePostal; ?></h1></div>
-                    <div class="split"><h1>Pays:</h1><h1><?php echo $pays; ?></h1></div>
+                    <div class="split"><h1>Code Postal:</h1><h1 class="hBlanc"><?php echo $codePostal; ?></h1></div>
+                    <div class="split"><h1>Pays:</h1><h1 class="hBlanc"><?php echo $pays; ?></h1></div>
                 </div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Email:</h1><h1><?php echo $email; ?></h1></div>
+                <div class="split"><h1>Email:</h1><h1 class="hBlanc"><?php echo $email; ?></h1></div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Téléphone:</h1><h1><?php echo $numTelephone; ?></h1></div>
+                <div class="split"><h1>Téléphone:</h1><h1 class="hBlanc"><?php echo $numTelephone; ?></h1></div>
             </div>
             <div class="adresse">
                 <div class="split"><h1>Paiement</h1></div>
                 <div class="topAdresse">
-                    <div class="split"><h1>N° de carte:</h1><h1><?php echo $numCarte; ?></h1></div>
-                    <div class="split"><h1>CVV:</h1><h1><?php echo $code; ?></h1></div>
+                    <div class="split"><h1>N° de carte:</h1><h1 class="hBlanc"><?php echo $numCarte; ?></h1></div>
+                    <div class="split"><h1>CVV:</h1><h1 class="hBlanc"><?php echo $code; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Nom sur la carte:</h1><h1><?php echo $nomCarte; ?></h1></div>
-                    <div class="split"><h1>Date expiration:</h1><h1><?php echo $dateExpiration; ?></h1></div>
+                    <div class="split"><h1>Nom sur la carte:</h1><h1 class="hBlanc"><?php echo $nomCarte; ?></h1></div>
+                    <div class="split"><h1>Date expiration:</h1><h1 class="hBlanc"><?php echo $dateExpiration; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Code postal:</h1><h1><?php echo $codePostal; ?></h1></div>
-                    <div class="split"><h1>Pays:</h1><h1><?php echo $pays; ?></h1></div>
+                    <div class="split"><h1>Code postal:</h1><h1 class="hBlanc"><?php echo $codePostal; ?></h1></div>
+                    <div class="split"><h1>Pays:</h1><h1 class="hBlanc"><?php echo $pays; ?></h1></div>
                 </div>
             </div>
         </div>
-        <div class="split special"><h1>Image de fond:</h1></div>
-        <ul class="categorie">
-            <li id="fond-choix1.jpg" class="catBtn"><img id="fond-choix1" src="../../images/Fond/fond-choix1.jpg" alt="fond1"></li>
-            <li id="fond-choix2.jpg" class="catBtn"><img id="fond-choix2" src="../../images/Fond/fond-choix2.jpg" alt="fond2"></li>
-            <li id="fond-choix3.jpg" class="catBtn"><img id="fond-choix3" src="../../images/Fond/fond-choix3.jpg" alt="fond3"></li>
-        </ul>
-    </div>
-</body>
-
+    </body>
 </html>

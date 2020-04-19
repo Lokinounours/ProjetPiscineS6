@@ -116,7 +116,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="detailAchat.js"></script>
-    <title>Detail Achat</title>
+    <title>Détail Achat</title>
 </head>
 
 <body>
@@ -144,7 +144,7 @@
 	</div>
     <div class="container">
         <div class="fondVendre" style="background-image: url(../../images/Fond/fond-choix3.jpg);">
-            <p>Achat</p>
+            <p class="titrePage">ACHAT</p>
             <div class="carteVendeur">
                 <?php
                     while($data = mysqli_fetch_assoc($result3)){
