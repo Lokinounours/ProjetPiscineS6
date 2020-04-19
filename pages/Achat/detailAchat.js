@@ -16,7 +16,12 @@ $(document).ready(function () {
 
         if (this.id == "E") {
             modif = "E"
-            modif += prompt("Quel enchère voulez vous faire ?", prix)
+            tmp = prix;
+            tmp = prompt("Quel enchère voulez vous faire ?", prix)
+            while (tmp <= prix) {
+                tmp = prompt("La valeur de votre enchère est trop basse", prix)
+            }
+            modif += tmp;
         }
         if (this.id == "I") {
             modif = "I"
@@ -26,6 +31,7 @@ $(document).ready(function () {
             modif = "M"
             modif += prompt("Quel est votre meilleur offre ?", prix)
         }
+
 
         let myhidden = document.getElementById("hiddenPrix");
         myhidden.value = modif;
