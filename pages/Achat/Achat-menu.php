@@ -51,6 +51,7 @@
 		$tmpRequest = "";
 		switch (strlen($rechercher)) {
 			case 1:
+				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
 				$tmpRequest .= " ) ORDER BY prix ASC";
 				break;
@@ -58,25 +59,23 @@
 				$tmpRequest .= " AND categorie like '%";
 				$tmpRequest .= sortLettre($rechercher);
 				$tmpRequest .= "%'";
+				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
 				$tmpRequest .= " ) ORDER BY prix DESC";
 			break;
 			case 3:
-				echo sortLettre(substr($rechercher , 0, strlen($rechercher) -1));
-				echo "<br>";
 				$tmpRequest .= " AND categorie like '%";
 				$tmpRequest .= sortLettre(substr($rechercher , 0, strlen($rechercher) -1));
 				$tmpRequest .= "%'";
+				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
 				$tmpRequest .= " ) ORDER BY prix ASC";
 				echo $tmpRequest; 
 				break;
 		}
 		if(isset($_POST["researchBtn"])){
-// 			SELECT ID, Name 
-//			FROM   Table1 
-// 			WHERE  ID NOT IN (SELECT ID FROM Table2)	
 			if(!empty($search)){
+				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%') AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
 				$result = mysqli_query($db_handle, $sql);
 				echo $sql;
@@ -88,6 +87,7 @@
 				}
 				else {
 					$sql .= ")";
+					// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 					$sql .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
 				}
 				$result = mysqli_query($db_handle, $sql);
