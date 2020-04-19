@@ -29,7 +29,7 @@ $(document).ready(function () {
         }
         if (this.id == "M") {
             modif = "M"
-            modif += prompt("Quel est votre meilleur offre ?", prix)
+            modif += prompt("Quel est votre meilleur offre ? (oui si vous acceptez l'offre actuel)", "oui")
         }
 
 
