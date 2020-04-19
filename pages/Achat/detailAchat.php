@@ -37,6 +37,12 @@
             $prixHaut = $data['prixHaut'];
             $prixAff = $data['prixAff'];
         }
+
+        $sql = "SELECT * FROM meilleure_offre WHERE IDitem = $idProduit AND IDacheteur = 0";
+        $result3 = mysqli_query($db_handle, $sql);
+        while($data = mysqli_fetch_assoc($result3)){
+            $prixMeilleureOffre = $data['prixVendeur'];
+        }
         
         if (substr( $prix , 0 , 1 ) == "I") {
             if (substr( $prix , 1 , 3 ) == "oui") {
