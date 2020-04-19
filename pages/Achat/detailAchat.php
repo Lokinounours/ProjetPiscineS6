@@ -32,8 +32,8 @@
         }
 
         $sql = "SELECT * FROM enchere WHERE IDitem = $idProduit";
-        $result2 = mysqli_query($db_handle, $sql);
-        while($data = mysqli_fetch_assoc($result2)){
+        $result4 = mysqli_query($db_handle, $sql);
+        while($data = mysqli_fetch_assoc($result4)){
             $prixHaut = $data['prixHaut'];
             $prixAff = $data['prixAff'];
         }
