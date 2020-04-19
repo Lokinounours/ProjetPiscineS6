@@ -15,7 +15,6 @@
     $db_found = mysqli_select_db($db_handle, $database);
 
     if ($db_found) {
-
         
         $sql = "SELECT * FROM item WHERE ID = $idProduit";
         $result = mysqli_query($db_handle, $sql);
@@ -182,7 +181,8 @@
                     <div class="left"><img src="../../images/Logo/logo-enchere.png" alt=""></div>
                     <div class="right">
                         <h1>Enchère</h1>
-                        <p id="E">'. $prixItem .'£</p>
+                        <!-- // ON affiche prixAff mais faut update prixHaut -->
+                        <p id="E">'. $prixAff .'£</p>
                     </div>
                 </div>';
                     if ($etat[$i] == "I") echo '<div class="elem" id="I"> 
@@ -196,7 +196,7 @@
                     <div class="left"><img src="../../images/Logo/logo-meilleure-offre.png" alt=""></div>
                     <div class="right">
                         <h1>Meilleure offre</h1>
-                        <p id="M">'. $prixItem .'£</p>
+                        <p id="M">'. $prixMeilleureOffre .'£</p>
                     </div>
                 </div>';
                 }
