@@ -36,8 +36,8 @@
         if (substr( $prix , 0 , 1 ) == "I") {
             if (substr( $prix , 1 , 3 ) == "oui") {
                 $last_id = mysqli_insert_id($db_handle);
-                $sql = "DELETE FROM `item` WHERE ID = $idProduit";
-                mysqli_query($db_handle, $sql);
+                // $sql = "DELETE FROM `item` WHERE ID = $idProduit";
+                // mysqli_query($db_handle, $sql);
                 $sql = "INSERT INTO `achat_immediat`(`ID`, `IDitem`, `IDvendeur`, `IDacheteur`, `prix`) 
                 VALUES ($last_id,$idProduit,$idProp,$idAcheteur,$prixItem)";
                 mysqli_query($db_handle, $sql);
@@ -120,7 +120,8 @@
             <?php
                 echo '<div class="left"><img src="../../images/Items/' . $photoItem . '" alt=""></div>';
                 echo '<div class="right">';
-                echo '<h1>' . $categorieItem . '</h1>';
+                echo '<h1>' . $nomItem . '</h1>';
+                echo '<h3>' . $categorieItem . '</h3>';
                 echo '<p>' . $descriptionItem . '</p>';
                 echo '</div>';
             ?>

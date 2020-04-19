@@ -51,27 +51,25 @@
 		$tmpRequest = "";
 		switch (strlen($rechercher)) {
 			case 1:
-				$tmpRequest .= ") ORDER BY prix ASC"; // BUG PROBABLE Prix et etat prix: FIXED
+				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+				$tmpRequest .= " ) ORDER BY prix ASC";
 				break;
 			case 2:
 				$tmpRequest .= " AND categorie like '%";
 				$tmpRequest .= sortLettre($rechercher);
 				$tmpRequest .= "%'";
-				$tmpRequest .= ")";
-				$tmpRequest .= " ORDER BY prix DESC";
-				break;
+				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+				$tmpRequest .= " ) ORDER BY prix DESC";
+			break;
 			case 3:
-				// echo "Test";
-				// echo "<br>";
-				// echo $rechercher;
-				// echo "<br>";
-				// echo "Fin test";
-				// echo "<br>";
+				echo sortLettre(substr($rechercher , 0, strlen($rechercher) -1));
+				echo "<br>";
 				$tmpRequest .= " AND categorie like '%";
-				$tmpRequest .= sortLettre(substr(0, strlen($rechercher) -1)); // BUG PROPABLE cat et prix: FIXED
+				$tmpRequest .= sortLettre(substr($rechercher , 0, strlen($rechercher) -1));
 				$tmpRequest .= "%'";
-				$tmpRequest .= ")";
-				$tmpRequest .= " ORDER BY prix ASC";
+				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+				$tmpRequest .= " ) ORDER BY prix ASC";
+				echo $tmpRequest; 
 				break;
 		}
 		if(isset($_POST["researchBtn"])){
@@ -79,23 +77,24 @@
 //			FROM   Table1 
 // 			WHERE  ID NOT IN (SELECT ID FROM Table2)	
 			if(!empty($search)){
-				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%') AND ID NOT IN (SELECT IDitem FROM Table2)";
+				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%') AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
 				$result = mysqli_query($db_handle, $sql);
+				echo $sql;
 			} else {
 				$sql = "SELECT * FROM item WHERE (etat like '%$etat%'";
-				if($tmpRequest != ""){
-					// $sql .= ")";
+				if($tmpRequest != "") {
 					$sql .= $tmpRequest;
+					
 				}
-				else $sql .= ")";
-				echo $tmpRequest;
-				echo "<br>";
-				echo $sql;
+				else {
+					$sql .= ")";
+					$sql .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+				}
 				$result = mysqli_query($db_handle, $sql);
 			}
 		}
 		else{
-            $sql = "SELECT * FROM item";
+            $sql = "SELECT * FROM item WHERE ID NOT IN (SELECT IDitem FROM achat_immediat)";
             $result = mysqli_query($db_handle, $sql);
 		}
 		
