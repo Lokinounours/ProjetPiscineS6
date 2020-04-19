@@ -127,7 +127,7 @@
 
     <div class="nav-barre">
 		<ul>
-			<a href="Achat-menu.php"><li class="actif">ACHAT</li></a>
+			<a href="Achat-menu.php"><li>ACHAT</li></a>
 			<?php
 				if($admin){
 					echo '<a href="../profils/MonProfilAdmin.php"><li>Compte</li></a>';

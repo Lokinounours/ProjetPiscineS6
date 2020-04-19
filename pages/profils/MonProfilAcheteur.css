@@ -75,10 +75,11 @@
     /* position: relative; */
     text-align: center;
     height: 200px;
-    width : 95vw;
+    width : 80vw;
     border-radius: 30px;
     /* background-image: url("../../images/Fond/fond-choix2.jpg"); */
     background-size: cover;
+    position: relative;
 }
 
 .achat-bottom h1 {
@@ -93,9 +94,9 @@
 }
 
 .achat-bottom .profil {
-    position: relative;
-    left: 100px;
-    top: -40px;
+    position: absolute;
+    left: 5vw;
+    top: 100px;
     height: 200px;
     width: 200px;
     background-color: var(--secondary);
