@@ -10,7 +10,7 @@
 
     if ($db_found) {
 
-        $sql = "SELECT * FROM identification WHERE pseudo = $pseudo";
+        $sql = "SELECT * FROM identification WHERE pseudo LIKE '%$pseudo%'";
         $result = mysqli_query($db_handle, $sql);
 
         while ($data = mysqli_fetch_assoc($result)){
@@ -31,7 +31,7 @@
 
         $dernier = "acheteur";
 
-        $sql = "SELECT * FROM meilleure_offre WHERE IDvendeur = $id AND dernier = $dernier";
+        $sql = "SELECT * FROM meilleure_offre WHERE IDvendeur = $id AND dernier LIKE '%$dernier%'";
         $result2 = mysqli_query($db_handle, $sql);
 
     }
@@ -69,7 +69,86 @@
             <p class="vert">Prénom :</p><p class="blanc"><?php echo $prenom;?></p>
             <p class="vert">Nom :</p><p class="blanc"><?php echo $nom;?></p>
             <p class="vert">Email :</p><p class="blanc"><?php echo $email;?></p>
-        </div>            
+        </div>
+
+        <?php
+            echo '<p class="verte">Offres attendant votre réponse</p>';
+            
+            if ($result2){
+                $row2 = mysqli_num_rows($result2);
+                $i = 0;
+                while ($data = mysqli_fetch_assoc($result2)) {
+                    $idItem[$i] = $data['IDitem'];
+                    $prixAcheteur[$i] = $data['prixAcheteur'];
+                    $idAcheteur[$i] = $data['IDacheteur'];
+                    $prixVendeur[$i] = $data['prixVendeur'];
+                    $nbrOffre[$i] = $data['nbreOffre'];
+                    $i+=1;
+                }
+            }
+
+            for($j=0; $j<$i; $j++){
+
+                $db_handle = mysqli_connect('localhost', 'root', '');
+                $db_found = mysqli_select_db($db_handle, $database);
+
+                $idItemTmp = $idItem[$j];
+                $sql3 = "SELECT * FROM item WHERE ID = $idItemTmp";
+                $result3 = mysqli_query($db_handle, $sql3);
+                while ($data3 = mysqli_fetch_assoc($result3)) {
+                    $nomItem[$j] = $data3["nom"];
+                    $photoItem[$j] = $data3['photo'];
+                    $categorieItem[$j] = $data3["categorie"];
+                    for ($k=0; $k<strlen($data3["etat"]); $k++) {
+                        if ($data3["etat"][$k] == "E") $etatItem[$j] = "logo-enchere.png";
+                        if ($data3["etat"][$k] == "I") $etatItem[$j] = "logo-achat-imédiat.png";
+                        if ($data3["etat"][$k] == "M") $etatItem[$j] = "logo-meilleure-offre.png";
+                    }
+                }
+                mysqli_close($db_handle);
+            }
+
+            for($l=0; $l<$i; $l++){
+
+                $db_handle = mysqli_connect('localhost', 'root', '');
+                $db_found = mysqli_select_db($db_handle, $database);
+
+                $idAcheteurTmp = $idAcheteur[$l];
+                $sql4 = "SELECT * FROM identification WHERE ID = $idAcheteurTmp";
+                $result4 = mysqli_query($db_handle, $sql4);
+                while ($data4 = mysqli_fetch_assoc($result4)) {
+                    $pseudoAcheteur[$l] = $data4['pseudo'];
+                }
+                mysqli_close($db_handle);
+            }
+
+            echo '<div class="listItems">';
+            for($m=0; $m<$i; $m++){
+                echo '<div class="item">';
+                echo '<div class="info">';
+                echo '<p class="rose">' . $nomItem[$m] .'</p>';
+                echo '</div>';
+                echo '<div class="imgItem">';
+                echo '<img src="../../images/Items/' . $photoItem[$m] . '">';
+                echo '</div>';
+                echo '<div class="info2">';
+                echo '<p>' . $categorieItem[$m] .'</p>';
+                echo '</div>';
+                echo '<div class="item-bottom">';
+                echo '<img src=' . '"../../images/Logo/' . $etatItem[$m] .'" alt="Enchere">';
+                echo '</div>';
+                echo '<div class="offreP"><p>'. $pseudoAcheteur[$m] . ' offre £ </p><p class="udrlg">' . $prixAcheteur[$m] . '</p>.</div>';
+                echo '<p>Vous aviez proposé £'. $prixVendeur[$m] . '.</p>';
+                echo '<div class="propositions">';
+                echo '<div class="accepter">Accepter ' . "l'offre". '</div>';
+                echo '<div class="redo">Refaire une offre</div>';
+                echo '</div>';
+                echo '<p> Nombre '. "d'offres" . ' : ' . $nbrOffre[$m] ;
+                echo '</div>';
+            }
+
+            echo '</div>';
+        ?>         
     </div>
     </body>  
 </html>
