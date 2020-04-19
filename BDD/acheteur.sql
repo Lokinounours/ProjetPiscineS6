@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 16 avr. 2020 à 14:50
--- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Host: localhost:8889
+-- Generation Time: Apr 19, 2020 at 02:32 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,17 +17,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `piscine`
+-- Database: `piscine`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `acheteur`
+-- Table structure for table `acheteur`
 --
 
-DROP TABLE IF EXISTS `acheteur`;
-CREATE TABLE IF NOT EXISTS `acheteur` (
+CREATE TABLE `acheteur` (
   `ID` int(11) NOT NULL,
   `adresse_1` varchar(60) NOT NULL,
   `ville` varchar(30) NOT NULL,
@@ -39,18 +36,19 @@ CREATE TABLE IF NOT EXISTS `acheteur` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `acheteur`
+-- Dumping data for table `acheteur`
 --
 
 INSERT INTO `acheteur` (`ID`, `adresse_1`, `ville`, `code_postal`, `pays`, `numero_tel`) VALUES
-(59, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202),
-(73, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202),
-(74, '28 rue vermeil', 'SÃ¨vre', 92310, 'France', 909090909),
-(75, '28 rue vermeil', 'SÃ¨vre', 92310, 'France', 909090909),
-(76, '28 rue vermeil', 'SÃ¨vre', 92310, 'France', 909090909),
-(77, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202),
-(78, '23 rue fermÃ©e', 'SÃ¨vres', 92310, 'France', 202020202);
-COMMIT;
+(4, '56 rue de la faisanderie', 'Paris', 75016, 'France', 648572315),
+(5, '28 avenue de la paix', 'Fontainebleau', 54120, 'France', 745825641),
+(6, '15 rue de la mer', 'Brest', 15000, 'France', 684572358),
+(7, '151 rue de la pompe', 'Monaco', 54200, 'France', 675421546),
+(8, '15 promenade des Anglais', 'Nice', 68470, 'France', 789532145),
+(10, '85 rue des vallons', 'Biarritz', 16800, 'France', 685420365),
+(11, '69 rue napoleon Bonaparte', 'Lille', 69500, 'France', 785639124),
+(12, '213 rue Leon Blum', 'Clermont Ferrand', 58200, 'France', 615243656),
+(13, '48 rue des batignolles', 'Lyon', 84200, 'France', 734598621);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

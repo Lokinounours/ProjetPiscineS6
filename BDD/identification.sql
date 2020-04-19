@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 16 avr. 2020 à 14:50
--- Version du serveur :  10.4.10-MariaDB
--- Version de PHP :  7.3.12
+-- Host: localhost:8889
+-- Generation Time: Apr 19, 2020 at 02:33 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,54 +17,72 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `piscine`
+-- Database: `piscine`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `identification`
+-- Table structure for table `identification`
 --
 
-DROP TABLE IF EXISTS `identification`;
-CREATE TABLE IF NOT EXISTS `identification` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `identification` (
+  `ID` int(11) NOT NULL,
   `email` varchar(60) DEFAULT NULL,
   `pseudo` varchar(30) DEFAULT NULL,
   `password` varchar(30) DEFAULT NULL,
   `nom` varchar(30) DEFAULT NULL,
-  `prenom` varchar(30) DEFAULT NULL,
-  UNIQUE KEY `ID` (`ID`)
-) ENGINE=MyISAM AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
+  `prenom` varchar(30) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `identification`
+-- Dumping data for table `identification`
 --
 
 INSERT INTO `identification` (`ID`, `email`, `pseudo`, `password`, `nom`, `prenom`) VALUES
 (1, 'pierre.admin@edu.ece.fr', 'pierreW', 'pierreW01', 'wojciechowski', 'pierre'),
 (2, 'jules.admin@edu.ece.fr', 'julesL', 'julesL02', 'lestrade', 'jules'),
 (3, 'paul.admin@edu.ece.fr', 'paulC', 'paulC03', 'coutiere', 'paul'),
-(63, 'jfonti@gmail.com', 'jfonti', 'lol', 'fontaine', 'jean'),
-(62, 'jfont@gmail.com', 'jfont', 'lol', 'fontaine', 'jean'),
-(61, 'labaj@gmail.com', 'labaj', 'lol', 'Laba', 'Jacques'),
-(60, 'hjklm@ok.fr', 'hjklm', 'hjklm', 'hjklm', 'hjklm'),
-(59, 'popkj@ok.fr', 'sdffff', 'fr', 'mi', 'Jean'),
-(64, 'mimi@gmail.com', 'mimi', 'lol', 'mih', 'michel'),
-(65, 'molki@gmail.com', 'molkives', 'lol', 'molki', 'ives'),
-(66, 'popkidj@ok.fr', 'mikado', 'lol', 'mi', 'Jean'),
-(67, 'aaaaaa@ok.fr', 'mkkkkkkka', 'lol', 'mi', 'Jean'),
-(68, 'pommsdqsdpkj@ok.fr', 'mmmmmmm', 'lol', 'mi', 'Jean'),
-(73, 'pj@ok.fr', 'frtu', 'lol', 'mi', 'Jean'),
-(70, 'popfffkj@ok.fr', 'qqsfsdf', 'lol', 'mi', 'Jean'),
-(71, 'poiuyt@ok.fr', 'poiuytr', 'lol', 'mi', 'Jean'),
-(72, 'pdddopkj@ok.fr', 'kooooli', 'lol', 'mi', 'Jean'),
-(74, 'turl@gmail.com', 'opurjgof', 'lol', 'opu', 'turl'),
-(75, 'tturrrl@gmail.com', 'poliiiit', 'lol', 'opu', 'turl'),
-(76, 'turtle@gmail.com', 'jutiop', 'lol', 'opu', 'turl'),
-(77, 'poertpkj@ok.fr', 'sert', 'lol', 'mi', 'Jean'),
-(78, 'aepetopkj@ok.fr', 'azerty', 'ju', 'mi', 'Jean');
-COMMIT;
+(4, 'jean.latour@gmail.com', 'JLatour', 'latour', 'LATOUR', 'Jean'),
+(5, 'pierre.deboire@orange.fr', 'PDeboire', 'deboire', 'DEBOIRE', 'Pierre'),
+(6, 'bastien.alvarez@yahoo.com', 'Bastien91', '12345', 'ALVAREZ', 'Bastien'),
+(7, 'harry.stanford@sky.uk', 'Stanford12', 'stanford', 'STANFORD', 'Harry'),
+(8, 'jeanluc.vuentroud@hotmail.fr', 'JLV', 'vuentroud', 'VUENTROUD', 'Jean Luc'),
+(9, 'louis.vuitton@free.com', 'LV', 'vuitton', 'VUITTON', 'Louis'),
+(10, 'clement.vervorten@gmail.com', 'ClemVer', 'vervorten', 'VERVORTEN', 'Clement'),
+(11, 'victor.ricozzi@gmail.com', 'Riccozzi1', 'ricozzi', 'RICOZZI', 'Victor'),
+(12, 'arthur.lenotre@gmail.com', 'Arthur', 'lenotre', 'LENOTRE', 'Arthur'),
+(13, 'arsene.bonaparte@gmail.com', 'StarBn', 'bonaparte', 'BONAPARTE', 'Arsene'),
+(14, 'georges.sand@gmail.com', 'GeorgesV', 'sand', 'SAND', 'Georges'),
+(15, 'mathias.etchevey@gmail.com', 'METC', 'etchevey', 'ETCHEVEY', 'Mathias'),
+(16, 'justin.normand@yahoo.fr', 'Just\'un', 'Normand', 'NORMAND', 'Justin'),
+(17, 'peter.sanders@hotmail.com', 'SHotmail', 'sanders', 'SANDERS', 'Peter'),
+(18, 'stephanie.lv@yahoo.fr', 'SLV', 'lv', 'LAVAL', 'Stéphanie'),
+(19, 'valerie.lemercier@yahoo.fr', 'Lemer', 'lemercier', 'LEMERCIER', 'Valerie'),
+(20, 'alice.aubrac@gmail.com', 'ABC', 'aubrac', 'AUBRAC', 'Alice'),
+(21, 'charlotte.venetti@hotmail.com', 'Ven19', 'venetti', 'VENETTI', 'Charlotte'),
+(22, 'elise.villeveau@gmail.com', 'Elise4', 'villeveau', 'VILLEVEAU', 'Elise'),
+(23, 'lea.emaret@gmail.com', 'EmLea', 'emaret', 'EMARET', 'Lea');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `identification`
+--
+ALTER TABLE `identification`
+  ADD UNIQUE KEY `ID` (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `identification`
+--
+ALTER TABLE `identification`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
