@@ -4,7 +4,6 @@
     $prix = isset($_POST["prix"])? $_POST["prix"] : ""; // Le prix de base
     $etat = isset($_POST["etat"])? $_POST["etat"] : ""; // Le type de vente
     $dateExpiration = isset($_POST["DateExpiration"])? $_POST["DateExpiration"] : ""; // Date de l'enchère
-    $heureExpiration = isset($_POST["HeureExpiration"])? $_POST["HeureExpiration"] : "";
     $prixEnchere = isset($_POST["prixEnchere"])? $_POST["prixEnchere"] : "";
     $prixOffre = isset($_POST["prixOffre"])? $_POST["prixOffre"] : "";
     $checkPhoto = false;
@@ -71,10 +70,6 @@
                     $finalString .= "Le champ Prix de début d'enchère doit être rempli. <br>";
                     $goodOrNot = false;
                 }
-                if($heureExpiration==""){
-                    $finalString .= "Le champ Heure de fin d'enchère doit être rempli. <br>";
-                    $goodOrNot = false;
-                }
             }
 
             if(strstr($enchere, "I")) {
@@ -111,8 +106,8 @@
                 // Ou on attend la fin de la requette et on demande le last item (c'est ce que je fais juste au dessus
 
                 if(strstr($enchere, "E")) {
-                    $sql = "INSERT INTO enchere(IDitem, IDvendeur, IDacheteur, prixHaut, dateFin, heureFin) 
-                        VALUES('$last_id', '$idProp', '$idAcheteur', '$prixEnchere', '$dateExpiration', '$heureExpiration')";
+                    $sql = "INSERT INTO enchere(IDitem, IDvendeur, IDacheteur, prixHaut, prixAff, dateFin) 
+                        VALUES('$last_id', '$idProp', '$idAcheteur', '$prixEnchere', 1, '$dateExpiration')";
                     mysqli_query($db_handle, $sql);
                 }
 
@@ -245,9 +240,6 @@
             <div class="date dNone">
                 <h1>Date d'expiration de l'enchère </h1>
                 <input id="YESS" type="date" name="DateExpiration" placeholder="" class="txtInpt">
-
-                <h1>Heure d'expiration de l'enchère </h1>
-                <input id="NOO" type="time" name="HeureExpiration" placeholder="" class="txtInpt">
 
                 <h1>Prix de dépard de l'enchère</h1>
                 <input
