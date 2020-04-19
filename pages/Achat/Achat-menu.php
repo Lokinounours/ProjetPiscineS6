@@ -9,15 +9,17 @@
 	
 	$database = "piscine";
 
+	$today=date("Y-m-d");
+
 	$db_handle = mysqli_connect('localhost', 'root', '');
 	$db_found = mysqli_select_db($db_handle, $database);
 
 	if (!empty($_REQUEST["hiddenEtat"]))$etat = $_REQUEST["hiddenEtat"];
 	else $etat = "";
-
+	
 	if (!empty($_REQUEST["hiddenRecherche"]))$rechercher = $_REQUEST["hiddenRecherche"];
 	else $rechercher = "";
-
+	
 	if (!empty($_REQUEST["hiddenID"]))$idProduit = $_REQUEST["hiddenID"];
 	else $idProduit = -1;
 	if($idProduit!=-1){
@@ -53,6 +55,7 @@
 			case 1:
 				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today')";
 				$tmpRequest .= " ) ORDER BY prix ASC";
 				break;
 			case 2:
@@ -61,6 +64,7 @@
 				$tmpRequest .= "%'";
 				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today')";
 				$tmpRequest .= " ) ORDER BY prix DESC";
 			break;
 			case 3:
@@ -69,6 +73,7 @@
 				$tmpRequest .= "%'";
 				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today')";
 				$tmpRequest .= " ) ORDER BY prix ASC";
 				echo $tmpRequest; 
 				break;
@@ -76,25 +81,28 @@
 		if(isset($_POST["researchBtn"])){
 			if(!empty($search)){
 				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
-				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%') AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%') AND ID NOT IN (SELECT IDitem FROM achat_immediat) AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today')";
 				$result = mysqli_query($db_handle, $sql);
 				echo $sql;
 			} else {
+
 				$sql = "SELECT * FROM item WHERE (etat like '%$etat%'";
+
 				if($tmpRequest != "") {
 					$sql .= $tmpRequest;
-					
 				}
 				else {
 					$sql .= ")";
 					// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 					$sql .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
+					$sql .= " AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today')";
 				}
+				echo $sql;
 				$result = mysqli_query($db_handle, $sql);
 			}
 		}
 		else{
-            $sql = "SELECT * FROM item WHERE ID NOT IN (SELECT IDitem FROM achat_immediat)";
+            $sql = "SELECT * FROM item WHERE ID NOT IN (SELECT IDitem FROM achat_immediat) AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today')";
             $result = mysqli_query($db_handle, $sql);
 		}
 		
