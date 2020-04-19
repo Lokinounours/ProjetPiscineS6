@@ -15,10 +15,12 @@
         if($hiddenValue != ""){
             if($hiddenValue[0]=='A'){
                 $idItemUpdate = intval(substr($hiddenValue,1));
-                $sql = "UPDATE `meilleure_offre` SET `dernier` = 'V' WHERE `meilleure_offre`.`IDitem` = $idItemUpdate";
+                // il faut check aussi idAcheteur
+                $sql = "UPDATE `meilleure_offre` SET `dernier` = 'X' WHERE `meilleure_offre`.`IDitem` = $idItemUpdate";
                 mysqli_query($db_handle, $sql);
             }elseif($hiddenValue[0]=='S'){
                 $idItemUpdateS = intval(substr($hiddenValue,1));
+                //delete au lieu d'update avec idAcheteur
                 $sql = "UPDATE `meilleure_offre` SET `IDacheteur` = '0', `prixVendeur` = '-1', `nbreOffre` = '0', `dernier` = 'vendeur' WHERE `meilleure_offre`.`IDitem` = $idItemUpdateS";
                 mysqli_query($db_handle, $sql);
             }else{
@@ -35,6 +37,7 @@
                 $idItemUpdateM = intval($idItemUpdateM);
                 $nvPrixVendeur = intval(substr($hiddenValue,$marque+1));
 
+                //check également idAcheteur
                 $sql = "UPDATE `meilleure_offre` SET `prixVendeur` = '$nvPrixVendeur', `dernier` = 'vendeur' WHERE `meilleure_offre`.`IDitem` = $idItemUpdateM";
                 mysqli_query($db_handle, $sql);
             }
