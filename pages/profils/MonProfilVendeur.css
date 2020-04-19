@@ -114,8 +114,81 @@
     margin-left: 6vw;
 }
 
+.verte{
+    margin-top:20px;
+    color:var(--vert);
+    font-size: large;
+}
+
 .blanc{
     color:var(--blanc);
     margin-right:8vw;
     padding-left:10px;
+}
+
+.listItems{
+    width:70vw;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.item{
+    border: solid 2px white;
+    border-radius:4px;
+    /* padding: 5px; */
+    height: 450px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:20px;
+    box-shadow: 0px 10px 20px black;
+    transition: 0.3s ease-in-out;
+}
+
+.item .propositions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item .propositions .accepter, .redo{
+    padding:5px;
+    border: solid 2px white;
+    border-radius: 4px;
+    margin: 5px;
+    cursor: pointer;
+    color: var(--primary);
+    font-weight:bold;
+}
+
+.item .propositions .accepter{
+    background-color: var(--vert);
+}
+
+.item .propositions .redo{
+    background-color: var(--rose);
+}
+
+.item .udrlg{
+    text-decoration: underline;
+    text-decoration-color: var(--blanc);
+}
+
+.item .offreP{
+    display: flex;
+    flex-direction: row;
+}
+
+.item:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 20px var(--secondary);
+}
+
+.imgItem img{
+    width:200px;
+    height:200px;
 }
