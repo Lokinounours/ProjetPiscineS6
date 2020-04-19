@@ -56,6 +56,43 @@
             }
         }
 
+        if (substr( $prix , 0 , 1 ) == "M") {
+
+            $prixAcheteur = intval(substr($prix,1));
+            $nbrOffre = 1;
+            $dernier = 'acheteur';
+
+            $sql = "INSERT INTO `meilleure_offre`(`IDitem`, `IDvendeur`, `IDacheteur`, `prixVendeur`, `prixAcheteur`, `nbreOffre`, `dernier`) 
+            VALUES ($idProduit,$idProp,$idAcheteur,$prixMeilleureOffre,$prixAcheteur,$nbrOffre,$dernier)";
+            mysqli_query($db_handle, $sql);
+
+            header('Location: ./Achat-menu.php');
+
+        }
+
+        if (substr( $prix , 0 , 1 ) == "E") {
+
+            $prixAcheteurRecu = intval(substr($prix,1));
+            
+            if($prixAcheteurRecu > $prixHaut){
+                $idAcheteurEnchere = $idAcheteur;
+                $prixAfficheEnchere = $prixHaut + 1;
+                $prixHautEnchere = $prixAcheteurRecu;
+
+                $sql = "UPDATE `enchere` SET `IDacheteur` = $idAcheteurEnchere, `prixHaut` = $prixHautEnchere, `prixAff` = $prixAfficheEnchere,
+                        WHERE `enchere`.`IDitem` = $idProduit";
+                mysqli_query($db_handle, $sql);
+
+            }else{
+                $prixAfficheEnchere = $prixAcheteurRecu;
+                $sql = "UPDATE `enchere` SET `prixAff` = $prixAfficheEnchere,
+                        WHERE `enchere`.`IDitem` = $idProduit";
+                mysqli_query($db_handle, $sql);
+            }
+            
+            header('Location: ./Achat-menu.php');
+        }
+
         $sql = "SELECT * FROM identification WHERE ID = $idProp";
         $result2 = mysqli_query($db_handle, $sql);
 
