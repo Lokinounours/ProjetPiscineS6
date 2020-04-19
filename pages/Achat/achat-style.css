@@ -320,13 +320,17 @@
 }
 
 .listItems{
-    width:70vw;
+    width:75vw;
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     align-items: center;
     margin-bottom: 2vh;
+}
+
+.item {
+    height: 550px !important;
 }
 
 
