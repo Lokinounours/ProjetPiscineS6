@@ -78,13 +78,13 @@
                 $prixAfficheEnchere = $prixHaut + 1;
                 $prixHautEnchere = $prixAcheteurRecu;
 
-                $sql = "UPDATE `enchere` SET `IDacheteur` = $idAcheteurEnchere, `prixHaut` = $prixHautEnchere, `prixAff` = $prixAfficheEnchere,
+                $sql = "UPDATE `enchere` SET `IDacheteur` = '$idAcheteurEnchere', `prixHaut` = '$prixHautEnchere', `prixAff` = '$prixAfficheEnchere',
                         WHERE `enchere`.`IDitem` = $idProduit";
                 mysqli_query($db_handle, $sql);
 
             }else{
                 $prixAfficheEnchere = $prixAcheteurRecu;
-                $sql = "UPDATE `enchere` SET `prixAff` = $prixAfficheEnchere,
+                $sql = "UPDATE `enchere` SET `prixAff` = '$prixAfficheEnchere',
                         WHERE `enchere`.`IDitem` = $idProduit";
                 mysqli_query($db_handle, $sql);
             }
