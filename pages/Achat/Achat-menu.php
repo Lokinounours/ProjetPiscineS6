@@ -75,9 +75,11 @@
 				break;
 		}
 		if(isset($_POST["researchBtn"])){
-			
+// 			SELECT ID, Name 
+//			FROM   Table1 
+// 			WHERE  ID NOT IN (SELECT ID FROM Table2)	
 			if(!empty($search)){
-				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%')";
+				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%') AND ID NOT IN (SELECT IDitem FROM Table2)";
 				$result = mysqli_query($db_handle, $sql);
 			} else {
 				$sql = "SELECT * FROM item WHERE (etat like '%$etat%'";

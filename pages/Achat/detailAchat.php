@@ -3,14 +3,21 @@
     $idAcheteur = $_SESSION['id'];
     $idProduit = $_SESSION['idProduit'];
 
+    $admin = $_SESSION['admin'];
+    $vendeur = $_SESSION['vendeur'];
+    $acheteur = $_SESSION['acheteur'];
+
     if (!empty($_REQUEST["hiddenPrix"]))$prix = $_REQUEST["hiddenPrix"];
     else $prix = 0;
+    echo $prix;
 
     $database = "piscine";
     $db_handle = mysqli_connect('localhost', 'root', '');
     $db_found = mysqli_select_db($db_handle, $database);
 
     if ($db_found) {
+
+        
         $sql = "SELECT * FROM item WHERE ID = $idProduit";
         $result = mysqli_query($db_handle, $sql);
         while($data = mysqli_fetch_assoc($result)){
@@ -23,6 +30,19 @@
             $categorieItem = $data['categorie'];
             $idProp = $data['IDprop'];
             $etat = $data['etat'];
+        }
+        
+        
+        if (substr( $prix , 0 , 1 ) == "I") {
+            if (substr( $prix , 1 , 3 ) == "oui") {
+                $last_id = mysqli_insert_id($db_handle);
+                $sql = "DELETE FROM `item` WHERE ID = $idProduit";
+                mysqli_query($db_handle, $sql);
+                $sql = "INSERT INTO `achat_immediat`(`ID`, `IDitem`, `IDvendeur`, `IDacheteur`, `prix`) 
+                VALUES ($last_id,$idProduit,$idProp,$idAcheteur,$prixItem)";
+                mysqli_query($db_handle, $sql);
+                header('Location: ./Achat-menu.php');
+            }
         }
 
         $sql = "SELECT * FROM identification WHERE ID = $idProp";
@@ -59,12 +79,22 @@
     </form>
 
     <div class="nav-barre">
-        <ul>
-            <li class="actif">ACHAT</li>
-            <li>Compte</li>
-            <li>VENTE</li>
-        </ul>
-    </div>
+		<ul>
+			<li class="actif">ACHAT</li>
+			<?php
+				if($admin){
+					echo '<a href="../profils/MonProfilAdmin.php"><li>Compte</li></a>';
+				}elseif($acheteur){
+					echo '<a href="../profils/MonProfilAcheteur.php"><li>Compte</li></a>';
+				}elseif($vendeur){
+					echo '<a href="../profils/MonProfilVendeur.php"><li>Compte</li></a>';
+				}else{
+					echo '<a href="../connection/SignUpAcheteur.php"><li>'."INSCRIPTION".'</li></a>';
+				}
+			?>
+			<a href="../vente/Vendre.php"><li>VENTE</li></a>
+		</ul>
+	</div>
     <div class="container">
         <div class="fondVendre" style="background-image: url(../../images/Fond/fond-choix3.jpg);">
             <p>Achat</p>
