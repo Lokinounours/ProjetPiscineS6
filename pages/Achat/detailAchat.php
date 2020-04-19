@@ -9,7 +9,6 @@
 
     if (!empty($_REQUEST["hiddenPrix"]))$prix = $_REQUEST["hiddenPrix"];
     else $prix = 0;
-    echo $prix;
 
     $database = "piscine";
     $db_handle = mysqli_connect('localhost', 'root', '');
@@ -31,7 +30,13 @@
             $idProp = $data['IDprop'];
             $etat = $data['etat'];
         }
-        
+
+        $sql = "SELECT * FROM enchere WHERE IDitem = $idProduit";
+        $result2 = mysqli_query($db_handle, $sql);
+        while($data = mysqli_fetch_assoc($result2)){
+            $prixHaut = $data['prixHaut'];
+            $prixAff = $data['prixAff'];
+        }
         
         if (substr( $prix , 0 , 1 ) == "I") {
             if (substr( $prix , 1 , 3 ) == "oui") {
