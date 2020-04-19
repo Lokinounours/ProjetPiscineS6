@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 19, 2020 at 02:33 PM
+-- Generation Time: Apr 19, 2020 at 10:33 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -33,6 +33,7 @@ CREATE TABLE `meilleure_offre` (
   `IDacheteur` int(11) NOT NULL,
   `prixVendeur` int(11) NOT NULL,
   `prixAcheteur` int(11) NOT NULL,
+  `nbreOfrre` int(11) NOT NULL,
   `dernier` varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -40,17 +41,17 @@ CREATE TABLE `meilleure_offre` (
 -- Dumping data for table `meilleure_offre`
 --
 
-INSERT INTO `meilleure_offre` (`ID`, `IDitem`, `IDvendeur`, `IDacheteur`, `prixVendeur`, `prixAcheteur`, `dernier`) VALUES
-(1, 5, 21, 0, 585, 500, 'Vendeur'),
-(2, 8, 16, 0, 149, 0, 'Vendeur'),
-(3, 9, 19, 0, 115, 0, 'Vendeur'),
-(4, 11, 21, 0, 100, 0, 'Vendeur'),
-(5, 14, 16, 0, 2500, 0, 'Vendeur'),
-(6, 15, 21, 0, 6200, 0, 'Vendeur'),
-(7, 19, 15, 0, 459, 0, 'Vendeur'),
-(8, 22, 18, 0, 1750, 0, 'Vendeur'),
-(9, 26, 19, 0, 4890, 0, 'Vendeur'),
-(10, 27, 18, 0, 2090, 0, 'Vendeur');
+INSERT INTO `meilleure_offre` (`ID`, `IDitem`, `IDvendeur`, `IDacheteur`, `prixVendeur`, `prixAcheteur`, `nbreOfrre`, `dernier`) VALUES
+(1, 5, 21, 0, 585, 500, 0, 'vendeur'),
+(2, 8, 16, 0, 149, 0, 0, 'vendeur'),
+(3, 9, 19, 0, 115, 0, 0, 'vendeur'),
+(4, 11, 21, 0, 100, 0, 0, 'vendeur'),
+(5, 14, 16, 0, 2500, 0, 0, 'vendeur'),
+(6, 15, 21, 0, 6200, 0, 0, 'vendeur'),
+(7, 19, 15, 0, 459, 0, 0, 'vendeur'),
+(8, 22, 18, 0, 1750, 0, 0, 'vendeur'),
+(9, 26, 19, 0, 4890, 0, 0, 'vendeur'),
+(10, 27, 18, 0, 2090, 0, 0, 'vendeur');
 
 --
 -- Indexes for dumped tables
