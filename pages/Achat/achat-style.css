@@ -345,6 +345,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: transparent;
 }
 
 .imgItem{
@@ -355,16 +356,19 @@
 
 .info2 p{
     text-align: center;
-    color: var(--blanc); 
+    color: var(--blanc);
+    background: transparent;
 }
 
 p {
     text-align: center;
     color: var(--blanc);
+    background: transparent;
 }
 
 .info2 {
     height: 100%;
+    background: transparent;
 }
 
 .item{
