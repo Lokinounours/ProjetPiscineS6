@@ -174,7 +174,7 @@
 		<ul>
 			<li><a href="../Achat/Achat-menu.php">ACHAT</a></li>
 			<li class="actif"><a href="#">COMPTE</a></li>
-            <li><a href="">DECONNEXION</a></li>
+            <li><a href="../connection/deconnection.php">DECONNEXION</a></li>
 			<li><a href="../vente/Vendre.php">VENTE</a></li>
 		</ul>
 	</div>

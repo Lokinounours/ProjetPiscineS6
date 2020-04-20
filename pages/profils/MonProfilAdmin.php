@@ -105,6 +105,14 @@
     <script src="MonProfilAdmin.js"></script>
 </head>
 <body>
+    <div class="nav-barre">
+		<ul>
+			<li><a href="../Achat/Achat-menu.php">ACHAT</a></li>
+			<li class="actif"><a href="#">COMPTE</a></li>
+            <li><a href="../connection/deconnection.php">DECONNEXION</a></li>
+			<li><a href="../vente/Vendre.php">VENTE</a></li>
+		</ul>
+	</div>
     <div class="container">
         <div class="admin-bottom" style="background-image: url(../../images/Fond/fond-choix1.jpg);">
             <h1>MON COMPTE</h1>

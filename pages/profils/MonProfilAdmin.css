@@ -21,8 +21,50 @@
     
 }
 
+.nav-barre ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-barre li{
+    color: var(--bleu);
+    margin: 20px;
+    display: flex;
+    border: 2px solid var(--bleu);
+    border-radius: 20px;
+    transition: 0.3s ease-in-out;
+}
+.nav-barre li a{
+    padding: 10px 30px;
+    background: transparent;
+    text-decoration: none;
+    color: var(--bleu);
+    transition: 0.3s ease-in-out;
+}
+
+.nav-barre .actif{
+    background-color: var(--bleu);
+    transform: scale(1.1);
+}
+
+.nav-barre .actif a{
+    color: var(--blanc);
+    cursor: default;
+}
+
+.nav-barre li:hover{
+    color: var(--blanc);
+    background-color: var(--bleu);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.nav-barre li:hover a{
+    color: var(--blanc);
+}
+
 .container {
-    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,14 +74,17 @@
     /* position: relative; */
     text-align: center;
     height: 300px;
-    width : 95vw;
+    width : 80vw;
     border-radius: 30px;
     /* background-image: url("../../images/Fond/fond-choix2.jpg"); */
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .admin-bottom h1 {
-    margin-top: 50px;
     font-size: 4em;
     letter-spacing: 10px;
     color: var(--jaune);
@@ -50,9 +95,9 @@
 }
 
 .admin-bottom .profil {
-    position: relative;
-    left: 100px;
-    top: -40px;
+    position: absolute;
+    left: 5vw;
+    top: 80px;
     height: 330px;
     width: 200px;
     background-color: var(--secondary);

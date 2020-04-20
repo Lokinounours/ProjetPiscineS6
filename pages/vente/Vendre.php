@@ -58,13 +58,13 @@
             <?php
 				if($admin){
 					echo '<a href="../profils/MonProfilAdmin.php"><li>COMPTE</li></a>';
-                    echo '<a href=""><li>DECONNEXION</li></a>';
+                    echo '<a href="../connection/deconnection.php"><li>DECONNEXION</li></a>';
 				}elseif($vendeur){
 					echo '<a href="../profils/MonProfilVendeur.php"><li>COMPTE</li></a>';
-                    echo '<a href=""><li>DECONNEXION</li></a>';
+                    echo '<a href="../connection/deconnection.php"><li>DECONNEXION</li></a>';
 				}elseif($acheteur){
 					echo '<a href="../profils/MonProfilAcheteur.php"><li>COMPTE</li></a>';
-                    echo '<a href=""><li>DECONNEXION</li></a>';
+                    echo '<a href="../connection/deconnection.php"><li>DECONNEXION</li></a>';
 				}else{
 					echo '<a href="../connection/SignUpVendeur.php"><li>'."INSCRIPTION".'</li></a>';
 				}
