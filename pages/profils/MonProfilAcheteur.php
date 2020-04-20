@@ -65,6 +65,13 @@
         $dateExpiration[8]=$copy[7];
         $dateExpiration[9]=$copy[6];
 
+        $sql = "SELECT IDitem FROM `achat_immediat` WHERE IDacheteur = $id";
+        $result5 = mysqli_query($db_handle, $sql);
+        $sql = "SELECT IDitem FROM `enchere` WHERE IDacheteur = $id";
+        $result6 = mysqli_query($db_handle, $sql);
+        $sql = "SELECT IDitem FROM `meilleure_offre` WHERE IDacheteur = $id";
+        $result7 = mysqli_query($db_handle, $sql);
+
     }
     mysqli_close($db_handle);
 ?>
@@ -140,12 +147,24 @@
                 </div>
             </div>
         </div>
-        <div class="split special"><h1>Image de fond:</h1></div>
+        <!-- <div class="split special"><h1>Image de fond:</h1></div>
         <ul class="categorie">
             <li id="fond-choix1.jpg" class="catBtn"><img id="fond-choix1" src="../../images/Fond/fond-choix1.jpg" alt="fond1"></li>
             <li id="fond-choix2.jpg" class="catBtn"><img id="fond-choix2" src="../../images/Fond/fond-choix2.jpg" alt="fond2"></li>
             <li id="fond-choix3.jpg" class="catBtn"><img id="fond-choix3" src="../../images/Fond/fond-choix3.jpg" alt="fond3"></li>
-        </ul>
+        </ul> -->
+        <div class="split"><h1 style="background-color: var(--secondary)">Vos transactions</h1></div>
+        <?php
+            while ($data = mysqli_fetch_assoc($result5)){
+                echo "<br> $data[IDitem]";
+            }
+            while ($data = mysqli_fetch_assoc($result6)) {
+                echo "<br> $data[IDitem]";
+            }
+            while ($data = mysqli_fetch_assoc($result7)) {
+                echo "<br> $data[IDitem]";
+            }
+        ?>
     </div>
 </body>
 
