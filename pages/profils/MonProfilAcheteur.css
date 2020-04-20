@@ -225,6 +225,7 @@
 
 .hBlanc{
     color: var(--blanc);
+    padding-right: 10px;
 }
 
 .hRouge{

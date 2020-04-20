@@ -20,6 +20,26 @@
     background-color: var(--primary);
 }
 
+.infoVendeur{
+    margin-top:20px;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px var(--blanc);
+    border-radius: 20px;
+}
+
+.email{
+    margin-top:20px;
+    margin-bottom:20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .nav-barre ul{
     display: flex;
     justify-content: space-evenly;
@@ -57,7 +77,7 @@
 }
 
 .imgFond{
-    width: 70vw;
+    width: 80vw;
     height: 15vh;
     border-radius: 15px;
     overflow: hidden;
