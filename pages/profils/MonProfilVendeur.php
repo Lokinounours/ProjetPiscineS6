@@ -134,9 +134,11 @@
             <ul>
                 <a href="../Achat/Achat-menu.php"><li>ACHAT</li></a>
                 <li class="actif">COMPTE</li>
+                <a href=""><li>DECONNECTION</li></a>
                 <a href="../vente/Vendre.php"><li>VENTE</li></a>
+                
             </ul>
-        </div>
+    </div>
     <div class="container">
         <div class="imgFond">
             <img src="<?php echo $nomFond;?>">

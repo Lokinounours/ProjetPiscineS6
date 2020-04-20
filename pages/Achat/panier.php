@@ -54,6 +54,7 @@
 		<ul>
 			<li class="actif">ACHAT</li>
 			<li>Compte</li>
+            <li>DECONNEXION</li>
 			<li>VENTE</li>
 		</ul>
 	</div>
