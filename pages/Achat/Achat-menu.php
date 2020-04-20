@@ -134,13 +134,13 @@
 			<li class="actif">ACHAT</li>
 			<?php
 				if($admin){
-					echo '<a href="../profils/MonProfilAdmin.php"><li>Compte</li></a>';
+					echo '<a href="../profils/MonProfilAdmin.php"><li>COMPTE</li></a>';
 					echo '<a href=""><li>DECONNEXION</li></a>';
 				}elseif($acheteur){
-					echo '<a href="../profils/MonProfilAcheteur.php"><li>Compte</li></a>';
+					echo '<a href="../profils/MonProfilAcheteur.php"><li>COMPTE</li></a>';
 					echo '<a href=""><li>DECONNEXION</li></a>';
 				}elseif($vendeur){
-					echo '<a href="../profils/MonProfilVendeur.php"><li>Compte</li></a>';
+					echo '<a href="../profils/MonProfilVendeur.php"><li>COMPTE</li></a>';
 					echo '<a href=""><li>DECONNEXION</li></a>';
 				}else{
 					echo '<a href="../connection/SignUpAcheteur.php"><li>'."INSCRIPTION".'</li></a>';
