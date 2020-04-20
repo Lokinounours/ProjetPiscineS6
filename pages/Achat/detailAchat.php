@@ -1,4 +1,5 @@
 <?php
+
     session_start();
     $idAcheteur = $_SESSION['id'];
     $idProduit = $_SESSION['idProduit'];
@@ -30,18 +31,22 @@
             $etat = $data['etat'];
         }
 
-        $sql = "SELECT * FROM enchere WHERE IDitem = $idProduit";
-        $result4 = mysqli_query($db_handle, $sql);
-        while($data = mysqli_fetch_assoc($result4)){
-            $prixHaut = $data['prixHaut'];
-            $prixAff = $data['prixAff'];
+        if( strstr($etat, 'E')) {
+            $sql = "SELECT * FROM enchere WHERE IDitem = $idProduit";
+            $result4 = mysqli_query($db_handle, $sql);
+            while($data = mysqli_fetch_assoc($result4)){
+                $prixHaut = $data['prixHaut'];
+                $prixAff = $data['prixAff'];
+            }
         }
 
-        $sql = "SELECT * FROM meilleure_offre WHERE IDitem = $idProduit AND IDacheteur = 0";
-        $result3 = mysqli_query($db_handle, $sql);
-        while($data = mysqli_fetch_assoc($result3)){
-            $prixMeilleureOffre = $data['prixVendeur'];
-        }
+        if(strstr($etat, 'M')) {
+            $sql = "SELECT * FROM meilleure_offre WHERE IDitem = $idProduit AND IDacheteur = 0";
+            $result3 = mysqli_query($db_handle, $sql);
+            while($data = mysqli_fetch_assoc($result3)){
+                $prixMeilleureOffre = $data['prixVendeur'];
+            }
+        }   
         
         if (substr( $prix , 0 , 1 ) == "I") {
             if (substr( $prix , 1 , 3 ) == "oui") {
@@ -49,7 +54,7 @@
                 // $sql = "DELETE FROM `item` WHERE ID = $idProduit";
                 // mysqli_query($db_handle, $sql);
                 $sql = "INSERT INTO `achat_immediat`(`ID`, `IDitem`, `IDvendeur`, `IDacheteur`, `prix`) 
-                VALUES ($last_id,$idProduit,$idProp,$idAcheteur,$prixItem)";
+                VALUES('$last_id', '$idProduit', '$idProp', '$idAcheteur', '$prixItem')";
                 mysqli_query($db_handle, $sql);
                 header('Location: ./Achat-menu.php');
             }
@@ -62,7 +67,8 @@
             $dernier = 'acheteur';
 
             $sql = "INSERT INTO `meilleure_offre`(`IDitem`, `IDvendeur`, `IDacheteur`, `prixVendeur`, `prixAcheteur`, `nbreOffre`, `dernier`) 
-            VALUES ($idProduit,$idProp,$idAcheteur,$prixMeilleureOffre,$prixAcheteur,$nbrOffre,$dernier)";
+            VALUES('$idProduit', '$idProp', '$idAcheteur', '$prixMeilleureOffre', '$prixAcheteur', '$nbrOffre', '$dernier')";
+            
             mysqli_query($db_handle, $sql);
 
             header('Location: ./Achat-menu.php');
