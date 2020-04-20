@@ -331,7 +331,7 @@
             <div class="adresse">
                 <div class="split">
                     <h1>Téléphone:</h1>
-                    <h1 class="hBlanc"><?php echo $numTelephone; ?></h1>
+                    <h1 class="hBlanc">0<?php echo $numTelephone; ?></h1>
                 </div>
             </div>
             <div class="adresse">
@@ -357,15 +357,9 @@
                         <h1>Date expiration:</h1>
                         <h1 class="hBlanc"><?php echo $dateExpiration; ?></h1>
                     </div>
-                </div>
-                <div class="bottomAdresse">
                     <div class="split">
-                        <h1>Code postal:</h1>
-                        <h1 class="hBlanc"><?php echo $codePostal; ?></h1>
-                    </div>
-                    <div class="split">
-                        <h1>Pays:</h1>
-                        <h1 class="hBlanc"><?php echo $pays; ?></h1>
+                        <h1>Solde Compte:</h1>
+                        <h1 class="hBlanc"><?php echo $solde; ?>£</h1>
                     </div>
                 </div>
             </div>
