@@ -16,6 +16,12 @@
     $db_found = mysqli_select_db($db_handle, $database);
 
     if ($db_found) {
+
+        $sql = "SELECT * FROM `info_paiement` WHERE ID = $idAcheteur";
+        $result6 = mysqli_query($db_handle, $sql);
+        while($data = mysqli_fetch_assoc($result6)){
+            $soldeAcheteur = $data['solde'];
+        }
         
         $sql = "SELECT * FROM item WHERE ID = $idProduit";
         $result = mysqli_query($db_handle, $sql);
@@ -46,56 +52,110 @@
             while($data = mysqli_fetch_assoc($result3)){
                 $prixMeilleureOffre = $data['prixVendeur'];
             }
-        }   
-        
+        }
+
+        $finalString = "";
+
         if (substr( $prix , 0 , 1 ) == "I") {
-            if (substr( $prix , 1 , 3 ) == "oui") {
-                $last_id = mysqli_insert_id($db_handle);
-                // $sql = "DELETE FROM `item` WHERE ID = $idProduit";
-                // mysqli_query($db_handle, $sql);
-                $sql = "INSERT INTO `achat_immediat`(`ID`, `IDitem`, `IDvendeur`, `IDacheteur`, `prix`) 
-                VALUES('$last_id', '$idProduit', '$idProp', '$idAcheteur', '$prixItem')";
-                mysqli_query($db_handle, $sql);
-                header('Location: ./Achat-menu.php');
+            if($soldeAcheteur >= $prixItem){
+                if (substr( $prix , 1 , 3 ) == "oui") {
+                    $last_id = mysqli_insert_id($db_handle);
+                    // $sql = "DELETE FROM `item` WHERE ID = $idProduit";
+                    // mysqli_query($db_handle, $sql);
+                    $sql = "INSERT INTO `achat_immediat`(`ID`, `IDitem`, `IDvendeur`, `IDacheteur`, `prix`) 
+                    VALUES('$last_id', '$idProduit', '$idProp', '$idAcheteur', '$prixItem')";
+                    mysqli_query($db_handle, $sql);
+
+                    $sql = "UPDATE `info_paiement` SET `solde` = `solde` - '$prixItem'
+                            WHERE `info_paiement`.`ID` = $idAcheteur";
+                    mysqli_query($db_handle, $sql);
+
+                    header('Location: ./Achat-menu.php');
+                }
+            }else{
+                $finalString .= 'Solde insuffisant.' . '<br>';
             }
         }
 
         if (substr( $prix , 0 , 1 ) == "M") {
 
-            $prixAcheteur = intval(substr($prix,1));
-            $nbrOffre = 1;
-            $dernier = 'acheteur';
+            if (substr( $prix , 1 , 3 ) == "oui") {
 
-            $sql = "INSERT INTO `meilleure_offre`(`IDitem`, `IDvendeur`, `IDacheteur`, `prixVendeur`, `prixAcheteur`, `nbreOffre`, `dernier`) 
-            VALUES('$idProduit', '$idProp', '$idAcheteur', '$prixMeilleureOffre', '$prixAcheteur', '$nbrOffre', '$dernier')";
-            
-            mysqli_query($db_handle, $sql);
+                $sql = "SELECT * FROM `meilleure_offre` WHERE IDitem = $idProduit AND IDacheteur = 0";
+                $result8 = mysqli_query($db_handle, $sql);
+                while($data8 = mysqli_fetch_assoc($result8)){
+                    $prixOffreBase = $data['prixVendeur'];
+                }
 
-            header('Location: ./Achat-menu.php');
+                if($soldeAcheteur >= $prixOffreBase){
+
+                    $sql = "INSERT INTO `achat_immediat`(`IDitem`, `IDvendeur`, `IDacheteur`, `prix`) 
+                    VALUES('$idProduit', '$idProp', '$idAcheteur', '$prixOffreBase')";
+                    mysqli_query($db_handle, $sql);
+
+                    $sql = "UPDATE `info_paiement` SET `solde` = `solde` - '$prixOffreBase'
+                            WHERE `info_paiement`.`ID` = $idAcheteur";
+                    mysqli_query($db_handle, $sql);
+
+                    header('Location: ./Achat-menu.php');
+
+                }else{
+                    $finalString .= 'Solde insuffisant.' . '<br>';
+                }
+                
+            }else{
+
+                $prixAcheteur = intval(substr($prix,1));
+
+                if($soldeAcheteur >= $prixAcheteur){
+
+                    $nbrOffre = 1;
+                    $dernier = 'acheteur';
+
+                    $sql = "INSERT INTO `meilleure_offre`(`IDitem`, `IDvendeur`, `IDacheteur`, `prixVendeur`, `prixAcheteur`, `nbreOffre`, `dernier`) 
+                    VALUES('$idProduit', '$idProp', '$idAcheteur', '$prixMeilleureOffre', '$prixAcheteur', '$nbrOffre', '$dernier')";
+                    
+                    mysqli_query($db_handle, $sql);
+
+                    header('Location: ./Achat-menu.php');
+
+                }else{
+                    $finalString .= 'Solde insuffisant.' . '<br>';
+                }
+            }
 
         }
 
         if (substr( $prix , 0 , 1 ) == "E") {
 
             $prixAcheteurRecu = intval(substr($prix,1));
+
+            if($soldeAcheteur >= $prixAcheteurRecu){
             
-            if($prixAcheteurRecu > $prixHaut){
-                $idAcheteurEnchere = $idAcheteur;
-                $prixAfficheEnchere = $prixHaut + 1;
-                $prixHautEnchere = $prixAcheteurRecu;
+                if($prixAcheteurRecu > $prixHaut){
+                    $idAcheteurEnchere = $idAcheteur;
+                    $prixAfficheEnchere = $prixHaut + 1;
+                    $prixHautEnchere = $prixAcheteurRecu;
 
-                $sql = "UPDATE `enchere` SET `IDacheteur` = '$idAcheteurEnchere', `prixHaut` = '$prixHautEnchere', `prixAff` = '$prixAfficheEnchere'
-                        WHERE `enchere`.`IDitem` = $idProduit";
-                mysqli_query($db_handle, $sql);
+                    $sql = "UPDATE `enchere` SET `IDacheteur` = '$idAcheteurEnchere', `prixHaut` = '$prixHautEnchere', `prixAff` = '$prixAfficheEnchere'
+                            WHERE `enchere`.`IDitem` = $idProduit";
+                    mysqli_query($db_handle, $sql);
 
+                    $sql = "UPDATE `info_paiement` SET `solde` = `solde` - '$prixAcheteurRecu'
+                            WHERE `info_paiement`.`ID` = $idAcheteur";
+                    mysqli_query($db_handle, $sql);
+
+                }else{
+                    $prixAfficheEnchere = $prixAcheteurRecu;
+                    $sql = "UPDATE `enchere` SET `prixAff` = '$prixAfficheEnchere'
+                            WHERE `enchere`.`IDitem` = $idProduit";
+                    mysqli_query($db_handle, $sql);
+                }
+                
+                header('Location: ./Achat-menu.php');
             }else{
-                $prixAfficheEnchere = $prixAcheteurRecu;
-                $sql = "UPDATE `enchere` SET `prixAff` = '$prixAfficheEnchere'
-                        WHERE `enchere`.`IDitem` = $idProduit";
-                mysqli_query($db_handle, $sql);
+                $finalString .= 'Solde insuffisant.' . '<br>';
             }
-            
-            header('Location: ./Achat-menu.php');
         }
 
         $sql = "SELECT * FROM identification WHERE ID = $idProp";
@@ -170,6 +230,11 @@
                 ?>
             </div>
         </div>
+        <?php
+            if($finalString!=""){
+                echo '<p class="finalString">' . $finalString .'</p>';
+            }
+        ?>
     </div>
     <div class="detail-item">
         <div class="top">

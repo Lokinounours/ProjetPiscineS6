@@ -32,6 +32,16 @@
                 $acheteurId = intval($acheteurId);
                 $realItemId = intval(substr($idItemUpdate,$marqueA+1));
 
+                $sql = "SELECT * FROM `meilleure_offre` WHERE `meilleure_offre`.`IDitem` = $realItemId AND `meilleure_offre`.`IDacheteur` = $acheteurId";
+                $result7 = mysqli_query($db_handle, $sql);
+                while ($data7 = mysqli_fetch_assoc($result7)){
+                    $prixPayeFinal = $data7['prixVendeur'];
+                }
+
+                $sql = "UPDATE `info_paiement` SET `solde` = `solde` - '$prixPayeFinal'
+                        WHERE `info_paiement`.`ID` = $acheteurId";
+                mysqli_query($db_handle, $sql);
+
                 $sql = "UPDATE `meilleure_offre` SET `dernier` = 'X' WHERE `meilleure_offre`.`IDitem` = $realItemId AND `meilleure_offre`.`IDacheteur` = $acheteurId";
                 mysqli_query($db_handle, $sql);
 
