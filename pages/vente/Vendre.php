@@ -44,7 +44,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Vendre</title>
+    <title>Vente</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='Vendre.css'>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -71,7 +71,7 @@
     </div>
     <div class="container">
         <div class="fondVendre" style="background-image: url(../../images/Fond/fond-choix3.jpg);">
-            <p>vendre</p>
+            <p class="titrePage">VENTE</p>
             <?php
                 if($vendeur){
                     echo '<div class="carteVendeur">';

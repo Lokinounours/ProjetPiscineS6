@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     $(".accepter").click(function () {
-
         let idItem = $(this).children('.accept').attr('name');
+        console.log(idItem);
         if(confirm("Etes vous sûr(e) ?")){ 
             document.getElementById("hString").value = idItem;
             document.getElementById("hiddenForm").submit();
@@ -14,7 +14,7 @@ $(document).ready(function () {
         if($(this).children('.refaire').text()=='Refaire une offre'){
             let valeur = prompt("Ecrivez le montant désiré.");
             if(valeur && valeur > 0){
-                idItem += '/';
+                idItem += '-';
                 idItem += valeur;
                 document.getElementById("hString").value = idItem;
                 document.getElementById("hiddenForm").submit();

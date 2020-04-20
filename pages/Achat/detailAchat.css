@@ -78,7 +78,6 @@
     display:flex;
     align-items: center;
     justify-content: center;
-    cursor:pointer;
 }
 
 .bckgdCarteVendeur{
@@ -90,10 +89,14 @@
 }
 
 .fondVendre p{
-    color: var(--jaune);
-    text-transform: uppercase;
+    color: var(--blanc);
     background: transparent;
-    font-size: 50px;
+}
+
+.titrePage{
+    font-size: 3.5em;
+    letter-spacing: 20px;
+    font-weight: bold;
 }
 
 .imgVendeur{
@@ -145,6 +148,14 @@
 
 .detail-item .top p {
     color: var(--blanc);
+}
+
+h3, h1{
+    color: var(--blanc);
+}
+
+h3{
+    margin-bottom:4px;
 }
 
 .detail-item .top .left {

@@ -14,31 +14,79 @@
 
         if($hiddenValue != ""){
             if($hiddenValue[0]=='A'){
-                $idItemUpdate = intval(substr($hiddenValue,1));
-                // il faut check aussi idAcheteur
-                $sql = "UPDATE `meilleure_offre` SET `dernier` = 'X' WHERE `meilleure_offre`.`IDitem` = $idItemUpdate";
+
+                $idItemUpdate = substr($hiddenValue,1);
+
+                for($p=0; $p < strlen($idItemUpdate); $p++){
+                    if($idItemUpdate[$p]=='/'){
+                        $marqueA = $p;
+                    }
+                }
+
+                $acheteurId = "";
+
+                for($q=0; $q < $marqueA; $q++){
+                    $acheteurId .= $idItemUpdate[$q];
+                }
+
+                $acheteurId = intval($acheteurId);
+                $realItemId = intval(substr($idItemUpdate,$marqueA+1));
+
+                $sql = "UPDATE `meilleure_offre` SET `dernier` = 'X' WHERE `meilleure_offre`.`IDitem` = $realItemId AND `meilleure_offre`.`IDacheteur` = $acheteurId";
                 mysqli_query($db_handle, $sql);
+
             }elseif($hiddenValue[0]=='S'){
-                $idItemUpdateS = intval(substr($hiddenValue,1));
-                //delete au lieu d'update avec idAcheteur
-                $sql = "UPDATE `meilleure_offre` SET `IDacheteur` = '0', `prixVendeur` = '-1', `nbreOffre` = '0', `dernier` = 'vendeur' WHERE `meilleure_offre`.`IDitem` = $idItemUpdateS";
+                $stringReceived = substr($hiddenValue,1);
+
+                for($r=0; $r < strlen($stringReceived); $r++){
+                    if($stringReceived[$r]=='/'){
+                        $marqueS = $r;
+                    }
+                }
+
+                $acheteurIdS = "";
+
+                for($s=0; $s < $marqueS; $s++){
+                    $acheteurIdS .= $stringReceived[$s];
+                }
+
+                $acheteurIdS = intval($acheteurIdS);
+                $realItemIdS = intval(substr($stringReceived,$marqueS+1));
+
+                $sql = "DELETE FROM `meilleure_offre` WHERE `meilleure_offre`.`IDitem` = $realItemIdS AND `meilleure_offre`.`IDacheteur` = $acheteurIdS";
                 mysqli_query($db_handle, $sql);
+
             }else{
                 for($n=0; $n < strlen($hiddenValue); $n++){
                     if($hiddenValue[$n]=='/'){
                         $marque = $n;
                     }
                 }
-                $idItemUpdateM = "";
+                $acheteurIdL = "";
                 for($o=0; $o < $marque; $o++){
-                    $idItemUpdateM .= $hiddenValue[$o];
+                    $acheteurIdL .= $hiddenValue[$o];
                 }
 
-                $idItemUpdateM = intval($idItemUpdateM);
-                $nvPrixVendeur = intval(substr($hiddenValue,$marque+1));
+                $acheteurIdL = intval($acheteurIdL);
 
-                //check également idAcheteur
-                $sql = "UPDATE `meilleure_offre` SET `prixVendeur` = '$nvPrixVendeur', `dernier` = 'vendeur' WHERE `meilleure_offre`.`IDitem` = $idItemUpdateM";
+                $nvPrixVendeur = substr($hiddenValue,$marque+1);
+
+                for($t=0; $t < strlen($nvPrixVendeur); $t++){
+                    if($nvPrixVendeur[$t]=='-'){
+                        $marque2 = $t;
+                    }
+                }
+
+                $realItemIdL = "";
+
+                for($u=0; $u < $marque2; $u++){
+                    $realItemIdL .= $nvPrixVendeur[$u];
+                }
+
+                $realItemIdL = intval($realItemIdL);
+                $prixItemL = intval(substr($nvPrixVendeur,$marque2+1));
+
+                $sql = "UPDATE `meilleure_offre` SET `prixVendeur` = '$prixItemL', `dernier` = 'vendeur' WHERE `meilleure_offre`.`IDitem` = $realItemIdL AND `meilleure_offre`.`IDacheteur` = $acheteurIdL";
                 mysqli_query($db_handle, $sql);
             }
         }
@@ -75,21 +123,21 @@
     <head>
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Sign Up</title>
+        <title>Mon Profil Vendeur</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
         <link rel='stylesheet' type='text/css' media='screen' href='MonProfilVendeur.css'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="MonProfilVendeur.js"></script>
     </head>
     <body>
-    <div class="container">
-        <div class="nav-barre">
+    <div class="nav-barre">
             <ul>
-                <li><a href="../Achat/Achat-menu.php">ACHAT</a></li>
-                <li class="actif"><a href="#">COMPTE</a></li>
-                <li><a href="../vente/Vendre.php">VENTE</a></li>
+                <a href="../Achat/Achat-menu.php"><li>ACHAT</li></a>
+                <li class="actif">COMPTE</li>
+                <a href="../vente/Vendre.php"><li>VENTE</li></a>
             </ul>
         </div>
+    <div class="container">
         <div class="imgFond">
             <img src="<?php echo $nomFond;?>">
             <div class="imgProfil">
@@ -174,11 +222,11 @@
                 echo '<div class="offreP"><p>'. $pseudoAcheteur[$m] . ' offre £ </p><p class="udrlg">' . $prixAcheteur[$m] . '</p>.</div>';
                 echo '<p>Vous aviez proposé £'. $prixVendeur[$m] . '.</p>';
                 echo '<div class="propositions">';
-                echo '<div class="accepter"><span name="A'. $idItem[$m] .'" class="accept">Accepter ' . "l'offre". '</span></div>';
+                echo '<div class="accepter"><span name="A'. $idAcheteur[$m] . '/' . $idItem[$m] .'" class="accept">Accepter ' . "l'offre". '</span></div>';
                 if($nbrOffre[$m]<5){
-                    echo '<div class="redo"><span name="'. $idItem[$m] .'" class="refaire">Refaire une offre</span></div>';
+                    echo '<div class="redo"><span name="'. $idAcheteur[$m] . '/' . $idItem[$m] .'" class="refaire">Refaire une offre</span></div>';
                 }else{
-                    echo '<div class="redo"><span name="'. $idItem[$m] .'" class="refaire">Annuler '. "l'offre" . '</span></div>';
+                    echo '<div class="redo"><span name="'. $idAcheteur[$m] . '/' . $idItem[$m] .'" class="refaire">Annuler '. "l'offre" . '</span></div>';
                 }
                 echo '</div>';
                 echo '<p> Nombre '. "d'offres" . ' : ' . $nbrOffre[$m] ;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 19, 2020 at 02:33 PM
+-- Generation Time: Apr 20, 2020 at 12:45 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.4.2
 
@@ -55,9 +55,9 @@ INSERT INTO `identification` (`ID`, `email`, `pseudo`, `password`, `nom`, `preno
 (13, 'arsene.bonaparte@gmail.com', 'StarBn', 'bonaparte', 'BONAPARTE', 'Arsene'),
 (14, 'georges.sand@gmail.com', 'GeorgesV', 'sand', 'SAND', 'Georges'),
 (15, 'mathias.etchevey@gmail.com', 'METC', 'etchevey', 'ETCHEVEY', 'Mathias'),
-(16, 'justin.normand@yahoo.fr', 'Just\'un', 'Normand', 'NORMAND', 'Justin'),
+(16, 'justin.normand@yahoo.fr', 'Justun', 'Normand', 'NORMAND', 'Justin'),
 (17, 'peter.sanders@hotmail.com', 'SHotmail', 'sanders', 'SANDERS', 'Peter'),
-(18, 'stephanie.lv@yahoo.fr', 'SLV', 'lv', 'LAVAL', 'Stéphanie'),
+(18, 'stephanie.lv@yahoo.fr', 'SLV', 'lv', 'LAVAL', 'Stephanie'),
 (19, 'valerie.lemercier@yahoo.fr', 'Lemer', 'lemercier', 'LEMERCIER', 'Valerie'),
 (20, 'alice.aubrac@gmail.com', 'ABC', 'aubrac', 'AUBRAC', 'Alice'),
 (21, 'charlotte.venetti@hotmail.com', 'Ven19', 'venetti', 'VENETTI', 'Charlotte'),

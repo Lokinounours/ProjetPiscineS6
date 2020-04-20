@@ -8,7 +8,88 @@
 
     $pseudo = $_SESSION['pseudo'];
 
+    $hiddenValue = isset($_POST["hiddenString"])? $_POST["hiddenString"] : "";
+
     if ($db_found) {
+
+        if($hiddenValue != ""){
+            if($hiddenValue[0]=='A'){
+
+                $idItemUpdate = substr($hiddenValue,1);
+
+                for($p=0; $p < strlen($idItemUpdate); $p++){
+                    if($idItemUpdate[$p]=='/'){
+                        $marqueA = $p;
+                    }
+                }
+
+                $acheteurId = "";
+
+                for($q=0; $q < $marqueA; $q++){
+                    $acheteurId .= $idItemUpdate[$q];
+                }
+
+                $acheteurId = intval($acheteurId);
+                $realItemId = intval(substr($idItemUpdate,$marqueA+1));
+
+                $sql = "UPDATE `meilleure_offre` SET `dernier` = 'X' WHERE `meilleure_offre`.`IDitem` = $realItemId AND `meilleure_offre`.`IDacheteur` = $acheteurId";
+                mysqli_query($db_handle, $sql);
+
+            }elseif($hiddenValue[0]=='S'){
+                $stringReceived = substr($hiddenValue,1);
+
+                for($r=0; $r < strlen($stringReceived); $r++){
+                    if($stringReceived[$r]=='/'){
+                        $marqueS = $r;
+                    }
+                }
+
+                $acheteurIdS = "";
+
+                for($s=0; $s < $marqueS; $s++){
+                    $acheteurIdS .= $stringReceived[$s];
+                }
+
+                $acheteurIdS = intval($acheteurIdS);
+                $realItemIdS = intval(substr($stringReceived,$marqueS+1));
+
+                $sql = "DELETE FROM `meilleure_offre` WHERE `meilleure_offre`.`IDitem` = $realItemIdS AND `meilleure_offre`.`IDacheteur` = $acheteurIdS";
+                mysqli_query($db_handle, $sql);
+
+            }else{
+                for($n=0; $n < strlen($hiddenValue); $n++){
+                    if($hiddenValue[$n]=='/'){
+                        $marque = $n;
+                    }
+                }
+                $acheteurIdL = "";
+                for($o=0; $o < $marque; $o++){
+                    $acheteurIdL .= $hiddenValue[$o];
+                }
+
+                $acheteurIdL = intval($acheteurIdL);
+
+                $nvPrixVendeur = substr($hiddenValue,$marque+1);
+
+                for($t=0; $t < strlen($nvPrixVendeur); $t++){
+                    if($nvPrixVendeur[$t]=='-'){
+                        $marque2 = $t;
+                    }
+                }
+
+                $realItemIdL = "";
+
+                for($u=0; $u < $marque2; $u++){
+                    $realItemIdL .= $nvPrixVendeur[$u];
+                }
+
+                $realItemIdL = intval($realItemIdL);
+                $prixItemL = intval(substr($nvPrixVendeur,$marque2+1));
+
+                $sql = "UPDATE `meilleure_offre` SET `prixAcheteur` = '$prixItemL', `nbreOffre` = `nbreOffre` + 1, `dernier` = 'acheteur' WHERE `meilleure_offre`.`IDitem` = $realItemIdL AND `meilleure_offre`.`IDacheteur` = $acheteurIdL";
+                mysqli_query($db_handle, $sql);
+            }
+        }
 
         $sql = "SELECT * FROM identification WHERE pseudo LIKE '%$pseudo%'";
         $result = mysqli_query($db_handle, $sql);
@@ -65,12 +146,10 @@
         $dateExpiration[8]=$copy[7];
         $dateExpiration[9]=$copy[6];
 
-        $sql = "SELECT IDitem FROM `achat_immediat` WHERE IDacheteur = $id";
-        $result5 = mysqli_query($db_handle, $sql);
-        $sql = "SELECT IDitem FROM `enchere` WHERE IDacheteur = $id";
-        $result6 = mysqli_query($db_handle, $sql);
-        $sql = "SELECT IDitem FROM `meilleure_offre` WHERE IDacheteur = $id";
-        $result7 = mysqli_query($db_handle, $sql);
+        $dernier = "vendeur";
+
+        $sql = "SELECT * FROM meilleure_offre WHERE IDacheteur = $id AND dernier LIKE '%$dernier%'";
+        $result2 = mysqli_query($db_handle, $sql);
 
     }
     mysqli_close($db_handle);
@@ -85,7 +164,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="MonProfilAcheteur.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='MonProfilAcheteur.css'>
-    <title>Mon Compte Acheteur</title>
+    <title>Mon Profil Acheteur</title>
 </head>
 
 <body>
@@ -109,63 +188,128 @@
     </div>
     <div class="info">
         <div class="center">
-            <div class="split"><h1>Type de compte:</h1><h1>Acheteur</h1></div>
+            <p class="verte">Offres attendant votre réponse</p>
+            <?php
+                if ($result2){
+                    $row2 = mysqli_num_rows($result2);
+                    $i = 0;
+                    while ($data = mysqli_fetch_assoc($result2)) {
+                        $idItem[$i] = $data['IDitem'];
+                        $prixAcheteur[$i] = $data['prixAcheteur'];
+                        $idAcheteur[$i] = $data['IDacheteur'];
+                        $prixVendeur[$i] = $data['prixVendeur'];
+                        $nbrOffre[$i] = $data['nbreOffre'];
+                        $i+=1;
+                    }
+                }
+    
+                for($j=0; $j<$i; $j++){
+    
+                    $db_handle = mysqli_connect('localhost', 'root', '');
+                    $db_found = mysqli_select_db($db_handle, $database);
+    
+                    $idItemTmp = $idItem[$j];
+                    $sql3 = "SELECT * FROM item WHERE ID = $idItemTmp";
+                    $result3 = mysqli_query($db_handle, $sql3);
+                    while ($data3 = mysqli_fetch_assoc($result3)) {
+                        $nomItem[$j] = $data3["nom"];
+                        $photoItem[$j] = $data3['photo'];
+                        $categorieItem[$j] = $data3["categorie"];
+                        for ($k=0; $k<strlen($data3["etat"]); $k++) {
+                            if ($data3["etat"][$k] == "E") $etatItem[$j] = "logo-enchere.png";
+                            if ($data3["etat"][$k] == "I") $etatItem[$j] = "logo-achat-imédiat.png";
+                            if ($data3["etat"][$k] == "M") $etatItem[$j] = "logo-meilleure-offre.png";
+                        }
+                    }
+                    mysqli_close($db_handle);
+                }
+    
+                for($l=0; $l<$i; $l++){
+    
+                    $db_handle = mysqli_connect('localhost', 'root', '');
+                    $db_found = mysqli_select_db($db_handle, $database);
+    
+                    $idAcheteurTmp = $idAcheteur[$l];
+                    $sql4 = "SELECT * FROM identification WHERE ID = $idAcheteurTmp";
+                    $result4 = mysqli_query($db_handle, $sql4);
+                    while ($data4 = mysqli_fetch_assoc($result4)) {
+                        $pseudoAcheteur[$l] = $data4['pseudo'];
+                    }
+                    mysqli_close($db_handle);
+                }
+    
+                echo '<div class="listItems">';
+                for($m=0; $m<$i; $m++){
+                    echo '<div class="item">';
+                    echo '<div class="infoItem">';
+                    echo '<p class="roseTitre">' . $nomItem[$m] .'</p>';
+                    echo '</div>';
+                    echo '<div class="imgItem">';
+                    echo '<img src="../../images/Items/' . $photoItem[$m] . '">';
+                    echo '</div>';
+                    echo '<div class="info2">';
+                    echo '<p>' . $categorieItem[$m] .'</p>';
+                    echo '</div>';
+                    echo '<div class="item-bottom">';
+                    echo '<img src=' . '"../../images/Logo/' . $etatItem[$m] .'" alt="Enchere">';
+                    echo '</div>';
+                    echo '<div class="offreP"><p>Le vendeur offre £ </p><p class="udrlg">' . $prixVendeur[$m] . '</p>.</div>';
+                    echo '<p>Vous aviez proposé £'. $prixAcheteur[$m] . '.</p>';
+                    echo '<div class="propositions">';
+                    echo '<div class="accepter"><span name="A'. $idAcheteur[$m] . '/' . $idItem[$m] .'" class="accept">Accepter ' . "l'offre". '</span></div>';
+                    if($nbrOffre[$m]<5){
+                        echo '<div class="redo"><span name="'. $idAcheteur[$m] . '/' . $idItem[$m] .'" class="refaire">Refaire une offre</span></div>';
+                    }else{
+                        echo '<div class="redo"><span name="'. $idAcheteur[$m] . '/' . $idItem[$m] .'" class="refaire">Annuler '. "l'offre" . '</span></div>';
+                    }
+                    echo '</div>';
+                    echo '<p> Nombre '. "d'offres" . ' : ' . $nbrOffre[$m] ;
+                    echo '</div>';
+                }
+    
+                echo '</div>';
+            ?>
+            <div class="split"><h1>Type de compte:</h1><h1 class="hBlanc">Acheteur</h1></div>
             <div class="nomPrenom">
-                <div class="split"><h1>Nom:</h1><h1><?php echo $nom; ?></h1></div>
-                <div class="split"><h1>Prenom:</h1><h1><?php echo $prenom; ?></h1></div>
+                <div class="split"><h1>Nom:</h1><h1><?php echo '<p class="hBlanc">' . $nom . '</p>';?></h1></div>
+                <div class="split"><h1>Prenom:</h1><h1 class="hBlanc"><?php echo $prenom; ?></h1></div>
             </div>
             <div class="adresse">
                 <div class="split"><h1>Coordonnées</h1></div>
                 <div class="topAdresse">
-                    <div class="split"><h1>Adresse:</h1><h1><?php echo $adresse; ?></h1></div>
-                    <div class="split"><h1>Ville:</h1><h1><?php echo $ville; ?></h1></div>
+                    <div class="split"><h1>Adresse:</h1><h1 class="hBlanc"><?php echo $adresse; ?></h1></div>
+                    <div class="split"><h1>Ville:</h1><h1 class="hBlanc"><?php echo $ville; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Code Postal:</h1><h1><?php echo $codePostal; ?></h1></div>
-                    <div class="split"><h1>Pays:</h1><h1><?php echo $pays; ?></h1></div>
+                    <div class="split"><h1>Code Postal:</h1><h1 class="hBlanc"><?php echo $codePostal; ?></h1></div>
+                    <div class="split"><h1>Pays:</h1><h1 class="hBlanc"><?php echo $pays; ?></h1></div>
                 </div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Email:</h1><h1><?php echo $email; ?></h1></div>
+                <div class="split"><h1>Email:</h1><h1 class="hBlanc"><?php echo $email; ?></h1></div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Téléphone:</h1><h1><?php echo $numTelephone; ?></h1></div>
+                <div class="split"><h1>Téléphone:</h1><h1 class="hBlanc"><?php echo $numTelephone; ?></h1></div>
             </div>
             <div class="adresse">
                 <div class="split"><h1>Paiement</h1></div>
                 <div class="topAdresse">
-                    <div class="split"><h1>N° de carte:</h1><h1><?php echo $numCarte; ?></h1></div>
-                    <div class="split"><h1>CVV:</h1><h1><?php echo $code; ?></h1></div>
+                    <div class="split"><h1>N° de carte:</h1><h1 class="hBlanc"><?php echo $numCarte; ?></h1></div>
+                    <div class="split"><h1>CVV:</h1><h1 class="hBlanc"><?php echo $code; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Nom sur la carte:</h1><h1><?php echo $nomCarte; ?></h1></div>
-                    <div class="split"><h1>Date expiration:</h1><h1><?php echo $dateExpiration; ?></h1></div>
+                    <div class="split"><h1>Nom sur la carte:</h1><h1 class="hBlanc"><?php echo $nomCarte; ?></h1></div>
+                    <div class="split"><h1>Date expiration:</h1><h1 class="hBlanc"><?php echo $dateExpiration; ?></h1></div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Code postal:</h1><h1><?php echo $codePostal; ?></h1></div>
-                    <div class="split"><h1>Pays:</h1><h1><?php echo $pays; ?></h1></div>
+                    <div class="split"><h1>Code postal:</h1><h1 class="hBlanc"><?php echo $codePostal; ?></h1></div>
+                    <div class="split"><h1>Pays:</h1><h1 class="hBlanc"><?php echo $pays; ?></h1></div>
                 </div>
             </div>
         </div>
-        <!-- <div class="split special"><h1>Image de fond:</h1></div>
-        <ul class="categorie">
-            <li id="fond-choix1.jpg" class="catBtn"><img id="fond-choix1" src="../../images/Fond/fond-choix1.jpg" alt="fond1"></li>
-            <li id="fond-choix2.jpg" class="catBtn"><img id="fond-choix2" src="../../images/Fond/fond-choix2.jpg" alt="fond2"></li>
-            <li id="fond-choix3.jpg" class="catBtn"><img id="fond-choix3" src="../../images/Fond/fond-choix3.jpg" alt="fond3"></li>
-        </ul> -->
-        <div class="split"><h1 style="background-color: var(--secondary)">Vos transactions</h1></div>
-        <?php
-            while ($data = mysqli_fetch_assoc($result5)){
-                echo "<br> $data[IDitem]";
-            }
-            while ($data = mysqli_fetch_assoc($result6)) {
-                echo "<br> $data[IDitem]";
-            }
-            while ($data = mysqli_fetch_assoc($result7)) {
-                echo "<br> $data[IDitem]";
-            }
-        ?>
+        <form action="" enctype="multipart/form-data" method="POST" id="hiddenForm">
+            <input type="hidden" id="hString" name="hiddenString" /> 
+        </form>
     </div>
-</body>
-
+    </body>
 </html>

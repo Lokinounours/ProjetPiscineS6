@@ -330,7 +330,7 @@
 }
 
 .item {
-    height: 550px !important;
+    height: 570px !important;
 }
 
 
@@ -342,7 +342,7 @@
 .info{
     margin-top: 10px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -371,7 +371,6 @@ p {
     border: solid 2px white;
     border-radius:4px;
     /* padding: 5px; */
-    height: 420px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -408,7 +407,6 @@ p {
 .item .rose{
     font-size: 20px;
     color: var(--rose);
-    margin-right: 30px;
 }
 
 .vert{

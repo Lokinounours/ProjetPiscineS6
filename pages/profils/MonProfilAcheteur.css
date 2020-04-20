@@ -65,7 +65,6 @@
 }
 
 .container {
-    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,33 +119,33 @@
 .info {
     width: 80%;
     margin: auto;
-    background: var(--secondary);
     border-radius: 30px;
     padding: 50px;
     margin-top: 150px;
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center; */
+    align-items: center; 
     color: var(--primary);
+    border: solid 2px var(--blanc);
+    margin-bottom: 40px;
 }
 
 .center {
-    background-color: var(--secondary);
     margin: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 .center h1 {
     margin: 30px 0;
 }
 
-.center h1, h2, h3, p {
-    background-color: var(--secondary);
-}
-
 .nomPrenom {
     display: flex;
-    background-color: var(--secondary);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .nomPrenom h1 {
@@ -156,25 +155,21 @@
 .adresse {
     margin-top: 30px;
     color: var(--primary);
-    background-color: var(--secondary);
 }
 
 .topAdresse {
     display: flex;
     justify-content: space-evenly;
-    background-color: var(--secondary);
 }
 
 .bottomAdresse {
     display: flex;
     justify-content: space-evenly;
-    background-color: var(--secondary);
+
 }
 
 .split {
     display: flex;
-    background-color: 
-    var(--secondary);
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -194,13 +189,13 @@
     list-style: none;
     display: flex;
     justify-content: center;
-    background-color: var(--secondary);
+
 }
 
 .categorie li {
     margin: 0 50px;
     border-radius: 20px;
-    background-color: var(--secondary);
+
 }
 
 .categorie li img{
@@ -223,6 +218,115 @@
 }
 
 .special h1{
-    background-color: var(--secondary);
+
     margin-bottom: 40px;
+}
+
+.hBlanc{
+    color: var(--blanc);
+}
+
+.hRouge{
+    color: var(--rose);
+}
+
+.listItems{
+    width:70vw;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+
+.item{
+    border: solid 2px white;
+    border-radius:4px;
+    height: 480px;
+    width: 330px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin:20px;
+    box-shadow: 0px 10px 20px black;
+    transition: 0.3s ease-in-out;
+}
+
+.item .propositions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.item .propositions .accepter, .redo{
+    padding:5px;
+    border: solid 2px white;
+    border-radius: 4px;
+    margin: 5px;
+    cursor: pointer;
+    color: var(--primary);
+    font-weight:bold;
+}
+
+.item p{
+    color:var(--blanc);
+    background: transparent;
+}
+
+.item .propositions .accepter{
+    background-color: var(--vert);
+}
+
+.item .propositions .redo{
+    background-color: var(--rose);
+}
+
+.item .udrlg{
+    text-decoration: underline;
+    text-decoration-color: var(--blanc);
+}
+
+.item span{
+    background: transparent;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.item .offreP{
+    display: flex;
+    flex-direction: row;
+}
+
+.item:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 20px var(--secondary);
+}
+
+.imgItem img{
+    width:200px;
+    height:200px;
+}
+
+.item .roseTitre{
+    color:var(--rose);
+    font-size: large;
+}
+
+.vert{
+    color:var(--jaune);
+    margin-left: 4vw;
+}
+
+.verte{
+    margin-top:20px;
+    color:var(--vert);
+    font-size: large;
+}
+
+.blanc{
+    color:var(--blanc);
+    margin-right:6vw;
+    padding-left:10px;
 }
