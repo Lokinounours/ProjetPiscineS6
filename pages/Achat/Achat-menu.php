@@ -77,8 +77,7 @@
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM achat_immediat)";
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today')";
 				$tmpRequest .= " AND ID NOT IN (SELECT IDitem FROM `meilleure_offre` WHERE dernier = 'X')";
-				$tmpRequest .= " ) ORDER BY prix ASC";
-				echo $tmpRequest; 
+				$tmpRequest .= " ) ORDER BY prix ASC"; 
 				break;
 		}
 		if(isset($_POST["researchBtn"])){
@@ -86,7 +85,6 @@
 				// AJOUTER CONDI POUR PAS DANS ENCHERE FINI OU MEILLEUR OFFRE FINI
 				$sql = "SELECT * FROM item WHERE (nom like '%$search%' OR categorie like '%$search%' OR etat like '%$search%') AND ID NOT IN (SELECT IDitem FROM achat_immediat) AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today') AND ID NOT IN (SELECT IDitem FROM `meilleure_offre` WHERE dernier = 'X')";
 				$result = mysqli_query($db_handle, $sql);
-				echo $sql;
 			} else {
 
 				$sql = "SELECT * FROM item WHERE (etat like '%$etat%'";
@@ -101,7 +99,6 @@
 					$sql .= " AND ID NOT IN (SELECT IDitem FROM enchere WHERE dateFin < '$today')";
 					$sql .= " AND ID NOT IN (SELECT IDitem FROM `meilleure_offre` WHERE dernier = 'X')";
 				}
-				echo $sql;
 				$result = mysqli_query($db_handle, $sql);
 			}
 		}

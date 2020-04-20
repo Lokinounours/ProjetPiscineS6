@@ -59,7 +59,7 @@
     width: 80vw;
     height: 250px;
     background-image: url("../../images/fondDefault.jpg");
-    border-radius:4px;
+    border-radius:20px;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -73,7 +73,7 @@
     width: 200px;
     height: 242px;
     border: solid 2px var(--blanc);
-    border-radius: 4px;
+    border-radius: 20px;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -81,6 +81,9 @@
 }
 
 .bckgdCarteVendeur{
+    border: solid 2px var(--blanc);
+    border-top-left-radius:16px;
+    border-top-right-radius: 16px;
     position:absolute;
     top:0px;
     left:0px;

@@ -121,19 +121,19 @@
             <h1>MON COMPTE</h1>
             <div class="profil">
                 <img src="../../images/Avatar/avatar-admin.png" alt="Avatar compte">
-                <h3><?php echo $pseudo; ?></h3>
+                <h3 class="hBlanc"><?php echo $pseudo; ?></h3>
             </div>
         </div>
     </div>
     <div class="info">
         <div class="center">
-            <div class="split"><h1>Type de compte:</h1><h1>Administrateur</h1></div>
+            <div class="split"><h1>Type de compte:</h1><h1 class="hBlanc">Administrateur</h1></div>
             <div class="nomPrenom">
-                <div class="split"><h1>Nom:</h1><h1><?php echo $nom; ?></h1></div>
-                <div class="split"><h1>Prenom:</h1><h1><?php echo $prenom; ?></h1></div>
+                <div class="split"><h1>Nom:</h1><h1 class="hBlanc"><?php echo $nom; ?></h1></div>
+                <div class="split"><h1>Prenom:</h1><h1 class="hBlanc"><?php echo $prenom; ?></h1></div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Email:</h1><h1><?php echo $email; ?></h1></div>
+                <div class="split"><h1>Email:</h1><h1 class="hBlanc"><?php echo $email; ?></h1></div>
             </div>
         </div>
     </div>

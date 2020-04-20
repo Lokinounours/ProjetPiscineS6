@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
 :root {
     --primary: #212121;
-    --secondary: #757575;
+    --secondary: #212121;
     --vert: #36F4B9;
     --bleu: #77B5FE;
     --bleuFonce: #2E006C;
@@ -19,6 +19,11 @@
     font-family:'Poppins', sans-serif;
     background-color: var(--primary);
     
+}
+
+.hBlanc{
+    color: var(--blanc);
+    background: transparent;
 }
 
 .nav-barre ul{
@@ -102,6 +107,7 @@
     width: 200px;
     background-color: var(--secondary);
     border-radius: 20px;
+    border: solid 2px var(--blanc);
 }
 
 .admin-bottom img {
@@ -115,11 +121,12 @@
 
 .profil h3 {
     margin-top: 10px;
-    background-color: var(--secondary);
+    background: transparent;
+
 }
 
 .info {
-    width: 80%;
+    width: 80vw;
     margin: auto;
     background: var(--secondary);
     border-radius: 30px;
@@ -129,6 +136,8 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center; */
+    border: solid 2px var(--blanc);
+    border-radius: 20px;
     color: var(--primary);
 }
 
@@ -147,6 +156,8 @@
 
 .nomPrenom {
     display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: var(--secondary);
 }
 

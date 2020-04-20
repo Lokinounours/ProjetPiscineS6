@@ -149,10 +149,14 @@
         <div class="pseudo">
             <p class="rose"><?php echo $pseudo;?></p>
         </div>
-        <div class="nomPrenomEmail">
-            <p class="vert">Prénom :</p><p class="blanc"><?php echo $prenom;?></p>
-            <p class="vert">Nom :</p><p class="blanc"><?php echo $nom;?></p>
-            <p class="vert">Email :</p><p class="blanc"><?php echo $email;?></p>
+        <div class="infoVendeur">
+            <div class="nomPrenomEmail">
+                <p class="vert">Prénom :</p><p class="blanc"><?php echo $prenom;?></p>
+                <p class="vert">Nom :</p><p class="blanc"><?php echo $nom;?></p>
+            </div>
+            <div class="email">
+                <p class="vert">Email :</p><p class="blanc"><?php echo $email;?></p>
+            </div>
         </div>
 
         <?php
