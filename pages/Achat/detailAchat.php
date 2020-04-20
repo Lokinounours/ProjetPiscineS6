@@ -84,7 +84,7 @@
                 $sql = "SELECT * FROM `meilleure_offre` WHERE IDitem = $idProduit AND IDacheteur = 0";
                 $result8 = mysqli_query($db_handle, $sql);
                 while($data8 = mysqli_fetch_assoc($result8)){
-                    $prixOffreBase = $data['prixVendeur'];
+                    $prixOffreBase = $data8['prixVendeur'];
                 }
 
                 if($soldeAcheteur >= $prixOffreBase){
