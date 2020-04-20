@@ -98,6 +98,10 @@
                 </div>
             </li>
         </ul>
+    <footer>
+        <h2>CopyRight ECE-Bay 2020</h2>
+        <h5>jules@edu.ece.lestrade.fr.io</h5>
+    </footer>
     </div>
 </body>
 

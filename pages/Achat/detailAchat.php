@@ -174,7 +174,9 @@
     <div class="detail-item">
         <div class="top">
             <?php
-                echo '<div class="left"><img src="../../images/Items/' . $photoItem . '" alt=""></div>';
+                echo '<div class="left"><a href="'.$videoItem .'">
+                    <img src="../../images/Items/' . $photoItem . '" alt="">
+                </a></div>';
                 echo '<div class="right">';
                 echo '<h1>' . $nomItem . '</h1>';
                 echo '<h3>' . $categorieItem . '</h3>';

@@ -289,3 +289,19 @@
     text-align: justify;
   text-justify: inter-word;
 }
+
+footer {
+    margin-top: 80px;
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer h5, h2 {
+    background-color: black;
+}
