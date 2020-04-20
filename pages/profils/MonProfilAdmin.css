@@ -230,7 +230,8 @@
     align-items: center;
     justify-content: center;
     text-align: center; 
-    color : var(--blanc); 
+    color : var(--blanc);
+    margin-bottom:40px; 
 }
 .vendeurs-objets .marchandises, .vendeurs, .acheteurs{
     width: 80vw;

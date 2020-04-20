@@ -13,59 +13,62 @@
 
     if ($db_found) {
 
-        if (isset($_POST["btnInscription"])) {
+        if($fullID!="empty") {
 
-            if($fullID!="empty") {
+            $type = $fullID[0];
+            $id = intval(substr($fullID,1));
 
-                $type = $fullID[0];
-                $id = intval(substr($fullID,1));
+            $doubleType = false;
 
-                $doubleType = false;
+            $table = "";
 
-                $table = "";
+            if($type == 'V'){
+                $table = "vendeur";
 
-                if($type == 'V'){
-                    $table = "vendeur";
-
-                    $sql = "SELECT * FROM acheteur WHERE ID = $id";
-                    $result = mysqli_query($db_handle, $sql);
-                    if (mysqli_num_rows($result) != 0) {
-                        $doubleType = true;
-                    }
+                $sql = "SELECT * FROM acheteur WHERE ID = $id";
+                $result = mysqli_query($db_handle, $sql);
+                if (mysqli_num_rows($result) != 0) {
+                    $doubleType = true;
                 }
-                
-                if($type == 'A'){
-                    $table = "acheteur";
+            }
+            
+            if($type == 'A'){
+                $table = "acheteur";
 
-                    $sql = "SELECT * FROM vendeur WHERE ID = $id";
-                    $result = mysqli_query($db_handle, $sql);
-                    if (mysqli_num_rows($result) != 0) {
-                        $doubleType = true;
-                    }
+                $sql = "SELECT * FROM vendeur WHERE ID = $id";
+                $result = mysqli_query($db_handle, $sql);
+                if (mysqli_num_rows($result) != 0) {
+                    $doubleType = true;
                 }
+            }
 
-                if($type == 'I') {
-                    $table = "item";
-                }
+            if($type == 'I') {
+                $table = "item";
+            }
 
-                if($table == "vendeur"){
-                    $sql = "DELETE FROM vendeur WHERE ID = $id";
-                    mysqli_query($db_handle, $sql);
-                    if(!$doubleType){
-                        $sql = "DELETE FROM identification WHERE ID = $id";
-                        mysqli_query($db_handle, $sql);
-                    }
-                }elseif($table == "acheteur"){
-                    $sql = "DELETE FROM acheteur WHERE ID = $id";
-                    mysqli_query($db_handle, $sql);
-                    if(!$doubleType){
-                        $sql = "DELETE FROM identification WHERE ID = $id";
-                        mysqli_query($db_handle, $sql);
-                    }
-                }elseif($table == "item"){
-                    $sql = "DELETE FROM item WHERE ID = $id";
+            if($table == "vendeur"){
+                $sql = "DELETE FROM vendeur WHERE ID = $id";
+                mysqli_query($db_handle, $sql);
+                if(!$doubleType){
+                    $sql = "DELETE FROM identification WHERE ID = $id";
                     mysqli_query($db_handle, $sql);
                 }
+            }elseif($table == "acheteur"){
+                $sql = "DELETE FROM acheteur WHERE ID = $id";
+                mysqli_query($db_handle, $sql);
+                if(!$doubleType){
+                    $sql = "DELETE FROM identification WHERE ID = $id";
+                    mysqli_query($db_handle, $sql);
+                }
+            }elseif($table == "item"){
+                $sql = "DELETE FROM item WHERE ID = $id";
+                mysqli_query($db_handle, $sql);
+
+                $sql = "DELETE FROM enchere WHERE IDitem = $id";
+                mysqli_query($db_handle, $sql);
+
+                $sql = "DELETE FROM meilleure_offre WHERE IDitem = $id";
+                mysqli_query($db_handle, $sql);
             }
         }
 
@@ -185,10 +188,10 @@
         </div>
     </div>
     <div class="ajouterSupp">
-        <form action="" enctype="multipart/form-data" method="POST">
+        <form action="" enctype="multipart/form-data" method="POST" id="hiddenForm">
             <input type="hidden" id="hiddenID" name="hiddenID" />
-            <div class="btnFinal"><input type="submit" id="btn" name="btnInscription" value="Supprimer"
-                        class="btn colorSync"></div>
+            <!-- <div class="btnFinal"><input type="submit" id="btn" name="btnInscription" value="Supprimer"
+                        class="btn colorSync"></div> -->
         </form>
     </div>
 </body>
