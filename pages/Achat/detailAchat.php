@@ -84,7 +84,7 @@
                 $sql = "SELECT * FROM `meilleure_offre` WHERE IDitem = $idProduit AND IDacheteur = 0";
                 $result8 = mysqli_query($db_handle, $sql);
                 while($data8 = mysqli_fetch_assoc($result8)){
-                    $prixOffreBase = $data['prixVendeur'];
+                    $prixOffreBase = $data8['prixVendeur'];
                 }
 
                 if($soldeAcheteur >= $prixOffreBase){
@@ -136,6 +136,17 @@
                     $idAcheteurEnchere = $idAcheteur;
                     $prixAfficheEnchere = $prixHaut + 1;
                     $prixHautEnchere = $prixAcheteurRecu;
+
+                    $sql = "SELECT * FROM `enchere` WHERE `enchere`.`IDitem` = $idProduit";
+                    $result9 = mysqli_query($db_handle, $sql);
+                    while($data9 = mysqli_fetch_assoc($result9)){
+                        $idAncienAcheteur = $data9['IDacheteur'];
+                        $ancienPrixHaut = $data9['prixHaut'];
+                    }
+
+                    $sql = "UPDATE `info_paiement` SET `solde` = `solde` + '$ancienPrixHaut'
+                            WHERE `info_paiement`.`ID` = $idAncienAcheteur";
+                    mysqli_query($db_handle, $sql);
 
                     $sql = "UPDATE `enchere` SET `IDacheteur` = '$idAcheteurEnchere', `prixHaut` = '$prixHautEnchere', `prixAff` = '$prixAfficheEnchere'
                             WHERE `enchere`.`IDitem` = $idProduit";
