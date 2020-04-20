@@ -104,7 +104,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='MonProfilAdmin.css'>
-    <title>Mon Compte Admin</title>
+    <title>Mon Profil Admin</title>
     <script src="MonProfilAdmin.js"></script>
 </head>
 <body>
