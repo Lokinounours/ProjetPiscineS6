@@ -189,7 +189,7 @@
 	</div>
 	<div class="column">
 		<form action="" enctype="multipart/form-data" method="POST" id="formSearch">
-			<input type="text" name="research" class="inptTxt"/>
+			<input type="text" name="research" class="inptTxt" placeholder="Rechercher"/>
 			<input type="submit" name="researchBtn" class="inptBtn"/>
 			<input type="hidden" id="hiddenEtat" name="hiddenEtat" />
 			<input type="hidden" id="hiddenRecherche" name="hiddenRecherche" />
