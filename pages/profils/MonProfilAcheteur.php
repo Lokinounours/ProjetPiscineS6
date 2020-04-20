@@ -147,6 +147,9 @@
         $dateExpiration[9]=$copy[6];
 
         $dernier = "vendeur";
+        $today=date("Y-m-d");
+        $sql = "SELECT * FROM item WHERE ID IN (SELECT IDitem FROM achat_immediat WHERE IDacheteur = $id) OR ID IN (SELECT IDitem FROM meilleure_offre WHERE IDacheteur = $id AND dernier = 'X') OR ID IN (SELECT IDitem FROM enchere WHERE IDacheteur = $id AND dateFin < '$today')";
+        $ListItem = mysqli_query($db_handle, $sql);
 
         $sql = "SELECT * FROM meilleure_offre WHERE IDacheteur = $id AND dernier LIKE '%$dernier%'";
         $result2 = mysqli_query($db_handle, $sql);
@@ -270,47 +273,125 @@
     
                 echo '</div>';
             ?>
-            <div class="split"><h1>Type de compte:</h1><h1 class="hBlanc">Acheteur</h1></div>
+            <div class="split">
+                <h1>Type de compte:</h1>
+                <h1 class="hBlanc">Acheteur</h1>
+            </div>
             <div class="nomPrenom">
-                <div class="split"><h1>Nom:</h1><h1><?php echo '<p class="hBlanc">' . $nom . '</p>';?></h1></div>
-                <div class="split"><h1>Prenom:</h1><h1 class="hBlanc"><?php echo $prenom; ?></h1></div>
+                <div class="split">
+                    <h1>Nom:</h1>
+                    <h1><?php echo '<p class="hBlanc">' . $nom . '</p>';?></h1>
+                </div>
+                <div class="split">
+                    <h1>Prenom:</h1>
+                    <h1 class="hBlanc"><?php echo $prenom; ?></h1>
+                </div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Coordonnées</h1></div>
+                <div class="split">
+                    <h1>Coordonnées</h1>
+                </div>
                 <div class="topAdresse">
-                    <div class="split"><h1>Adresse:</h1><h1 class="hBlanc"><?php echo $adresse; ?></h1></div>
-                    <div class="split"><h1>Ville:</h1><h1 class="hBlanc"><?php echo $ville; ?></h1></div>
+                    <div class="split">
+                        <h1>Adresse:</h1>
+                        <h1 class="hBlanc"><?php echo $adresse; ?></h1>
+                    </div>
+                    <div class="split">
+                        <h1>Ville:</h1>
+                        <h1 class="hBlanc"><?php echo $ville; ?></h1>
+                    </div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Code Postal:</h1><h1 class="hBlanc"><?php echo $codePostal; ?></h1></div>
-                    <div class="split"><h1>Pays:</h1><h1 class="hBlanc"><?php echo $pays; ?></h1></div>
+                    <div class="split">
+                        <h1>Code Postal:</h1>
+                        <h1 class="hBlanc"><?php echo $codePostal; ?></h1>
+                    </div>
+                    <div class="split">
+                        <h1>Pays:</h1>
+                        <h1 class="hBlanc"><?php echo $pays; ?></h1>
+                    </div>
                 </div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Email:</h1><h1 class="hBlanc"><?php echo $email; ?></h1></div>
+                <div class="split">
+                    <h1>Email:</h1>
+                    <h1 class="hBlanc"><?php echo $email; ?></h1>
+                </div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Téléphone:</h1><h1 class="hBlanc"><?php echo $numTelephone; ?></h1></div>
+                <div class="split">
+                    <h1>Téléphone:</h1>
+                    <h1 class="hBlanc"><?php echo $numTelephone; ?></h1>
+                </div>
             </div>
             <div class="adresse">
-                <div class="split"><h1>Paiement</h1></div>
+                <div class="split">
+                    <h1>Paiement</h1>
+                </div>
                 <div class="topAdresse">
-                    <div class="split"><h1>N° de carte:</h1><h1 class="hBlanc"><?php echo $numCarte; ?></h1></div>
-                    <div class="split"><h1>CVV:</h1><h1 class="hBlanc"><?php echo $code; ?></h1></div>
+                    <div class="split">
+                        <h1>N° de carte:</h1>
+                        <h1 class="hBlanc"><?php echo $numCarte; ?></h1>
+                    </div>
+                    <div class="split">
+                        <h1>CVV:</h1>
+                        <h1 class="hBlanc"><?php echo $code; ?></h1>
+                    </div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Nom sur la carte:</h1><h1 class="hBlanc"><?php echo $nomCarte; ?></h1></div>
-                    <div class="split"><h1>Date expiration:</h1><h1 class="hBlanc"><?php echo $dateExpiration; ?></h1></div>
+                    <div class="split">
+                        <h1>Nom sur la carte:</h1>
+                        <h1 class="hBlanc"><?php echo $nomCarte; ?></h1>
+                    </div>
+                    <div class="split">
+                        <h1>Date expiration:</h1>
+                        <h1 class="hBlanc"><?php echo $dateExpiration; ?></h1>
+                    </div>
                 </div>
                 <div class="bottomAdresse">
-                    <div class="split"><h1>Code postal:</h1><h1 class="hBlanc"><?php echo $codePostal; ?></h1></div>
-                    <div class="split"><h1>Pays:</h1><h1 class="hBlanc"><?php echo $pays; ?></h1></div>
+                    <div class="split">
+                        <h1>Code postal:</h1>
+                        <h1 class="hBlanc"><?php echo $codePostal; ?></h1>
+                    </div>
+                    <div class="split">
+                        <h1>Pays:</h1>
+                        <h1 class="hBlanc"><?php echo $pays; ?></h1>
+                    </div>
                 </div>
             </div>
+
+
+            <h1 style="color: var(--jaune);">Vos achats</h1>
+            <div class="listItems">
+                <?php
+                    while ($data = mysqli_fetch_assoc($ListItem)) {
+                        echo '<div class="item" id=' . $data["ID"] . '>';
+                        echo '<div class="info">';
+                        echo '<p class="rose">' . $data["nom"] .'</p>';
+                        echo '<p class="prix">' . $data["prix"] .'£</p>';
+                        echo '</div>';
+                        echo '<div class="imgItem">';
+                        echo '<img src="../../images/Items/' . $data['photo'] . '">';
+                        echo '</div>';
+                        echo '<div class="info2">';
+                        echo '<p>' . $data["categorie"] .'</p>';
+                        echo '</div>';
+                        echo '<div class="item-bottom">';
+                        for ($i=0; $i<strlen($data["etat"]); $i++) {
+                            if ($data["etat"][$i] == "E") echo "<img src='../../images/Logo/logo-enchere.png' alt='Enchere'>";
+                            if ($data["etat"][$i] == "I") echo "<img src='../../images/Logo/logo-achat-imédiat.png' alt='achat-imédiat'>";
+                            if ($data["etat"][$i] == "M") echo "<img src='../../images/Logo/logo-meilleure-offre.png' alt='meilleure-offre'>";
+                        }
+                        echo '</div>';
+                        echo '</div>';
+                    }
+                    ?>
+            </div>
+            <form action="" enctype="multipart/form-data" method="POST" id="hiddenForm">
+                <input type="hidden" id="hString" name="hiddenString" />
+            </form>
         </div>
-        <form action="" enctype="multipart/form-data" method="POST" id="hiddenForm">
-            <input type="hidden" id="hString" name="hiddenString" /> 
-        </form>
     </div>
-    </body>
+</body>
+
 </html>
