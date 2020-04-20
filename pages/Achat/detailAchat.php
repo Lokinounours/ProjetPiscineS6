@@ -157,13 +157,14 @@
                     mysqli_query($db_handle, $sql);
 
                 }else{
-                    $prixAfficheEnchere = $prixAcheteurRecu;
+                    $prixAfficheEnchere = $prixAcheteurRecu + 1;
                     $sql = "UPDATE `enchere` SET `prixAff` = '$prixAfficheEnchere'
                             WHERE `enchere`.`IDitem` = $idProduit";
                     mysqli_query($db_handle, $sql);
                 }
                 
                 header('Location: ./Achat-menu.php');
+
             }else{
                 $finalString .= 'Solde insuffisant.' . '<br>';
             }
